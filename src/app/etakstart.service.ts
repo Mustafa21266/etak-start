@@ -13,13 +13,26 @@ export class CommunityService {
   private APIUrl = 'https://etak-start-api.herokuapp.com/';
   userObj: any;
   token = this.cookieService.get('etak-start-token') || '';
+  httpOptions;
   constructor(private http: HttpClient,private cookieService: CookieService) { 
     if(this.token){
       this.getUserDetail(this.token).subscribe(data =>{
         this.userObj = data[0]
       })
     }
+    let csrf = this.cookieService.get("csrftoken");
+  if (typeof(csrf) === 'undefined') {
+    csrf = '';
+  }
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'X-CSRFToken': csrf,
+    'content-type': 'application/json',
+    'Authorization': this.token,
+  }),
+  };
     // this.fetchUserObj()
+    
   }
   ngOnInit(): void {
     
@@ -92,7 +105,7 @@ export class CommunityService {
       'Authorization': this.token,
     }; 
     const body=JSON.stringify(cyberCreationForm);
-    return this.http.post(this.APIUrl+'add-cyber/'+user_id, body,{'headers':headers})
+    return this.http.post(this.APIUrl+'add-cyber/'+user_id, body,this.httpOptions)
   }
   deleteCyber(id: number,user_id: number): Observable<any>{
     const headers = { 
