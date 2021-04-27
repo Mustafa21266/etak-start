@@ -63,7 +63,7 @@ export class CommunityService {
   addUser(user: User): Observable<any>{
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(user);
-    return this.http.post(this.APIUrl+'create-user', body,{'headers':headers})
+    return this.http.post(this.APIUrl+'create-user', body,this.httpOptions)
   }
   loginUser(userForm): Observable<any>{
     const headers = { 'content-type': 'application/json'}; 
