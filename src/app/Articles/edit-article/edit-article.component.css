@@ -1,0 +1,105 @@
+.background-class {
+  /* background-color: #0F0C24; */
+  background-color: #0F0C24;
+  padding: 20px;
+}
+.edit-article-header {
+  text-align: left;
+  color: white;
+}
+.create-article-header {
+  text-align: left;
+  color: white;
+}
+#articleCoverId{
+  position: absolute;
+  top: 20px;
+  z-index: 0;
+  visibility: hidden;
+}
+.cover{
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 3px;
+}
+
+.cyber-logo {
+  border-radius: 50%;
+  border: 5px solid #C5C6C7;
+  transition: filter 0.3s;
+  position: absolute;
+  z-index: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.add-btn-cyber-images {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  font-size: 1.2rem;
+  padding: 5px 20px;
+}
+.change-cover-btn{
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  color: black;
+}
+.save-btn {
+  font-size: 24px;
+  padding: 5px 20px;
+  float: left;
+}
+.delete-article-btn {
+  display: block;
+  margin: auto;
+  width: 150px;
+}
+@media only screen and (max-width: 900px) {
+  .cover{
+    height: 35vh;
+  }
+  .cyber-logo {
+    height: 220px;
+    width: 220px;
+    top: -120px;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+  .add-cyber-div {
+    padding: 25px;
+  }
+  .add-btn-cyber-images{
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 900px) {
+  .cover{
+    height: 55vh;
+  }
+  .cyber-logo{
+    height: 320px;
+    width: 320px;
+    top: -160px;
+  }
+  h3 {
+    font-size: 4rem;
+  }
+  .add-cyber-div {
+    padding: 125px;
+  }
+  .add-btn-cyber-images{
+    width: 100px;
+  }
+  
+}
+

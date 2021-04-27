@@ -1,0 +1,102 @@
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+  }
+  
+  /* Add some content at the bottom of the video/page */
+  .content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Style the button used to pause/play the video */
+  #myBtn {
+    width: 300px;
+    font-size: 22px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  #myBtn:hover {
+    background: #ddd;
+    color: black;
+  }
+
+
+
+
+
+
+
+
+
+
+  video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .hompage-text {
+    position: relative;
+    top: 350px;
+    text-align: center;
+  }
+  .viewport-header {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    
+  }
+  
+  h1 {
+    font-family: 'Syncopate', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.6vw;
+    line-height: 1.2;
+    font-size: 3vw;
+    text-align: center;
+    display: block;
+    
+  }
+  span {
+    font-family: 'Syncopate', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.6vw;
+    line-height: 1.2;
+    font-size: 3vw;
+    text-align: center;
+    display: block;
+  }
+  main {
+    display: none;
+    width: 80vw;
+    left: 10%;
+    height: 40vh;
+    overflow: auto;
+    background: rgba(black, 0.66);
+    color: white;
+    position: relative;
+    padding: 1rem;
+  }

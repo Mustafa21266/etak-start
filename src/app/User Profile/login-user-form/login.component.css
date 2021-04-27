@@ -1,0 +1,50 @@
+.example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+.login-header {
+  text-align: center;
+  color : #ffffff;
+  /* position:relative;
+  top: 150px; */
+}
+.form {
+  /* position:relative;
+  top: 200px; */
+}
+.form-field-styles {
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+.text-white {
+  color: #ffffff;
+}
+.btn-hide {
+  color:white;
+  background-color: rgba(0, 0, 0, 0);
+}
+.bottom-div {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+.login-btn {
+  font-size: 24px;
+  padding: 5px 20px;
+  /* width: 100px; */
+  float: right;
+  
+}
+.anchor-style {
+  text-align: center;
+  margin: auto;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+a {
+  text-decoration: none;
+}
+.color-white {
+  color :white;
+}

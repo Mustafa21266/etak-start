@@ -1,0 +1,403 @@
+<div class="row">
+<div class="col-12 col-lg-10 mx-auto background-class">
+  <div class="row row-styling">
+    <div class="col-12">
+        <div class="row">
+
+            <div class="col-12 col-lg-12">
+              <div style="max-height: 450px;">
+                <img src="https://etak-start.s3.eu-west-3.amazonaws.com/media/homepage-cover.jpg" class="img-fluid w-100" style="max-height: 500px;">
+                <button type="button" class="btn btn-primary btn-lg" style="position: relative;top: -70px;left: 20px;" (click)="openWhatIsEtakStart($event)">What is Etak Start?</button>
+              </div>
+            
+            </div>
+
+        </div>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-12 col-lg-3 text-center">
+              <h3>{{Cybers.length}}</h3>
+              <h3>Cybers</h3>
+              <br>
+            </div>
+            <div class="col-12 col-lg-3 text-center">
+              <h3>{{Events.length}}</h3>
+              <h3>Events</h3>
+              <br>
+            </div>
+            <div class="col-12 col-lg-3 text-center">
+              <h3>{{Articles.length}}</h3>
+              <h3>Articles</h3>
+              <br>
+            </div>
+            <div class="col-12 col-lg-3 text-center">
+              <h3>{{UserCount}}</h3>
+              <h3>Users</h3>
+              <br>
+            </div>
+      </div>
+        <div class="row">
+            <div class="col-12 col-lg-12">
+        <div *ngIf="Articles[0]">
+            <br>
+            
+            <div class="row row-styling">
+                    <div *ngIf="!Articles[0]">
+                        <br>
+                        <br>
+                        <h1 class="no-articles">Sorry, no articles available.</h1>
+                    </div>
+                            <div class="col-12 col-lg-8 col-xl-8">
+                                <div *ngIf="Articles[0]">
+
+                                <h1 class="text-center cp" routerLink="/all-articles">Latest Articles</h1>
+            <hr>
+                                <div class="w-100 d-block mx-auto">
+                                    <div class="card card-big"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                                        <a [routerLink]="['/articles', Articles[0].pk]" class="article-anchor">
+                
+                                          <img class="card-img-top w-100" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Articles[0].fields.article_cover}}" alt="Card image cap">
+                 
+                                      <div id="topText">
+                                        
+                                      <div class="top-text-x">
+                                        <p class="card-text"  style="visibility: hidden;"></p>
+                                        <h4 class="headline-main color-white">{{Articles[0].fields.headline}}</h4>
+                                      <p class="date-added-main color-white">{{Articles[0].fields.date_added}}</p>
+                                      <p class="text-left color-white">{{Articles[0].fields.intro_text | slice : 0 : 55}}....</p>
+                                      <p class="by color-white"><span class="by-2">By <span class="by-3">.</span></span> {{Articles[0].fields.user[1]}} {{Articles[0].fields.user[2]}}</p>
+                                      </div>  
+                                    </div>
+                                      
+                                </a>
+                                    </div>
+                                </div>
+                              </div>
+                           <div class="row">
+                            <div class="col-12 col-lg-12 col-xl-12">
+                                <div *ngIf="Articles[0]">
+                                        <br>
+                                          <div class="w-100 d-block mx-auto">
+                                  <div class="card-div card-border" *ngFor="let article of Articles.slice(1,5)">                                
+                                              <div class="card card-h-2" style="height: 18rem;"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                                                <div class="trans">
+                                                  <a [routerLink]="['/articles', article.pk]" class="article-anchor-2">
+                                                    <img class="card-img-top-2 w-100" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{article.fields.article_cover}}" alt="Card image cap">
+                                                    <!-- | date : "dd/MM/yy HH:mm:ss" -->
+                                                    <p class="date-added-2 text-center">{{article.fields.date_added}}</p>
+                                
+                                                <div class="card-body-2">
+                                                  <h5 class="article-headline-2 color-black">{{article.fields.headline}}</h5>
+                                                <p class="by-a color-black"><span class="by-a-2 color-black">By <span class="by-a-3 color-black">.</span></span> {{Articles[0].fields.user[1]}} {{Articles[0].fields.user[2]}}</p>
+                                
+                                                </div>
+                                              </a>
+                                                </div>
+                                              </div>
+                                              <br>
+                                          </div>
+                                         
+                                          </div>
+                                        </div>
+                                </div>
+                           </div>
+                </div> 
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <h1 class="text-center">Random Articles</h1>
+            <hr>
+                    <div class="w-100 d-block mx-auto">
+                        <div class="w-100 card-border" *ngFor="let article of shuffledArticles.slice(0,4)">                      
+                                    <div class="card w-100 card-x-article" style="height: 13rem;" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                                      <!-- <div class="trans"> -->
+                                        <a [routerLink]="['/articles', article.pk]" class="article-anchor-2">
+                                          <img class="card-img-top w-100 card-img-h-t" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{article.fields.article_cover}}" alt="Card image cap">
+                                          
+                                          <!-- | date : "dd/MM/yy HH:mm:ss" -->
+                                          <p class="article-date-added-2">{{article.fields.date_added}}</p>
+                                          
+                                      <div class="card-body card-body-style-2">
+                                        <h5 class="article-headline-two color-black">{{article.fields.headline}}</h5>
+                                      <p class="by-b color-black"><span class="by-b-2 color-black">By <span class="by-b-3 color-black">.</span></span> {{Articles[0].fields.user[1]}} {{Articles[0].fields.user[2]}}</p>
+                      
+                                      </div>
+                                    </a>
+                                      <!-- </div> -->
+                                    </div>
+                                    <br>
+                                </div>
+                               
+                                </div>
+            </div>             
+            </div>
+            </div>
+        </div>       
+        </div>
+        </div>
+    </div>
+  
+    <div class="row row-styling">
+        <div class="col-12 col-lg-12">
+    <div *ngIf="Cybers[0]">
+        <br>
+        <hr>
+        <br>
+        <h1 class="text-center cp" routerLink="/places-all">Places</h1>
+<hr>
+
+<div *ngIf="Cybers[0]">
+
+
+
+
+
+    <div class="top-content">
+        <div class="container-fluid">
+            <div id="carousel-example2" class="carousel slide carousel-cybers" data-ride="carousel">
+                <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+                      <div class="card" [routerLink]="['/place-details',Cybers[0].pk]" style="width: 18rem;"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                        <img class="img-fluid" style="width: 286px;height: 180px;" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Cybers[0].fields.logo}}" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title color-black text-center">{{Cybers[0].fields.name}}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            <div *ngIf="Cybers[0].fields.average_rating !== '0'" class="d-flex justify-content-center">
+                            <ngb-rating [(rate)]="Cybers[0].fields.average_rating" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+                              <ng-template let-fill="fill" let-index="index">
+                                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                              </ng-template>
+                            </ngb-rating>
+                          </div>
+                          <div *ngIf="Cybers[0].fields.average_rating === '0'" class="d-flex justify-content-center">
+                            <ngb-rating [(rate)]="allRates" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+                              <ng-template let-fill="fill" let-index="index">
+                                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                              </ng-template>
+                            </ngb-rating>
+                          </div>
+                          </li>
+                          <li class="list-group-item">
+                            <h6 class="text-center color-black">
+                              <i class="fas fa-location"></i> {{Cybers[0].fields.location}} 
+                            </h6>
+                          </li>
+                        </ul>
+                        <div class="card-body">
+                          <img *ngIf="Cybers[0].fields.price_per_hour_ps3!=='0.0'"  class="img-fluid ps3" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps3_logo.png" alt="Card image cap">
+                            <img  *ngIf="Cybers[0].fields.price_per_hour_ps4!=='0.0'"  class="img-fluid ps4" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps4_logo.png" alt="Card image cap">
+                            <img  *ngIf="Cybers[0].fields.price_per_hour_ps5!=='0.0'"  class="img-fluid ps5"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps5_logo.png" alt="Card image cap">
+                            <img  *ngIf="Cybers[0].fields.price_per_hour_xbox_360!=='0.0'"  class="img-fluid x360" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_360_logo.png" alt="Card image cap">
+                          <img  *ngIf="Cybers[0].fields.price_per_hour_xbox_one!=='0.0'" class="img-fluid xone"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_one_logo.png" alt="Card image cap">
+                          <img *ngIf="Cybers[0].fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
+                          <img  *ngIf="Cybers[0].fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
+                          <img  *ngIf="Cybers[0].fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+                        </div>
+                      </div>
+                          </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let cyber of Cybers.slice(1,Cybers.length)">
+                        <div class="card" [routerLink]="['/place-details',cyber.pk]" style="width: 18rem;"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                          <img class="img-fluid" style="width: 286px;height: 180px;" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{cyber.fields.logo}}" alt="Card image cap">
+                          <div class="card-body">
+                            <h5 class="card-title color-black text-center">{{cyber.fields.name}}</h5>
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <div *ngIf="cyber.fields.average_rating !== '0'" class="d-flex justify-content-center">
+                              <ngb-rating [(rate)]="cyber.fields.average_rating" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                                </ng-template>
+                              </ngb-rating>
+                            </div>
+                            <div *ngIf="cyber.fields.average_rating === '0'" class="d-flex justify-content-center">
+                              <ngb-rating [(rate)]="allRates" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                                </ng-template>
+                              </ngb-rating>
+                            </div>
+                            </li>
+                            <li class="list-group-item">
+                              <h6 class="text-center color-black">
+                                <i class="fas fa-location"></i> {{cyber.fields.location}} 
+                              </h6>
+                            </li>
+                          </ul>
+                          <div class="card-body">
+                            <img *ngIf="cyber.fields.price_per_hour_ps3!=='0.0'"  class="img-fluid ps3" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps3_logo.png" alt="Card image cap">
+                              <img  *ngIf="cyber.fields.price_per_hour_ps4!=='0.0'"  class="img-fluid ps4" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps4_logo.png" alt="Card image cap">
+                              <img  *ngIf="cyber.fields.price_per_hour_ps5!=='0.0'"  class="img-fluid ps5"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps5_logo.png" alt="Card image cap">
+                              <img  *ngIf="cyber.fields.price_per_hour_xbox_360!=='0.0'"  class="img-fluid x360" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_360_logo.png" alt="Card image cap">
+                            <img  *ngIf="cyber.fields.price_per_hour_xbox_one!=='0.0'" class="img-fluid xone"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_one_logo.png" alt="Card image cap">
+                            <img *ngIf="cyber.fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
+                            <img  *ngIf="cyber.fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
+                            <img  *ngIf="cyber.fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+                          </div>
+                        </div>
+                       </div> 
+                           <br>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-example2" role="button" data-slide="prev" style="background-color: rgba(0, 0, 0, 0.3);">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example2" role="button" data-slide="next" style="background-color: rgba(0, 0, 0, 0.3);">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>              
+                    </div>
+<br>
+<br>
+<br>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-12">
+    <div *ngIf="Events[0]">
+        
+        <hr>
+        <br>
+        <h1 class="text-center cp" routerLink="/events-all">Events</h1>
+<hr>
+        <div *ngIf="Events[0]">
+            <div class="top-content">
+                <div class="container-fluid">
+                    <div id="carousel-example" class="carousel slide carousel-events" data-ride="carousel">
+                        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+                              <div class="card" [routerLink]="['/event-details',Events[0].pk]" style="width: 18rem;"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                                <img class="img-fluid" style="width: 286px;height: 180px;" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Events[0].fields.cover}}" alt="Card image cap">
+                                <div class="card-body">
+                                  <h5 class="card-title color-black  text-center">{{Events[0].fields.name}}</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">
+                                    <h6 class="text-center color-black">
+                                      <i class="fas fa-location"></i> {{Events[0].fields.location}} 
+                                    </h6>
+                                  </li>
+                                  <li class="list-group-item">
+                                    <h6 class="text-center color-black">
+                                      <span>By: 
+                                        <a [routerLink]="['/place-details', Events[0].fields.cyber[0]]" class="anchor-e">
+                                            <p class="color-black"><strong>{{Events[0].fields.cyber[1]}}</strong></p>
+                                        </a>
+                                      </span>
+                                    </h6>
+                                  </li>
+                                </ul>
+                                <div class="card-body">
+                                  <p class="text-center color-black"><strong>{{Events[0].fields.from_date | date}} - {{Events[0].fields.to_date | date}}</strong></p>
+                                </div>
+                              </div>
+
+
+                            </div>
+                            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let event of Events.slice(1,Events.length)">
+
+                              <div class="card" [routerLink]="['/event-details',event.pk]" style="width: 18rem;"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                                <img class="img-fluid" style="width: 286px;height: 180px;" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{event.fields.cover}}" alt="Card image cap">
+                                <div class="card-body">
+                                  <h5 class="card-title color-black text-center">{{event.fields.name}}</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">
+                                    <h6 class="text-center color-black">
+                                      <i class="fas fa-location"></i> {{event.fields.location}} 
+                                    </h6>
+                                  </li>
+                                  <li class="list-group-item">
+                                    <h6 class="text-center color-black">
+                                      <span>By: 
+                                        <a [routerLink]="['/place-details', event.fields.cyber[0]]" class="anchor-e">
+                                            <p class="color-black"><strong>{{event.fields.cyber[1]}}</strong></p>
+                                        </a>
+                                      </span>
+                                    </h6>
+                                  </li>
+                                </ul>
+                                <div class="card-body">
+                                  <p class="text-center color-black"><strong>{{event.fields.from_date | date}} - {{event.fields.to_date | date}}</strong></p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev" style="background-color: rgba(0, 0, 0, 0.3);">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next" style="background-color: rgba(0, 0, 0, 0.3);">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+    </div>
+            </div>
+
+            <br>
+            <br>
+             <br>
+             <br>
+             <br>
+              <br>
+              <br>
+            <br>
+             <br>
+             <br>
+             
+
+
+
+
+    <style>
+      
+        </style>
+    <script>
+/*
+    Carousel
+*/
+$('#carousel-example').on('slide.bs.carousel', function (e) {
+    /*
+        CC 2.0 License Iatek LLC 2018 - Attribution required
+    */
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 5;
+    var totalItems = $('.carousel-item').length;
+ 
+    if (idx >= totalItems-(itemsPerSlide-1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i=0; i<it; i++) {
+            // append slides to end
+            if (e.direction=="left") {
+                $('.carousel-item').eq(i).appendTo('.carousel-inner');
+            }
+            else {
+                $('.carousel-item').eq(0).appendTo('.carousel-inner');
+            }
+        }
+    }
+});
+
+
+    </script>
+</div>
+</div>

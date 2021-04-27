@@ -1,0 +1,113 @@
+<div class="row">
+    <div *ngIf="eventObj" class="bg-transparent w-100">
+        <img class="img-fluid cover d-block w-100" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{eventObj[0].fields.cover}}" alt="Card image cap">
+    </div>
+</div>
+<div class="row row-styling" *ngIf="eventObj">
+    <br>
+    <div class="col-lg-10 col-sm-12">
+        <br>
+    <p *ngIf="eventObj" class="event-name">{{eventObj[0].fields.name}}</p>
+    <p *ngIf="eventObj" class="date-added">Date Added: {{eventObj[0].fields.date_added }}</p>
+    
+    <div *ngIf="cyber" id="cyberDetailsContainer">
+        <br>
+        <p class="event-location"><i class="fas fa-location"></i> {{eventObj[0].fields.location}}</p>
+             <a class="btn btn-outline-warning google-maps-directions-btn" href="https://www.google.com/maps?saddr=My+Location&daddr={{eventObj[0].fields.location}}" target="_blank"><img src="https://etak-start.s3.eu-west-3.amazonaws.com/media/google-maps.png" class="google-maps-icon"><span class="color-white">Directions</span></a>
+            </div>
+   
+    </div>  
+    <div class="col-lg-2 col-sm-12">
+        <br>
+        <div *ngIf="cyber">
+            <p class="created-by">Created By</p>
+            <a [routerLink]="['/place-details', eventObj[0].fields.cyber[0]]">
+                <img class="img-fluid cyber-pic" src="{{eventObj[0].fields.cyber[4]}}" alt="{{eventObj[0].fields.cyber[4]}}">
+        <p class="cyber-name">{{eventObj[0].fields.cyber[1]}}</p>
+            </a>
+            <div *ngIf="eventObj[0].fields.cyber && userObjEventDetails && eventObj[0].fields.cyber[5] === userObjEventDetails.pk" class="d-block mx-auto">
+                <hr>
+                <button class="btn btn-primary d-block mx-auto" routerLink="/edit-cyber-event/{{eventObj[0].pk}}" type="button">Edit Event Info</button>
+            </div>
+            <br>
+        </div>
+</div>    
+</div>
+<hr>
+<div class="row row-styling-2" *ngIf="eventObj">
+<div class="col-12">
+    <br>
+    <br>
+    <br>
+    <div *ngIf="eventObj && cyber">
+        <p id="eventDiscription">
+            
+            {{eventObj[0].fields.description|slice: 0:350}}...
+            <a class="read-more-btn" (click)="showFullDiscription($event)">Read More</a>
+        </p>
+    </div>
+</div>
+</div>
+<hr>
+<div class="row row-styling-2" *ngIf="eventObj">
+    <div class="col-12">
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <p class="from-to-style"><strong>({{eventObj[0].fields.from_time}} {{eventObj[0].fields.from_date | date }})</strong> &rarr; <strong>({{eventObj[0].fields.to_time}} {{eventObj[0].fields.to_date | date }})</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <br>
+                <div *ngIf="eventObj && cyber" class="text-center">
+                    <p class="game-platform-text">Game</p>
+                    <p class="game-platform-text-2">
+                       {{eventObj[0].fields.game|uppercase  }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-6">
+                <br>
+                <div *ngIf="eventObj && cyber" class="text-center">
+                    <p class="game-platform-text">Platform</p>
+                    <p class="game-platform-text-2">
+                       {{eventObj[0].fields.platform|uppercase  }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    </div>
+
+
+    <hr>
+    <div class="row row-styling-2" *ngIf="eventObj">
+        <div class="col-12">
+            <br>
+            <br>
+            <h1 style="text-align: center;font-size: 4rem;">Prizes</h1>
+            
+            <div class="row">
+                <div class="col-4">
+                    <img class="img-fluid place-icon d-block mx-auto" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/1.png" alt="first place icon">
+                    <p class="prize-text"><strong>{{eventObj[0].fields.first_place_reward}}</strong> EGP</p>
+                </div>
+                <div class="col-4">
+                    <img  class="img-fluid place-icon d-block mx-auto" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/2.png" alt="second place icon">
+                    <p class="prize-text"><strong>{{eventObj[0].fields.second_place_reward}}</strong> EGP</p>
+                </div>
+                <div class="col-4">
+                    <img  class="img-fluid place-icon d-block mx-auto" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/3.png" alt="third place icon">
+                    <p class="prize-text"><strong>{{eventObj[0].fields.third_place_reward}}</strong> EGP</p>
+                </div>
+            </div>
+        </div>
+        
+        
+        </div>
+        <br>
+        <br>
+        <br>

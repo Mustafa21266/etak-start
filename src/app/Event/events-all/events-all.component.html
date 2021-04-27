@@ -1,0 +1,118 @@
+<div class="row row-styling">
+    <div class="col-12 col-lg-2">
+        <div *ngIf="!isMobileLayout" style="padding: 0px 15px;">           
+        <br>
+        <br>
+        <h1 class="all-events-header">All Events</h1>
+        <hr class="line-thick-2">
+
+        <p class="order-by">Sort By :</p>
+        <input type="radio" (click)="filterByCheckBox($event)" id="descending" name="order" value="descending" checked>
+        <label for="descending" class="sort-by">Descending</label>
+        <hr class="line-thick">
+        <input type="radio" (click)="filterByCheckBox($event)" id="ascending" name="order" value="ascending">
+        <label for="ascending" class="sort-by">Ascending</label>
+        <hr class="line-thick">
+    </div>
+    </div> 
+    <div class="col-12 col-lg-8 background-class">
+        <div *ngIf="!events[0]">
+            <br>
+            <br>
+                <h1 class="no-events-header">Sorry, no events available.</h1>
+        </div>
+        <br>
+        <br>
+        <div *ngIf="events[0]">
+            <div *ngFor="let event of events.slice(0,10)">
+                <div class="row row-styling-2">
+                <div class="col-12 col-lg-4">
+                    <a [routerLink]="['/event-details', event.pk]">
+                        <img class="img-fluid d-block mx-auto w-100 col-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{event.fields.cover}}">
+                        <br>
+                    </a>
+
+                </div>
+                <div class="col-12 col-lg-8">
+                    <h2>{{event.fields.name}}</h2>
+                    <div>
+                        <p class="author-mention"><span class="by-class">By <span class="by-class-2">.</span></span> <a [routerLink]="['/place-details', event.fields.cyber[0]]" class="cyber-anchor">
+                            <p class="cyber-name"><strong>{{event.fields.cyber[1]}}</strong></p>
+                            <!-- <p class="date-added"></p> -->
+                            </a>
+                            <span class="date-added">Date Added: {{event.fields.date_added }}</span>
+                        </p>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-left">{{event.fields.description|slice: 0:50}}....</p>
+                            <p class="card-text"><i class="fas fa-location"></i> {{event.fields.location}}</p>
+                        <p class="from-to"><strong><i class="fas fa-gamepad"></i>{{event.fields.game}}</strong><strong class="from-to-2 text-right">{{event.fields.from_date | date }} - {{event.fields.to_date | date }}</strong></p>
+                        <!-- <p class="from-to text-right"></p> -->
+                    </div>
+                    
+                    
+
+                </div>
+                </div>
+               <hr>
+              </div>
+        </div>
+        
+  <br>
+  <br>
+  <app-pagination-component [searchResults]="events" (searchResultsChange)="searchResultsChange($event)"></app-pagination-component>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+<div class="col-12 col-lg-2">
+    <div *ngIf="isMobileLayout" id="main">       
+        <span class="badge badge-primary badge-style"><a class="openbtn d-block mx-auto" (click)="openNav()">
+            <i class="fas fa-sort"></i>
+        </a></span>
+        
+  </div>
+</div>
+</div>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="searchSidebar" class="sidebar" (mousedown)="closeNav()">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <hr>
+    <a id="descendingSideBar" (click)="filterBySideBar($event)" class="selected" value="descending" style="cursor: pointer;">
+        <strong class="selected">Descending</strong>
+    </a>
+    <hr>
+    <a id="ascendingSideBar" (click)="filterBySideBar($event)" value="ascending"  style="cursor: pointer;">Ascending</a>
+    <hr>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      

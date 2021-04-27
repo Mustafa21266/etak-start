@@ -1,0 +1,348 @@
+/* .content {
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.1);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+
+
+  .navbar.transparent.navbar-inverse .navbar-inner {
+   border-width: 0px;
+   -webkit-box-shadow: 0px 0px;
+   box-shadow: 0px 0px;
+   background-color: rgba(0,0,0,0.0);
+   background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+   background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+   background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+} */
+a {
+  text-decoration: none;
+  color: black;
+}
+.my-nav {
+  padding: 25px 15px;
+  /* position: absolute;
+  top: 0;
+  z-index: 1; */
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+.homepage-btn {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-right: 0px;
+  
+}
+#submitBtn {
+  margin-left: 10px;
+  background-color: #A350A3;
+}
+.search-div{
+  display: inline-block;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  width: 120px;
+}
+.material-icons {
+  font-size: 2.0rem;
+}
+.account-img {
+  width: 2.0rem;
+  height: 2.0rem;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+.dropdown-my-styles {
+  padding: 20px;
+  position: absolute;
+  right: -5px;
+  top: 50px;
+  z-index: 1;
+  text-align: center;
+}
+.user {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.arrow-back{
+  position: relative;
+  bottom: -7px;
+  margin-right: 5px;
+  font-size: 1.7rem;
+}
+.logout {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 0px;
+}
+.arrow {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+.anchor-text{
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.collapse-style {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  position: relative;
+  top: 10px;
+  margin: 0px 10px;
+}
+.mat-icon-additional-styling {
+  font-size: 1.5rem;
+  text-align: center;
+  position: relative;
+  top: 3px;
+  right: 0px;
+}
+.account-icon {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  position: relative;
+  top: 10px;
+}
+
+
+.nav-gradient-background {
+  background-color: #A350A3;
+  
+}
+.navbar.transparent.navbar-inverse .navbar-inner {
+  background: rgba(0,0,0,0.4);
+}
+
+.navbar-toggler{
+  margin: auto;
+}
+
+.nav-btns {
+  /* position: absolute; */
+  /* right: 15px; */
+  /* top: 0; */
+}
+@media only screen and (max-width: 700px) {
+  
+  .nav-item-search{
+    width: 100%;
+    padding: 5px;
+  }
+  #searchFieldForm{
+    width: 100%;
+  }
+  .nav-item-search{
+    width: 100%;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .nav-item-search{
+    width: 40%;
+    padding: 5px;
+  }
+  #searchFieldForm{
+    width: 100%;
+  }
+  .nav-item-search{
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.navbar-collapse {
+  width: 50%;
+}
+
+
+
+
+
+
+
+
+
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 2.0rem;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  /* padding: 10px 15px; */
+  border: none;
+  float: right;
+  position: relative;
+  top: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+/* .openbtn:hover {
+  background-color: #444;
+} */
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding-left: 4px;
+  /* position: relative; */
+  /* top: 1.5rem; */
+  /* right: 6rem; */
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+.unread {
+  /* background-color: rgba(0,0,0,0.2); */
+  font-weight: 700;
+  /* padding: 15px 10px; */
+}
+.read {
+  background-color: white;
+  font-weight: 100;
+  /* padding: 15px 10px; */
+}
+.color-white {
+  color: white;
+}
+.color-black {
+  color: black;
+}
+.notification-bell-style{
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  margin-right: 10px;
+  position: relative;
+  top: 13px;
+
+}
+.notification-dropdown {
+  width: 400px;
+  height:35rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0px 15px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #fff;
+  color: black;
+  padding: 16px;
+  font-size: 18px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  /* left: 50px; */
+  /* top: 25px; */
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover, .dropdown-content a:active {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content,.dropdown:active .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #fff;}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+.navbar-toggler-icon {
+  color: white;
+}
+#navbarSupportedContent {
+  /* width: 120px; */
+}
+.font-size-style {
+  font-size: 1.5rem;
+}
+.anchor-text:hover {
+  color: #A350A3;
+}

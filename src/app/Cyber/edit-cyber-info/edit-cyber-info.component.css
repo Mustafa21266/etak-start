@@ -1,0 +1,272 @@
+.not-empty-select.mat-selected {
+  color: white !important;
+}
+
+:host /deep/ .mat-select-value-text {
+  color: white !important;
+}
+option {
+  background-color: rgb(31, 40, 51);
+}
+.without_ampm::-webkit-datetime-edit-ampm-field {
+  display: none;
+}
+input[type=time]::-webkit-clear-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance:none;
+  appearance: none;
+  margin: -10px; 
+}
+
+
+.row-styling {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 10px;padding-top: 5px;
+  color:white;
+}
+
+.remove-platform-btn {
+  background-color: red;
+}
+.remove-platform-btn:hover {
+  /* transform: scale(1.5); */
+  background-color: blue;
+}
+
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+}
+
+.row-background{
+background-color: #0F0C24;
+}
+a {
+color: white;
+text-decoration: none;
+}
+/*
+FORM STYLES
+*/
+#changeCoverId {
+position: absolute;
+top: 20px;
+z-index: 0;
+}
+.cover {
+width: 100%;
+display: block;
+position: relative;
+top: 3px;
+}
+.change-cover-btn {
+position: absolute;
+top: 20px;
+left: 10px;
+color: black;
+}
+
+.create-cyber-header {
+text-align: left;
+color : white;
+}
+
+.form-field-styles {
+width: 100%;
+background-color: rgba(0,0,0,0.3);
+border-radius: 10px;
+}
+
+/* MAP STYLES */
+#map {
+height: 400px;
+width: 75%;
+display: block;
+margin: auto;
+}
+
+.find-btn{
+  font-size: 18px;
+  padding: 0px 30px;
+  height: 50px;
+  display: inline-block;
+  /* margin: auto; */
+}
+.thats-it-btn{
+  font-size: 18px;
+  padding: 0px 20px;
+  height: 50px;
+  display: inline-block;
+  margin-left: 15px;
+}
+#governateList {
+border: 0px;
+color:black;
+width: 100%;
+height: 100%;
+border-radius: 10px;
+background-color: rgba(0,0,0,0.3);
+padding: 30px 10px;
+}
+
+
+.data-time-input-fields-style{
+width: 100%;
+border: none;
+color:black;
+height: 100%;
+border-radius: 10px;
+background-color: rgba(0,0,0,0.3);
+padding: 30px 10px;
+}
+.cyber-images-lbl{
+color :white;
+font-size: 1.5rem;
+}
+#cyberPicturesOrderedList li {
+  color: white;
+}
+#cyberPicturesOrderedList li a {
+  color: red;
+}
+#platformsList{
+border: 0px;
+color:black;
+width: 100%;
+height: 100%;
+border-radius: 10px;
+background-color: rgba(0,0,0,0.3);
+padding: 10px;
+padding-top: 5px;
+}
+#platformListAddBtn{
+font-size: 1.2rem;
+padding: 5px 20px;
+width: 100%;
+}
+.selected-platforms-style{
+color: white;
+text-align: left;
+margin-left: 5px;
+margin-right: 5px;
+margin-top: 10px;
+margin-bottom: 15px;
+}
+.create-btn {
+font-size: 24px;
+padding: 5px 20px;
+position: absolute;
+right: 50px;
+}
+
+
+.cyber-pics-styling {
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  margin: auto;
+  padding: 10px
+}
+
+.cyber-pics-a-styling {
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: relative;
+  top: 4px;
+}
+
+
+
+
+
+
+
+
+.cyber-logo {
+border-radius: 50%;
+border: 5px solid #C5C6C7;
+transition: filter 0.3s;
+position: absolute;
+z-index: 0;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+}
+
+.delete-btn {
+  display: block;
+  margin: auto;
+  /* margin-bottom: 20px; */
+}
+.add-btn-cyber-images {
+color: white;
+cursor: pointer;
+text-decoration: none;
+display: block;
+font-size: 1.2rem;
+padding: 5px 20px;
+}
+@media only screen and (max-width: 900px) {
+.cover{
+  height: 35vh;
+}
+.cyber-logo {
+  height: 220px;
+  width: 220px;
+  top: -120px;
+}
+h3 {
+  font-size: 3rem;
+}
+.add-cyber-div {
+  padding: 25px;
+}
+.add-btn-cyber-images{
+  width: 100%;
+}
+}
+
+@media only screen and (min-width: 900px) {
+#cyberName {
+  position: relative;
+  bottom: 10px;
+  
+}
+.cover{
+  height: 55vh;
+}
+.cyber-logo{
+  height: 320px;
+  width: 320px;
+  top: -160px;
+}
+h3 {
+  font-size: 4rem;
+}
+.add-cyber-div {
+  padding: 125px;
+}
+.add-btn-cyber-images{
+  width: 100px;
+}
+}
+
+/* Miscellenous STYLES */
+#changeLogoId {
+visibility: hidden;
+}
+.input-black {
+color:black;
+}
+.input-white {
+color:white;
+}

@@ -1,0 +1,162 @@
+.cover {
+  position: relative;
+  top: 3px;
+}
+.row-styling {
+  position: relative;
+  bottom: 0px;
+  overflow: hidden;
+  /* background-color: #0F0C24; */
+  background-color: #0F0C24;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.background-class {
+  /* background-color: #0F0C24; */
+  background-color: #0F0C24;
+  padding: 20px;
+}
+.row-styling-2{
+  padding: 0;
+  background-color: #0F0C24;
+
+  /* background-color: #0F0C24; */
+  border-radius: 20px;
+  position: relative;
+  top: 0px;
+}
+.event-name {
+  font-size: 3.5rem;
+  color: white;
+  font-weight: 700px;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+.date-added {
+  font-size: 1rem;
+  color: white;
+  font-weight: 700px;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+#cyberDetailsContainer{
+  text-align: left;
+  margin-left: 10px;
+}
+.material-icons {
+  font-size: 1.8rem;
+  color: white;
+}
+.event-location {
+  color: white;
+  display: inline-block;
+  position: relative;
+  bottom: 5px;
+  font-size: 1.4rem;
+  margin-left: 5px;
+}
+.created-by {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 700px;
+  text-align: center;
+  margin-left: 15px;
+}
+a {
+  text-decoration:none;
+}
+.cyber-pic {
+  width: 50px;
+  display: block;
+  margin: auto;
+}
+.cyber-name {
+  text-align: center;
+  margin: 10px;
+}
+#eventDiscription{
+  text-align: left;
+  padding: 20px;
+}
+.read-more-btn {
+  color: blue;
+  cursor: pointer;
+}
+.from-to-style{
+  font-size: 1.8rem;
+  text-align: center;
+}
+.game-platform-text {
+  font-size: 1.8rem;
+}
+.game-platform-text-2 {
+  text-align: center;
+  font-size: 2.2rem;
+}
+.prize-text {
+  font-size: 1.8rem;
+  text-align: center;
+}
+@media only screen and (max-width: 900px) {
+
+    .cover{
+      height: 35vh;
+    }
+    .cyber-logo {
+      height: 11rem;
+      width: 85%;
+    }
+    .place-icon {
+      width: 100%;
+    }
+    h3 {
+      font-size: 3rem;
+    }
+    .from-to-style{
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .game-platform-text-2 {
+      text-align: center;
+      font-size: 1.6rem;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .place-icon {
+      width: 80%;
+    }
+    .cover{
+      height: 55vh;
+    }
+    .cyber-logo{
+      width: 100%;
+      height: 15rem;
+    }
+    h3 {
+      font-size: 4rem;
+    }
+  }
+
+.text-center {
+  text-align: center;
+}
+.google-maps-directions-btn {
+  display: block;
+  margin-bottom: 20px;
+  color: white;
+  width: 150px;
+}
+.google-maps-icon {
+  position: relative;
+  bottom: 2px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.color-white {
+  color: white;
+}

@@ -1,0 +1,192 @@
+
+                <nav class="navbar navbar-expand-lg transparent navbar-inverse nav-gradient-background my-nav">
+                    <a class="navbar-brand homepage-btn" routerLink="/homepage">Etak Start<img src = "https://etak-start.s3.eu-west-3.amazonaws.com/media/cursor.png" style="width: 30px;height: 30px;position: relative;right: 32px;top: 10px;transform: rotate(-20deg);" alt="Cursor"/><span style="font-size: 1rem;position: relative;right: 25px;top: -20px;">BETA</span></a>
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon color-white" style="font-size: 2rem;position: relative;top: 10px;">&#9776;</span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active color-white">
+                          <a class="nav-link cursor-pointer color-white font-size-style" (click)="navigateToHomepage($event)">Home</a>
+                        </li>
+                        <li class="nav-item color-white">
+                          <a class="nav-link cursor-pointer color-white font-size-style" (click)="navigateToCybersAll($event)">Places</a>
+                        </li>
+                        <li class="nav-item color-white">
+                              <a class="nav-link cursor-pointer color-white font-size-style" (click)="navigateToEventsAll($event)">Events</a>
+                            </li>
+                            <!-- <li class="nav-item color-white">
+                                  <a class="nav-link cursor-pointer color-white" (click)="navigateToArticlesAll($event)">Articles</a>
+                                </li> -->
+                                <!-- <li class="nav-item color-white">
+                                      <a class="nav-link cursor-pointer color-white" (click)="navigateToKnowYourCreator($event)">Know Your Content Creator</a>
+                                    </li> -->
+                        <li class="nav-item dropdown color-white">
+                          <a class="nav-link dropdown-toggle color-white font-size-style" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Articles
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item cursor-pointer"  (click)="navigateToArticlesAll($event)">All Articles</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item cursor-pointer" (click)="navigateToKnowYourCreator($event)">Know Your Content Creator</a>
+                          </div>
+                        </li>
+                      </ul>                      
+                    </div>
+                    <div class="collapse navbar-collapse mx-auto w-100" id="navbarSupportedContent2">
+                      <ul class="navbar-nav mx-auto w-100">
+                        <li class="nav-item nav-item-search">
+                          <form id="searchFieldForm" class="my-2 my-lg-0 w-100">
+                            <input  id="searchInput" (keyup)="searchTermUpdate($event)" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button mat-raised-button color="accent"   id="submitBtn" class="btn my-2 my-sm-0" type="submit" (click)="doSearch($event)">Find</button>
+                          </form>
+                      </li>
+                      </ul>                      
+                    </div>
+                    <!-- <div class="color-white" id="main">
+                      
+                      <a class="openbtn color-white" (click)="openNav()">&#9776;</a>
+                      
+                    </div>
+                     -->
+                    <div class="search-div d-flex justify-content-start">
+                      
+                      <div class="user">
+                        <!-- <a  data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" type="button">
+                        </a> -->
+                        <a  data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation"  class="collapse-style" (click)="showSearch($event)" type="button">
+                          <!-- <span class="material-icons mat-icon-additional-styling color-white">
+                          search
+                          </span> -->
+                          <i class="fas fa-search mat-icon-additional-styling color-white"></i>
+                        </a>
+                      </div>
+
+                      <div *ngIf="userObjNav" class="dropdown">
+                        <a type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-bell badge-wrapper notification-bell-style">
+                            <span *ngIf="unreadNotifications !== 0" style="position: relative;top: -10px;left: 0px;width: 20px;height: 20px;font-size: 0.7rem;">{{unreadNotifications}}</span>
+                          </i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="dropdownMenuButton2">
+                            <br>
+                          <div *ngIf="UserNotifications[0]">
+                              <div *ngFor="let notification of UserNotifications">
+                                <div *ngIf="notification.fields.event === null">
+                                  <div class="row" id="notif_{{notification.pk}}" href="#" (click)="markAsRead($event,notification.pk)" [routerLink]="['place-details',notification.fields.notifier_cyber[0]]" [ngClass]="notification.fields.read == '0' ? 'unread' : 'read'">
+                                    <div class="col-3">
+                                      <img style="width: 50px;height: 50px;border-radius: 50px;" src="{{notification.fields.notifier_cyber[4]}}">
+                                    </div>
+                                    <div class="col-9" style="cursor: pointer;">
+                                      <p style="color: black;text-align: left;">{{notification.fields.text}}</p>
+                                      <p style="color: black;text-align: right;font-size: 0.8rem;"><span class="badge badge-primary" style="float: left;">Cyber</span>{{notification.fields.date_added}}<span class="badge badge-primary" style="margin-left: 5px;float: left;">{{notification.fields.notifier_cyber[1]}}</span></p>
+                                      <hr>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div *ngIf="notification.fields.event !== null">
+                                  <div class="row" id="notif_{{notification.pk}}" href="#" (click)="markAsRead($event,notification.pk)"  [routerLink]="['event-details',notification.fields.event[0]]" [ngClass]="notification.fields.read == '0' ? 'unread' : 'read'">
+                                    <div class="col-3">
+                                      <img style="width: 50px;height: 50px;border-radius: 50px;" src="{{notification.fields.event[3]}}">
+                                    </div>
+                                    <div class="col-9" style="cursor: pointer;">
+                                      
+                                      <p style="color: black;text-align: left;">{{notification.fields.text}}</p>
+                                      <p style="color: black;text-align: right;font-size: 0.8rem;"><span class="badge badge-primary" style="float: left;">New Event By  {{notification.fields.notifier_cyber[1]}}</span>{{notification.fields.date_added}}</p>
+                                      
+                                      <hr>
+                                    </div>
+                                  </div>
+                                  </div>
+                              </div>
+                            </div>
+                          
+                          <!-- <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a> -->
+                          <br>
+                        </div>
+                      </div>
+                      
+                      <div class="dropdown d-inline-block">
+                        
+                        <a *ngIf="token === ''&&userObjNav === undefined"  href="#" class="account-icon" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="d-inline-block">
+                            <span class="material-icons">
+                              account_circle
+                              </span>
+                          </div>
+                        </a>
+
+                        
+                        
+
+                        <a *ngIf="userObjNav || token !== ''"  href="#" class="account-icon" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="">
+                            <div *ngIf="userObjNav">
+                              <img *ngIf="userObjNav.fields.profile_picture" class="account-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{userObjNav.fields.profile_picture}}">
+                              <span *ngIf="!userObjNav.fields.profile_picture" class="material-icons">
+                                account_circle
+                                </span>
+                            </div>
+                            <span *ngIf="!userObjNav" class="material-icons">
+                              account_circle
+                              </span>
+                          </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-my-styles" aria-labelledby="dropdownMenuButton">
+                          <div *ngIf="userObjNav === undefined">
+                            <a  class="dropdown-item" routerLink="/log-in" class="anchor-text">Log-in</a>
+                            <hr>
+                            <a  class="dropdown-item" routerLink="/sign-up"  class="anchor-text">Sign-up</a>
+                          </div>
+                         
+                          <div *ngIf="userObjNav">
+                            
+                            
+                            <div *ngIf="userObjNav.fields.is_admin === '1'">
+                              <a  class="dropdown-item" routerLink="/create-article"  class="anchor-text"><span class="anchor-text">Create Article</span></a>
+                              <hr>
+                            </div>
+                         
+                          <a *ngIf="userObjNav && userObjNav.fields.is_cyber_owner === '1'" class="dropdown-item" routerLink="/add-cyber"  class="anchor-text"><span class="anchor-text">Add Cyber</span></a>
+                          <hr>
+                          <div *ngIf="userObjNav && userObjNav.fields.is_cyber_owner === '1'" class="dropdown">
+                            <button class="dropbtn dropdown-toggle"><span class="anchor-text">Add Event</span></button>
+                            <div class="dropdown-content  dropdown-menu-right">
+                              <a [routerLink]="['add-cyber-event',cyber.pk]" *ngFor="let cyber of Cybers">{{cyber.fields.name}}</a>
+                              
+                            </div>
+                            <hr>
+                          </div>
+                      
+                          <a *ngIf="userObjNav" class="dropdown-item"  (click)="openMyProfile($event)" class="anchor-text"><span class="anchor-text">My Profile</span></a>
+                          <hr>
+                          <a *ngIf="userObjNav" class="dropdown-item"  (click)="openSettings($event)" class="anchor-text"><span class="anchor-text">Settings</span></a>
+                          <hr>
+                          <a class="dropdown-item" *ngIf="userObjNav" (click)="logout($event)" class="arrow">
+                            <p class="logout color-black anchor-text"><span class="material-icons arrow-back">
+                              arrow_back
+                              </span>Log-out</p>
+                            
+                              
+                          </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                    </div>
+                    
+                  </nav>
+                  <div id="mySidebar" class="sidebar" (mousedown)="closeNav()">
+                      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                      <a class="cursor-pointer" (click)="navigateToCybersAll($event)">Cybers & PS Cafes</a>
+                      <a class="cursor-pointer" (click)="navigateToEventsAll($event)">Events</a>
+                      <a class="cursor-pointer" (click)="navigateToArticlesAll($event)">Articles</a>
+                      <a class="cursor-pointer" (click)="navigateToKnowYourCreator($event)">Know Your Content Creator</a>
+                      <!-- <a href="#">Contact</a> -->
+                    </div>
+                    
+                    

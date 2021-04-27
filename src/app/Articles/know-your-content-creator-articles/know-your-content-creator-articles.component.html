@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-12 col-lg-11 background-class mx-auto">
+      <div class="row">
+        <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <h1 class="all-articles-header">Know Your Content Creator</h1>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-12">
+        <div *ngIf="!Articles[0]">
+            <br>
+            <br>
+            <h1 class="no-articles-header">Sorry, no articles available.</h1>
+        </div>
+        <div *ngIf="Articles[0]">
+            <div class="row">
+                <div class="col-12 col-lg-12 col-xl-12 mx-auto">
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <div class="card card-big" *ngFor="let article of Articles.slice(0,10)" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                            <a [routerLink]="['/articles', article.pk]">
+    
+                              <img class="card-img-top-main" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{article.fields.article_cover}}" alt="Card image cap">
+     
+                          <div id="topText">
+                          </div>
+                          <div class="top-text color-white">
+                            <h4 class="article-headline color-white">{{article.fields.headline}}</h4>
+                          <p class="font-9 color-white">{{article.fields.date_added}}</p>
+                          <p class="color-white">{{article.fields.intro_text | slice : 0 : 55}}....</p>
+                          <p class="author-mention color-white"><span class="by-class">By <span class="by-class-2">.</span></span> {{article.fields.user[1]}} {{article.fields.user[2]}}</p>
+    
+                        
+                        </div>
+                    </a>
+                        </div>
+                    </div>
+                  </div>
+        </div>
+    </div> 
+    </div>
+    </div>
+    <br>
+    <br>
+    <app-pagination-component [searchResults]="Articles" (searchResultsChange)="searchResultsChange($event)"></app-pagination-component>
+    <br>
+<br>
+<br>
+<br>
+    </div>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    

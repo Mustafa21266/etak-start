@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-12">
+            <br>
+            <h1 class="warning-header">Warning!</h1>
+            <br>
+            <p>The cyber data will be permanently deleted</p>
+            <br>
+            <h5>This action cannot be undone,click the "Delete Cyber" button to confirm the deletion</h5>
+            <br>
+            <button mat-raised-button type="button" class="delete-cyber-btn" (click)="deleteCyber($event)">Delete Cyber</button>
+            <app-loading-widget *ngIf="spinner" style="float: left;" [spinner]="spinner"></app-loading-widget>
+        </div>
+    </div>
+</div>
+
+

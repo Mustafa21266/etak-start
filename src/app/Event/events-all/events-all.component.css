@@ -1,0 +1,267 @@
+.row-styling {
+  /* padding: 30px;
+  padding-top: 0px; */
+}
+p, h1, h2 , h3 ,h4 ,h5, h6{
+  color: white;
+}
+.all-events-header {
+  text-align: center;
+  color: white;
+}
+.order-by {
+  color: white;
+  font-size: 2rem;
+}
+.sort-by {
+  margin-left: 10px;
+  color: white;
+  font-size: 1.3rem;
+}
+.no-events-header {
+  text-align: center;
+  color: white;
+}
+.events-div {
+  padding: 0;
+  background-color: #0F0C24;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+.row-styling-2 {
+  padding: 0px 30px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+}
+.img-fluid {
+  height: 200px;
+}
+.by {
+  font-size: 1.2rem;
+}
+.cyber-anchor {
+  text-decoration: none;
+  display: inline-block;
+}
+.cyber-name {
+  font-size: 1.2rem;
+  text-align: left;
+  margin-left: 3px;
+
+}
+.date-added {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 700px;
+  text-align: right;
+  margin-left: 0px;
+  float: right;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.location {
+  /* margin-top: 10px; */
+  align-items: flex-start;
+}
+.material-icons {
+  font-size: 1.5rem;
+}
+.card-text{
+  font-size: 1.24rem;
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  margin-left: 3px;
+  font-weight: 700;
+}
+.from-to {
+  font-size: 1.4rem;
+}
+.from-to-2 {
+  font-size: 1.4rem;
+  float: right;
+}
+.badge-style {
+  width: 100px;
+  position: fixed;
+  right: -3px;
+  top: 200px;
+  z-index: 1;
+  border: 2px solid white;
+  padding: 10px 0px;
+}
+
+  /* The button used to open the sidebar */
+
+  .author-mention {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .by-class {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .by-class-2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    position: relative;
+    bottom: 4px;
+    font-weight: 700;
+  }
+
+
+
+.openbtn {
+
+  font-size: 2.0rem;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  border: none;
+  /* margin: 5px; */
+  text-decoration: none;
+  position: relative;
+  margin-bottom: 4px;
+  /* left: -5px; */
+  /* padding: 15px; */
+  /* text-align: left; */
+  /* float: left; */
+}
+
+@media only screen and (max-width: 900px) {
+  .platform-icon-one {
+      padding: 20px 10px;
+      width: 100px;
+      height: 70px;
+  }
+  .platform-icon-two {
+      padding: 20px 10px;
+      height: 100px;
+      width: 100px;
+  }
+  .platform-icon-three {
+      padding: 20px 10px;
+      width: 60px;
+  }
+  .pagination-class {
+    margin: 25px;
+  }
+  .material-icons {
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+  }
+  .date-added {
+    font-size: 0.8rem;
+    position: relative;
+    top: 3px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .platform-icon-one {
+      padding: 20px 20px;
+      width: 200px;
+  }
+  .platform-icon-two {
+      padding: 20px 20px;
+      width: 150px;
+  }
+  .platform-icon-three {
+      padding: 20px 20px;
+      width: 100px;
+  }
+  .pagination-class {
+    margin: 18px;
+  }
+  .material-icons {
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+  }
+  .date-added {
+    font-size: 0.9rem;
+    position: relative;
+    top: 3px;
+  }
+}
+
+/* The sidebar menu */
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 36px;
+    /* margin-left: 50px; */
+  }
+  
+
+  
+  /* .openbtn:hover {
+    background-color: #444;
+  } */
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding-left: 4px;
+    /* position: relative; */
+    /* top: 1.5rem; */
+    /* right: 6rem; */
+  }
+
+  .fa-gamepad {
+    font-size: 1.6rem;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+  }
+  .background-class {
+    /* background-color: #0F0C24; */
+    background-color: #0F0C24;
+  }
+  .line-thick {
+    border-top: 5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 80%;
+  }
+  .line-thick-2 {
+    border-top: 5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 100%;
+  }
+  

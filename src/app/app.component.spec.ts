@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'etak-start'`, () => {
+  it(`should have as title 'mis-community'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('etak-start');
+    expect(app.title).toEqual('mis-community');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('etak-start app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('mis-community app is running!');
   });
 });

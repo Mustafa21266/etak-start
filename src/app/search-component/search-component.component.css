@@ -1,0 +1,382 @@
+.col-img {
+  height: 100px;
+}
+.mobile-navigator {
+  width: 100px;
+  position: fixed;
+  right: -5px;
+  top: 200px;
+  z-index: 1;
+  border: 2px solid white;
+  padding: 7px 0px;
+}
+.openbtn {
+  width: 100%;
+  padding: 5px;
+  right: -3px;
+}
+
+.header {
+  color: white;
+}
+.filter-by-text {
+  color: white;
+  font-size: 2rem;
+}
+.mobile-nav-labels{
+  margin-left: 10px;
+  color: white;
+}
+.results-text {
+  margin-left: 20px;
+  text-align: left;
+  color: white;
+  font-size: 1.8rem;
+}
+.section-styling {
+  /* background-color: #0F0C24; */
+  border-radius: 20px;
+}
+.row-style-1 {
+  padding: 25px 25px;
+}
+.row-style-2 {
+  padding: 0px 25px;
+  padding-top: 20px;
+}
+.img-h {
+  height: 200px;
+}
+.badge-style {
+  text-align: center;
+  width: 100px;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.event-name {
+  font-size: 1.4rem;
+  text-align: left;
+}
+.location-div {
+  margin-top: 10px;
+  align-items: flex-start;
+}
+.material-icons {
+  font-size: 1.5rem;
+}
+.event-location-text {
+  font-size: 1.24rem;
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  margin-left: 3px;
+}
+.f-1p4 {
+  font-size: 1.4rem;
+}
+.author-mention {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.by{
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.dot-style {
+  font-size: 1.1rem;
+  font-weight: 700;
+  position: relative;
+  bottom: 4px;
+  font-weight: 700;
+}
+.date-added {
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  bottom: -20px;
+}
+.date-added-text {
+  font-size: 1.4rem;
+}
+.location-div-2{
+  margin-top: 10px;
+  align-items: flex-start;
+}
+.cyber-location-text {
+  font-size: 1.24rem;
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  margin-left: 3px;
+}
+.ps3 , .ps4 , .ps5{
+  width: 60px;
+  margin: auto;
+  }
+  .x360 {
+    width: 40px;
+    margin: auto;
+  }
+  .xone, .x-series, .pc  {
+    width: 25px;
+    margin: auto;
+  }
+  .vr {
+    width: 30px;
+    margin: auto;
+  }
+.badge-secondary {
+  margin: 5px;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+    .platform-icon-one {
+        padding: 20px 10px;
+        width: 100px;
+        height: 70px;
+    }
+    .platform-icon-two {
+        padding: 20px 10px;
+        height: 100px;
+        width: 100px;
+    }
+    .platform-icon-three {
+        padding: 20px 10px;
+        width: 60px;
+    }
+    .pagination-class {
+      margin: 25px;
+    }
+    .material-icons {
+      font-size: 1.5rem;
+      position: relative;
+      top: -2px;
+    }
+    .date-added-2 {
+      position: relative;
+      top: 4px;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .platform-icon-one {
+        padding: 20px 20px;
+        width: 200px;
+    }
+    .platform-icon-two {
+        padding: 20px 20px;
+        width: 150px;
+    }
+    .platform-icon-three {
+        padding: 20px 20px;
+        width: 100px;
+    }
+    .pagination-class {
+      margin: 18px;
+    }
+    .material-icons {
+      font-size: 1.5rem;
+      position: relative;
+      top: -2px;
+    }
+    .date-added-2 {
+      position: relative;
+      top: 4px;
+    }
+  }
+
+
+  /* The sidebar menu */
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    font-size: 36px;
+    /* margin-left: 50px; */
+  }
+  
+  /* The button used to open the sidebar */
+  .openbtn {
+    font-size: 2.0rem;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    /* padding: 10px 15px; */
+    border: none;
+    float: right;
+    position: relative;
+    top: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+  }
+  
+  /* .openbtn:hover {
+    background-color: #444;
+  } */
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding-left: 4px;
+    /* position: relative; */
+    /* top: 1.5rem; */
+    /* right: 6rem; */
+  }
+
+
+  .author-mention {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .by-class {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .by-class-2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    position: relative;
+    bottom: 4px;
+    font-weight: 700;
+  }
+  .fa-gamepad {
+    font-size: 1.6rem;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+  }
+  .from-to {
+    font-size: 1.4rem;
+  }
+  .from-to-2 {
+    font-size: 1.4rem;
+    float: right;
+  }
+  .event-name {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-left: 3px;
+  
+  }
+
+  .by {
+    font-size: 1.2rem;
+  }
+  .cyber-anchor {
+    text-decoration: none;
+    display: inline-block;
+  }
+  .date-added {
+    font-size: 0.9rem;
+    color: black;
+    font-weight: 700px;
+    text-align: right;
+    margin-left: 0px;
+    float: right;
+  }
+  .date-added-2 {
+    font-size: 0.9rem;
+    float: right;
+  }
+  .card-text{
+    font-size: 1.24rem;
+    display: inline-block;
+    position: relative;
+    top: -4px;
+    margin-left: 3px;
+    font-weight: 700;
+  }
+  .from-to {
+    font-size: 1.4rem;
+  }
+  .from-to-2 {
+    font-size: 1.4rem;
+    float: right;
+  }
+    /* The button used to open the sidebar */
+    .openbtn {
+      
+    }
+  
+    .author-mention {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .by-class {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .by-class-2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      position: relative;
+      bottom: 4px;
+      font-weight: 700;
+    }
+    .stars {
+      width: 70px;
+      display: block;
+      margin: auto;
+    }
+      .star {
+        font-size: 1.2rem;
+        color: #b0c4de;
+      }
+      .filled {
+        color: #1e90ff;
+      }
+      .bad {
+        color: #deb0b0;
+      }
+      .filled.bad {
+        color: #ff1e1e;
+      }
+
+      .badge-styling{
+        margin: 5px;
+        height: 25px;
+        padding-top: 6px;
+      }
+
+.color-white {
+  color: white;
+}

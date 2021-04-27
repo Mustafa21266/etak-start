@@ -1,0 +1,83 @@
+
+<div class="row">
+  <div class="col-12 col-lg-2">
+      <div class="w-100" style="padding: 0px 15px;">           
+      <br>
+      <br>
+      <h1 class="all-cybers-header">All Places</h1>
+      <hr class="line-thick-2">
+
+      <p class="order-by">Sort By :</p>
+      <input type="radio" (click)="filterByCheckBox($event)" id="originalSort" name="order" value="originalSort" checked>
+      <label for="originalSort" class="sort-by">Original Sort</label>
+      <hr class="line-thick">
+      <input type="radio" (click)="filterByCheckBox($event)" id="highestRating" name="order" value="highestRating">
+      <label for="highestRating" class="sort-by">Highest Rating</label>
+      <hr class="line-thick">
+      <input type="radio" (click)="filterByCheckBox($event)" id="newlyCreated" name="order" value="newlyCreated">
+      <label for="newlyCreated" class="sort-by">Newly Created</label>
+      <hr class="line-thick">
+  </div>
+</div>
+  <div class="col-12 col-lg-10 background-class mx-auto">
+    <br>
+<br>
+<hr class="hr-style">
+    <div class="d-block mx-auto card-div-main">
+      <div  class="card-div d-flex flex-wrap justify-content-center">
+        <div *ngFor="let cyber of Cybers.slice(0,10)" class="card" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)" [routerLink]="['/place-details',cyber.pk]" style="width: 18rem;display: inline-block;margin: 20px;">
+        <img class="img-fluid" style="width: 286px;height: 180px;" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{cyber.fields.logo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title color-black text-center">{{cyber.fields.name}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div *ngIf="cyber.fields.average_rating !== '0'" class="d-flex justify-content-center">
+            <ngb-rating [(rate)]="cyber.fields.average_rating" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </div>
+          <div *ngIf="cyber.fields.average_rating === '0'" class="d-flex justify-content-center">
+            <ngb-rating [(rate)]="allRates" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </div>
+          </li>
+          <li class="list-group-item">
+            <h6 class="text-center">
+              <i class="fas fa-location"></i> {{cyber.fields.location}} 
+            </h6>
+          </li>
+        </ul>
+        <div class="card-body">
+          <img *ngIf="cyber.fields.price_per_hour_ps3!=='0.0'"  class="img-fluid ps3" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps3_logo.png" alt="Card image cap">
+            <img  *ngIf="cyber.fields.price_per_hour_ps4!=='0.0'"  class="img-fluid ps4" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps4_logo.png" alt="Card image cap">
+            <img  *ngIf="cyber.fields.price_per_hour_ps5!=='0.0'"  class="img-fluid ps5"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps5_logo.png" alt="Card image cap">
+            <img  *ngIf="cyber.fields.price_per_hour_xbox_360!=='0.0'"  class="img-fluid x360" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_360_logo.png" alt="Card image cap">
+          <img  *ngIf="cyber.fields.price_per_hour_xbox_one!=='0.0'" class="img-fluid xone"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_one_logo.png" alt="Card image cap">
+          <img *ngIf="cyber.fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
+          <img  *ngIf="cyber.fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
+          <img  *ngIf="cyber.fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+        </div>
+      </div>
+      
+    </div>
+    </div>
+
+  <br>
+  <br>
+  <app-pagination-component [searchResults]="Cybers" (searchResultsChange)="searchResultsChange($event)"></app-pagination-component>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>
+  <!-- <div class="col-12 col-lg-2">
+
+  </div> -->
+</div>

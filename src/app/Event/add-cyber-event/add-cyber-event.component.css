@@ -1,0 +1,141 @@
+.without_ampm::-webkit-datetime-edit-ampm-field {
+  display: none;
+}
+input[type=time]::-webkit-clear-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance:none;
+  appearance: none;
+  margin: -10px; 
+}
+
+.row-background{
+  background-color: #0F0C24;
+}
+
+/*
+FORM STYLES
+*/
+.event-logo {
+  margin: auto;
+  display: block;
+  border: 5px solid #C5C6C7;
+  margin-bottom: 10px;
+  transition: filter 0.3s;
+  width: 400px;
+  height: 300px;
+}
+
+.create-event-header {
+  text-align: left;
+  color : white;
+}
+
+.form-field-styles {
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+/* MAP STYLES */
+#map {
+  height: 400px;
+  width: 75%;
+  display: block;
+  margin: auto;
+}
+
+.find-btn{
+  font-size: 18px;
+  padding: 0px 30px;
+  height: 50px;
+  display: block;
+  margin: auto;
+}
+#governateList {
+  border: 0px;
+  color:white;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 30px 10px;
+}
+
+
+.data-time-input-fields-style{
+  width: 100%;
+  border: none;
+  color:white;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 30px 10px;
+}
+.create-btn {
+  font-size: 24px;
+  padding: 5px 20px;
+  float: left;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+  .event-logo {
+    height: 220px;
+    width: 220px;
+    top: -120px;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+  .add-btn-cyber-images{
+    width: 100%;
+  }
+  .padding-class {
+    padding: 40px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .cover{
+    height: 55vh;
+  }
+  .event-logo{
+    height: 320px;
+    width: 320px;
+    top: -160px;
+  }
+  h3 {
+    font-size: 4rem;
+  }
+  .add-btn-cyber-images{
+    width: 100px;
+  }
+  .padding-class {
+    padding: 150px;
+  }
+}
+
+/*
+Miscellenous STYLES
+*/
+
+.hide-input {
+  visibility: hidden;
+}
+.input-black {
+  color:black;
+}
+.input-white {
+  color:white;
+}
+.not-empty-select.mat-selected {
+  color: white !important;
+}
+
+:host /deep/ .mat-select-value-text {
+  color: white !important;
+}

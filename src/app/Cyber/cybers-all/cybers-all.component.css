@@ -1,0 +1,162 @@
+/* .card {
+    transition: all .4s ease-in-out;
+    width: 350px;
+    height: 420px;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+    left: 8%;
+} */
+
+/* .card-img-top {
+    width: 300px;
+    height: 200px;
+    transition: filter 0.3s;
+} */
+/* .card-body {
+    padding: 0px;
+} */
+a {
+    color: black;
+    text-decoration: none;
+}
+.card-div-main {
+  width: 90%;
+}
+.order-by {
+  color: white;
+  font-size: 2rem;
+}
+.sort-by {
+  margin-left: 10px;
+  color: white;
+  font-size: 1.3rem;
+}
+.cyber-name {
+    font-size: 1.4rem;
+    text-align: left;
+    /* padding: 10px; */
+    margin-top: 20px;
+    /* padding-bottom: 5px; */
+}
+.card-text {
+    text-align: left;
+    padding: 0px 0px;
+    margin-left: 3px;
+}
+.card-text-2 {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0;
+    width: 100%;
+}
+.all-cybers-header {
+    color: white;
+    text-align: center;
+}
+.hr-style {
+    border-top: 10px solid rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    width: 90%;
+}
+.ps3 , .ps4 , .ps5{
+    width: 60px;
+    margin-right: 10px;
+  }
+  .x360 {
+    width:40px;
+    margin-right: 10px;
+  }
+  .xone, .x-series, .vr  {
+    width: 30px;
+    margin-right: 10px;
+  }
+  .pc {
+    width: 20px;
+    margin-right: 10px;
+  }
+
+  @media only screen and (max-width: 700px) {
+  
+
+  }
+  @media only screen and (min-width: 700px) {
+
+  }
+/* .see-more {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+}
+#readMoreHeader{
+    transition: .3s ease-in-out;
+    font-size: 1.6rem;
+    visibility: hidden;
+    color: #000;
+    text-align: center;
+} */
+
+/* .card:hover {
+    transform: scale(1.1);
+} */
+
+/* span {
+    background: transparent url(./images/pattern.png) repeat top left; 
+} */
+
+.stars {
+    width: 170px;
+    display: block;
+    margin: auto;
+  }
+    .star {
+      font-size: 1.5rem;
+      color: #b0c4de;
+    }
+    .filled {
+      color: #1e90ff;
+    }
+    .bad {
+      color: #deb0b0;
+    }
+    .filled.bad {
+      color: #ff1e1e;
+    }
+    .card-position{
+      position: relative;
+      left: 0px;
+    }
+
+/* .col-2 {
+  background: transparent url(../../static/images/pattern.png) repeat top left; 
+} */
+.card {
+  cursor: pointer;
+}
+.card-div{
+  margin: 20px;
+  /* display: inline-block; */
+  /* max-width: 100%; */
+}
+.background-class {
+  /* background-color: #0F0C24; */
+  background-color: #0F0C24;
+}
+@media only screen and (max-width: 900px) {
+  
+}
+.line-thick {
+  border-top: 5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 80%;
+}
+.color-black {
+  color: black;
+}
+.line-thick-2 {
+  border-top: 5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 100%;
+}

@@ -1,0 +1,21 @@
+h1 {
+    color: black;
+    font-size: 2rem;
+    text-align: center; 
+}
+.mat-icon-style{
+    font-size: 8rem;
+    display: block;
+    text-align: center;
+}
+.confirm-btn{
+    text-align: center;
+    float: right;
+}
+.spinner {
+    position: absolute;
+    top: 110px;
+    right: 0px;
+    width: 100%;
+    z-index: 5;
+}

@@ -1,0 +1,183 @@
+
+        <div class="row padding-class row-background">
+          <div class="col-12">
+            <div class="event-cover">
+              <br>
+              <img *ngIf="CyberEvent[0]" id="output"  class="img-fluid event-logo"  (click)="openCoverInput($event)" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{CyberEvent[0].fields.cover}}" alt="Card image cap">
+        <input id="addEventCover" type="file" (change)="selectEventCover($event)"> 
+          </div>
+            <div class="add-cyber-div">
+            <br>
+            <br>
+            <br>
+            <h1 class="create-event-header input-white">Edit Event</h1>
+            <hr class="my-4"> 
+            <form [formGroup]="cyberEventForm" id="editCyberEventForm" enctype="multipart/form-data">
+              <br>
+              <br>
+              <div class="form-row d-flex justify-content-center" >
+                <div class="form-group col-12 col-lg-8">
+                  <mat-form-field class="form-field-styles" appearance="fill">
+                    <mat-label class="input-white">Event Name:</mat-label>
+                    <input  matInput type="text" id="name" formControlName="name"  class="input-white">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-12 col-lg-12">
+              <br>
+              <div id="map"></div>
+              <br>
+              <br>
+            </div>
+          </div>
+        
+          <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-12 col-lg-4">
+              <mat-form-field appearance="fill" class="form-field-styles">
+                <mat-label class="input-white">Event Location:</mat-label>
+                <input matInput class="input-white"  id="location" type="text" formControlName="location">
+              </mat-form-field>
+            </div>
+            <div class="form-group col-12 col-lg-4">
+              <mat-form-field appearance="fill" class="form-field-styles" required>
+                <mat-label class="input-white">Pick a Governate</mat-label>
+                  <mat-select [(value)]="governate" required>
+                      <mat-option *ngFor="let governate of governates" [value]="governate.value">
+                          {{governate.value}}
+                        </mat-option>
+                  </mat-select>
+              </mat-form-field>
+            </div>
+            
+          </div>
+        
+          <div class="form-row">
+            <div class="form-group col-12 col-lg-12">
+              <br>
+              <button mat-raised-button color="accent" type="button" class="find-btn" (click)="onClickFind($event)">Find</button>
+              <br>
+        </div>
+        </div>
+              <div class="form-row" >
+                <div class="form-group col-12">
+                  <mat-form-field appearance="fill" class="form-field-styles">                
+                    <mat-label class="input-white">Event Description:</mat-label>
+                    <textarea matInput  type="text"  id="description" formControlName="description" rows="8" class="input-white"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-6 col-lg-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="input-white">Starts on</mat-label>
+                    <input  class="input-white" matInput formControlName="from_date" [matDatepicker]="picker1" required>
+                    <mat-datepicker-toggle  class="input-white" matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker  class="input-white" #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-6 col-lg-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="input-white">Ends on</mat-label>
+                    <input matInput class="input-white" formControlName="to_date" [matDatepicker]="picker2" required>
+                    <mat-datepicker-toggle class="input-white" matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker class="input-white" #picker2></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+        
+        
+              <div class="form-row">
+                <div class="form-group col-6 col-lg-3">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="input-white">Event Start Time:</mat-label>
+                    <input matInput  type="time" id="from_time" formControlName="from_time" required class="input-white without_ampm" required>
+                  </mat-form-field>
+        
+        
+                </div>
+                <div class="form-group col-6 col-lg-3">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label>AM/PM</mat-label>
+                      <mat-select [(value)]="startDay" formControlName="eventStartSelect" required>
+                          <mat-option value="AM">AM</mat-option>
+                          <mat-option value="PM">PM</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-6 col-lg-3">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="input-white">Event End Time:</mat-label>
+                    <input matInput  type="time" id="to_time" formControlName="to_time"  class="input-white without_ampm" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-6 col-lg-3">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label>AM/PM</mat-label>
+                      <mat-select [(value)]="endDay" formControlName="eventEndSelect" required>
+                          <mat-option value="AM">AM</mat-option>
+                          <mat-option value="PM">PM</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-12 col-lg-4">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="input-white">Game:</mat-label>
+                    <input matInput  type="text" id="game" formControlName="game"  class="input-white" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-12 col-lg-4">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label>Platform</mat-label>
+                      <mat-select [(value)]="platform" formControlName="platform" required>
+                          <mat-option *ngFor="let platform of platforms" [value]="platform.viewValue">
+                              {{platform.viewValue}}
+                            </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-12 col-lg-4">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="input-white">Participation Fee:</mat-label>
+                    <input  matInput type="number" id="price_per_player" formControlName="price_per_player"  class="input-white">
+                  </mat-form-field>
+                </div>
+              </div>
+        
+        
+        
+              <div class="form-row" >
+                <div class="form-group col-12 col-lg-4">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label  class="input-white">1st Place Reward:</mat-label>
+                    <input  matInput type="number" id="first_place_reward" formControlName="first_place_reward"  class="input-white" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-12 col-lg-4">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label  class="input-white">2nd Place Reward:</mat-label>
+                    <input matInput  type="number" id="second_place_reward" formControlName="second_place_reward"   class="input-white" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-12 col-lg-4">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label  class="input-white">3rd Place Reward:</mat-label>
+                    <input matInput type="number" id="third_place_reward" formControlName="third_place_reward"   class="input-white" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div id="createCyberBtn" class="form-row mr-auto">
+                <div class="form-group col-12">
+                  <button mat-raised-button color="accent" type="submit"  class="create-btn" (click)="editCyberEventOnSubmit($event)">Save</button>
+                  <app-loading-widget *ngIf="spinner" [spinner]="spinner" style="position: absolute;right: 10px;top: 10px;"></app-loading-widget>
+                </div>
+                
+              </div>
+              <br>
+      <button  *ngIf="userObjEditEvent" (click)="deleteEvent($event)" class="btn btn-danger delete-btn" type="submit">Delete Event</button>
+            </form>
+          </div>
+        </div>
+        </div>

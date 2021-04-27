@@ -1,0 +1,29 @@
+<!-- <app-loading-widget class="spinner" *ngIf="spinner" [spinner]="spinner"></app-loading-widget> -->
+<div class="row">
+    <div class="col-12">
+        <br>   
+        <br>        
+        <div class="row">
+            <div class="col-12">
+                <h1 class="title">{{title}}</h1>
+                <br>
+                <span class="material-icons">
+                    backup
+                    </span>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="selectedCover" (change)="onCoverSelected($event)">
+                    <label class="custom-file-label" for="customFile" id="coverUploadLabel">Choose file</label>
+                  </div>
+                  <br>
+                  <br>
+                  <button id="addBioBtn" class="btn btn-outline-primary confirm-btn" (click)="changeCover($event)" type="button">Confirm</button>
+                  <app-loading-widget *ngIf="spinner" style="float: left;" [spinner]="spinner"></app-loading-widget>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: rgb(0, 0, 0);
+}
+input[type='file'] {
+    color: transparent;
+  }
+  .title {
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .material-icons {
+    font-size: 8rem;
+    display: block;
+    text-align: center;
+  }
+  .confirm-btn {
+    text-align: center;
+    float: right;
+  }
+  .spinner {
+    position: relative;
+    top: 110px;
+    right: 0px;
+    width: 100%;
+    z-index: 5;
+}

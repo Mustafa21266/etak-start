@@ -1,0 +1,226 @@
+.row-background {
+  padding: 25px;
+  background-color: #0F0C24;
+}
+.row-style {
+  position: relative;
+  bottom: 5rem;
+  overflow: hidden;
+}
+.cover{
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 3px;
+}
+.cyber-logo{
+  display: block;
+  margin: auto;
+  border: 5px solid #C5C6C7;
+  transition: filter 0.3s;
+  width: 70%;
+}
+#cyberName{
+  font-size: 3rem;
+  color: white;
+  font-weight: 700px;
+  text-align: center;
+}
+pre {
+  text-align: center;
+}
+.rate-count {
+  display: inline-block;
+  font-size: 1rem;
+  color: rgb(100, 100, 100);
+}
+.mat-icon-style {
+  font-size: 2rem;
+}
+.cyber-location {
+  color: white;
+  display: inline-block;
+  position: relative;
+  bottom: 5px;
+  font-size: 1.8rem;
+  margin-left: 5px;
+}
+.cyber-work-days {
+  color: white;
+  display: inline-block;
+  position: relative;
+  bottom: 5px;
+  font-size: 1.8rem;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.carousel-img {
+  height: 350px;
+}
+.platform-label {
+  color: white;
+  font-weight: 700px;
+  text-align: center;
+  font-size: 3rem;
+}
+.price-label {
+  color: white;
+  font-weight: 700px;
+  text-align: center;
+  /* margin-bottom: 10px; */
+}
+.ps3 , .ps4 , .ps5{
+  display: block;
+  width: 65%;
+  max-height: 130px;
+  margin:auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+}
+.x360 {
+  display: block;
+  width: 55%;
+  max-height: 150px;
+  margin:auto;
+  background-color: white;
+  padding: 10px;;
+  border-radius: 15px;
+}
+.xone {
+  display: block;
+  position: relative;
+  bottom: 10px;
+  width: 45%;
+  max-height: 100px;
+  margin:auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+}
+.x-series {
+  display: block;
+  position: relative;
+  bottom: 10px;
+  width: 45%;
+  max-height: 100px;
+  margin:auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+}
+.vr {
+  display: block;
+  width: 25%;
+  max-height: 100px;
+  margin:auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+}
+.pc {
+  display: block;
+  position: relative;
+  bottom: 10px;
+  width: 25%;
+  max-height: 100px;
+  margin:auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+}
+.event-div {
+  /* background-color: #0F0C24; */
+  border-radius: 20px;
+}
+.event-cover {
+  height: 120px;
+}
+.material-icons {
+  font-size: 1.5rem;
+  position: relative;
+  bottom: 2px;
+}
+.card-text {
+  font-size: 1.24rem;
+  display: inline-block
+  ;position: relative;
+  top: -4px;
+  margin-left: 3px;
+}
+.from-to-paragraph {
+  font-size: 1.4rem;
+}
+@media only screen and (max-width: 900px) {
+    #cyberName,#cyberDetailsContainer {
+      text-align: center;
+      position: relative;
+      bottom: 0px;
+    }
+    .cover{
+      height: 35vh;
+    }
+    .cyber-logo {
+      height: 11rem;
+      width: 70%;
+    }
+    h3 {
+      font-size: 3rem;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    #cyberName {
+      position: relative;
+      bottom: 10px;
+      
+    }
+    .cover{
+      height: 55vh;
+    }
+    .cyber-logo{
+      width: 70%;
+      height: 15rem;
+    }
+    h3 {
+      font-size: 4rem;
+    }
+  }
+.stars {
+  width: 170px;
+  display: block;
+  margin: auto;
+}
+  .star {
+    font-size: 2.5rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #1e90ff;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  }
+.google-maps-directions-btn {
+  display: inline-block;
+  margin-left: 10px;
+  color: white;
+}
+.google-maps-icon {
+  position: relative;
+  bottom: 2px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.color-white {
+  color: white;
+}
+#descriptionContainer{
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

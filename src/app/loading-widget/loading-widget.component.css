@@ -1,0 +1,14 @@
+
+.spinner {
+    /* display: inline-block;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    z-index: 5; */
+    float: right;
+    
+  }
+  .uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #A350A3;
+}

@@ -1,0 +1,94 @@
+<div class="row">
+<div class="col-1">
+
+</div>
+<div class="col-12 col-lg-10 background-class">
+  <div class="row">
+    <div class="col-12">
+        <br>
+        <br>
+        <br>
+        <h1 class="all-articles-header">All Articles</h1>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="row">
+<div class="col-12">
+    <div *ngIf="!Articles[0]">
+        <br>
+        <br>
+        <h1 class="no-articles-header">Sorry, no articles available.</h1>
+    </div>
+    <div *ngIf="Articles[0]">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12 mx-auto">
+                <div class="w-100 d-block mx-auto">
+                    <div class="card card-big" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                        <a [routerLink]="['/articles', Articles[0].pk]">
+
+                          <img class="card-img-top-main" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Articles[0].fields.article_cover}}" alt="Card image cap">
+ 
+                      <div id="topText">
+                      </div>
+                      <div class="top-text color-white">
+                        <h4 class="article-headline color-white">{{Articles[0].fields.headline}}</h4>
+                      <p class="font-9 color-white">{{Articles[0].fields.date_added}}</p>
+                      <p class="color-white">{{Articles[0].fields.intro_text | slice : 0 : 55}}....</p>
+                      <p class="author-mention color-white"><span class="by-class">By <span class="by-class-2">.</span></span> {{Articles[0].fields.user[1]}} {{Articles[0].fields.user[2]}}</p>
+
+                    
+                    </div>
+                </a>
+                    </div>
+                </div>
+              </div>
+    </div>
+</div> 
+</div>
+</div>
+
+<div *ngIf="Articles[0]">
+  <div class="row">
+      <div class="col-12 col-lg-12 col-xl-12 mx-auto">
+        <br>
+          <div class="w-100 d-block mx-auto">
+  <div class="card-div" *ngFor="let article of Articles.slice(1,10)">
+              <div class="card" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
+                <div class="card-transition">
+                  <a [routerLink]="['/articles', article.pk]" style="color: black;text-decoration: none;">
+                    <img class="card-img-top" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{article.fields.article_cover}}" alt="Card image cap">
+                    <!-- | date : "dd/MM/yy HH:mm:ss" -->
+                    <p class="date-added-style">{{article.fields.date_added}}</p>
+
+                <div class="card-body card-body-styling">
+                  <h5 class="article-headline color-black">{{article.fields.headline}}</h5>
+                <p class="author-mention color-black"><span class="by-class">By <span  class="by-class-2">.</span></span> {{Articles[0].fields.user[1]}} {{Articles[0].fields.user[2]}}</p>
+
+                </div>
+              </a>
+                </div>
+              </div>
+              <br>
+          </div>
+         
+          </div>
+          <hr>
+        </div>
+</div>
+</div>
+<br>
+<br>
+<app-pagination-component [searchResults]="Articles" (searchResultsChange)="searchResultsChange($event)"></app-pagination-component>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+<div class="col-1">
+
+</div>
+</div>
+
+

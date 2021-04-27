@@ -1,0 +1,97 @@
+p, h1 ,h2, h3 ,h4 ,h5 {
+  color: white;
+}
+.color-white{
+  color: white;
+}
+.row-background{
+  /* background-color: #0F0C24; */
+}
+.background-class {
+  /* background-color: #0F0C24; */
+  background-color: #0F0C24;
+}
+.author-mention {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.by-class {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.by-class-2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  position: relative;
+  bottom: 4px;
+  font-weight: 700;
+}
+.date-added-style {
+  font-size: 0.9rem;
+  display: inline-block;
+}
+.edit-btn{
+  /* float: right; */
+  width: 70px;
+}
+#coverForArticle{
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 3px;
+  height: 450px;
+}
+.article-div {
+    padding: 0px 15px;
+    display: block;
+    margin: auto;
+    width: 85%;
+    color: white;
+}
+.article-div p{
+  color: white;
+}
+@media only screen and (max-width: 900px) {
+  
+}
+
+@media only screen and (min-width: 900px) {
+  
+}
+.share-div {
+  text-align: right;
+  
+}
+.facebook-share-btn {
+  background-color: #4267B2;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.twitter-share-btn{
+  background-color: #1DA1F2;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.telegram-share-btn{
+  background-color: #0088cc;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.whatsapp-share-btn {
+  background-color: #075e54;
+  width: 40px;
+  height: 40px;
+}
+.fa-facebook-f, .fa-twitter, .fa-whatsapp {
+  position: relative;
+  bottom: 7px;
+}
+.fa-telegram-plane {
+  position: relative;
+  bottom: 7px;
+  left: -1px;
+}

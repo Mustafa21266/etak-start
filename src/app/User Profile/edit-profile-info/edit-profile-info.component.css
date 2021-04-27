@@ -1,0 +1,29 @@
+.row-styling {
+  background-color: #0F0C24;
+  position: relative;
+  top: 3px;
+}
+.form-field-styling {
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+.confirm-btn {
+  font-size: 24px;
+  padding: 5px 20px;
+}
+.delete-btn {
+  text-align: center;
+  display: block;
+  
+}
+.color-white {
+  color:white;
+}
+.spinner {
+  position: fixed;
+  top: 110px;
+  right: 0px;
+  width: 100%;
+  z-index: 5;
+}

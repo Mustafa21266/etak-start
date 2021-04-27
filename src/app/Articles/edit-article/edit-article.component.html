@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12 col-lg-10 mx-auto background-class">
+        <br>
+        <br>
+        <h1 class="edit-article-header">Edit Article</h1>
+        <hr>
+        <hr class="w-100">
+        <app-loading-widget *ngIf="spinner" [spinner]="spinner"></app-loading-widget>
+        <div class="row">
+            <div class="col-12">
+                <input id="articleCoverId" type="file" (change)="onCoverSelected($event)" required>
+            
+                  <img id="coverForArticle" class="img-fluid cover" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/default_cover.png" alt="Card image cap">
+                  <a class="btn btn-secondary change-cover-btn"  (click)="onClickChangeArticleCover()" type="button">Change Cover</a>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-12">
+                
+                <input id="articleHeadline" type="text" class="form-control" placeholder="Article Headline" required>
+                <br>
+                <textarea id="articleIntro" type="text" class="form-control" placeholder="Article Intro" required></textarea>
+                <br>
+                <select id="articleCategory" class="form-control" aria-label="Default select example">
+                  <option selected>Category</option>
+                  <option value="General">General</option>
+                  <option value="Know Your Content Creator">Know Your Content Creator</option>
+                </select>
+                <br>
+                <div [froalaEditor]='options' style="z-index: 0;"></div>
+            </div>
+          </div>
+        <br>
+        <div class="form-group col-12">
+            <button mat-raised-button color="accent" type="submit"  class="save-btn" (click)="onClickCreate($event)">Save</button>
+            <app-loading-widget *ngIf="spinner" style="float: right;" [spinner]="spinner"></app-loading-widget>
+            <br>
+
+          </div>
+          <br>
+          <button mat-raised-button color="warn" class="d-block mx-auto" *ngIf="userObjEditArticle" (click)="onClickDeleteArticleBtn($event)">Delete Article</button>
+          <br>
+    </div>
+</div>

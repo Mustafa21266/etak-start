@@ -1,0 +1,115 @@
+<!-- <app-slideshow *ngIf="this.router.url === '/sign-up' || this.router.url === '/log-in'"></app-slideshow> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="container mx-auto">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="text-center sign-up">Sign-Up</h1> 
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form">
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="color-white">First Name:</mat-label>
+                    <input matInput type="text" class="text-white" formControlName="first_name" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="color-white">Last Name:</mat-label>
+                    <input matInput type="text"  class="text-white" formControlName="last_name" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <!-- <div class="form-group col-6">
+                
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label style="color : #ffffff">Username:</mat-label>
+                    <input matInput type="text"  class="text-white" formControlName="username" class="color-white" required>
+                  </mat-form-field>
+
+                </div> -->
+                <div class="form-group col-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="color-white">Email:</mat-label>
+            <input matInput required  class="text-white" formControlName="email" type="email" ngModel [email]="true" required>
+            <mat-error *ngIf="userForm.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+                  
+
+                </div>
+                <div class="form-group col-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label class="color-white">Password:</mat-label>
+                    <input matInput  class="text-white" [type]="hide ? 'password' : 'text'" formControlName="password" (keyup)="checkRegister($event)" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" style="color:white;background-color: rgba(0, 0, 0, 0);">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+                  <P id="errorMessage" class="color-white"></P>
+                </div>
+              </div>
+        
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label style="color : #ffffff">Phone Number:</mat-label>
+                    <input matInput type="text"  class="text-white" formControlName="phone_number" class="color-white" (keyup)="checkPhoneNumber($event)" required>
+                  </mat-form-field>
+                  <P id="errorMessagePhone" class="color-white"></P>
+                </div>
+                <div class="form-group col-6">
+                  <mat-form-field appearance="fill" class="form-field-styles" required>
+                    <mat-label style="color : #ffffff">Account Type :</mat-label>
+                      <mat-select [(value)]="userType" formControlName="is_cyber_owner" required>
+                          <mat-option [value]="0">Player</mat-option>
+                          <mat-option [value]="1">Cyber/PS Cafe Owner</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+      <!-- <hr class="line-thick"> -->
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-12 col-lg-12">
+                  <mat-form-field appearance="fill" class="form-field-styles">
+                    <mat-label style="color : #ffffff">Date of Birth</mat-label>
+                    <input matInput formControlName="date_of_birth" style="color : #ffffff" [matDatepicker]="picker" required>
+                    <mat-datepicker-toggle matSuffix  style="color : #ffffff" [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row mx-auto">
+                
+                <div class="form-group col-12">
+                  <div class="row">
+                    <div class="col-10">
+                      <app-loading-widget *ngIf="spinner" style="float: left;" [spinner]="spinner"></app-loading-widget>
+
+                    </div>
+                    <div class="col-2">
+                      <button mat-raised-button type="submit" [disabled]="!enableRegister" class="sign-up-btn" color="accent">Sign-Up</button>
+                      
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </form>
+          </div>
+        </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <p class="login-anchor">Already Have an Account ? <span style="margin-left: 7px;"><a routerLink="/log-in">Log in
+      </a></span></p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>

@@ -1,0 +1,181 @@
+<div class="row row-styling" *ngIf="userObjEditProfileInfo">
+    <div class="col-12">
+        
+        <div class="row">
+            <br>
+            <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-9 col-sm-12" style="margin: auto;">
+                            <div class="row">
+                                <div class="col-12">
+                                            
+                                            <br>
+                                            <br>
+                                                    <h1 class="color-white">Edit Profile</h1>
+                                                    <hr class="my-4"> 
+                                                    <br>
+                                                    <mat-tab-group  [backgroundColor]="'primary'" [color]="'warn'">
+                                                      <mat-tab label="Personal Information">
+                                                        <br>
+                                                        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" id="edifProfileForm" enctype="multipart/form-data" style="padding: 20px;">
+                                                          <div class="form-row">
+                                                            <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">First Name:</mat-label>
+                                                                <input matInput type="text"  id="first_name" formControlName="first_name" class="color-white" required>
+                                                              </mat-form-field>
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">Last Name:</mat-label>
+                                                                <input matInput type="text" id="last_name" formControlName="last_name"  class="color-white" required>
+                                                              </mat-form-field>
+                                                            </div>
+                                                            
+                                                          </div>         
+                                                          <div class="form-row">
+                                                            <!-- <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">Username:</mat-label>
+                                                                <input matInput type="text" id="username" formControlName="username"  class="color-white" readonly>
+                                                              </mat-form-field>
+                                                            </div> -->
+                                                            <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">Email</mat-label>
+                                                                <input matInput type="text" id="email" formControlName="email" class="color-white" required>
+                                                              </mat-form-field>
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">Date of Birth</mat-label>
+                                                                <input matInput  class="color-white" formControlName="date_of_birth" [matDatepicker]="picker" required>
+                                                                <mat-datepicker-toggle class="color-white" matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                                <mat-datepicker class="color-white" #picker></mat-datepicker>
+                                                              </mat-form-field>
+                                                            </div>
+                                                          </div>
+                                                         
+                                                         
+                                                          <div class="form-row">
+                                                            <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">Phone Number:</mat-label>
+                                                                <input matInput type="text"  class="text-white" formControlName="phone_number" class="color-white" (keyup)="checkPhoneNumber($event)" required>
+                                                              </mat-form-field>
+                                                              <P id="errorMessagePhone" class="color-white"></P>
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-6">
+                                                              <mat-form-field appearance="fill" class="form-field-styling">
+                                                                <mat-label class="color-white">Password:</mat-label>
+                                                                <input matInput type="password" id="password" formControlName="password" (keyup)="checkRegister($event)"  class="color-white" required>
+                                                              </mat-form-field>
+                                                              <P id="errorMessage" class="color-white"></P>
+                                                            </div>
+                                                            
+                                                          </div>
+                                                          <br>
+                                                          <div id="createCyberBtn" class="form-row mr-auto">
+                                                            <div class="form-group col-12 d-flex justify-content-center mx-auto">
+                                                              <button mat-raised-button color="accent" [disabled]="!enableConfirm" type="submit"  class="confirm-btn" (click)="onSubmit()">Confirm</button>
+                                                              <app-loading-widget class="spinner" *ngIf="spinner" style="position: absolute;top: 0px;" [spinner]="spinner"></app-loading-widget>
+                                                              <!-- *ngIf="spinner" -->
+                                                            </div>
+                                                            
+                                                          </div>
+                                                        </form>
+                                                              
+                                                            </mat-tab>
+                                                      <mat-tab label="Settings">
+                                                        <div class="row w-100">
+                                                          <div class="col-12 w-100" style="padding: 0px 20px;">
+                                                            <br>
+                                                        
+                                                            <h3  class="color-white">Privacy<span style="font-size: 1.3rem;"> -:</span></h3>
+                                                            <br>
+                                                            <br>
+                                                            <mat-slide-toggle  class="color-white" [(ngModel)]="isCheckedEmail" (change)="onChangeShowEmailSlide($event)">Show Email On Profile</mat-slide-toggle>
+                                                            <br>
+                                                            <br>
+                                                            <mat-slide-toggle  class="color-white" [(ngModel)]="isCheckedPhone" (change)="onChangeShowPhoneNumberSlide($event)">Show Phone Number On Profile</mat-slide-toggle>
+                                                            <br>
+                                                            <br>
+                                                            <mat-slide-toggle  class="color-white" [(ngModel)]="isCheckedDateOfBirth" (change)="onChangeShowDateOfBirthSlide($event)">Show Date Of Birth On Profile</mat-slide-toggle>
+                                                            <br>
+                                                            <br>
+                                                            <mat-slide-toggle  class="color-white" [(ngModel)]="isCheckedCreatorMode" (change)="onChangeContentCreatorMode($event)">Content Creator Mode</mat-slide-toggle>
+                                                            <br>
+                                                            <br>
+                                                            
+                                                              <button mat-raised-button color="warn" *ngIf="userObjEditProfileInfo" (click)="openDialog()" class="btn btn-danger delete-btn" type="submit">Delete Profile</button>
+                                                              <br>
+                                                          </div>
+                                                          
+                                                        </div>
+                                                      </mat-tab>
+                                                      <mat-tab label="Other Accounts" style="padding: 0px 20px;">
+                                                        <br>
+                                                        <div class="row w-100" style="overflow-x: scroll;">
+                                                          <div class="col-12">
+                                                            <ol id="linksOrderedList">
+                                                              <li  class="color-white" *ngFor="let link of userLinks"><span style="margin-right: 5px;">{{link.fields.name}}: </span><a id="editLink_{{link.pk}}" (click)="editUserLink(link)" style="margin-right: 5px;"><i class="fas fa-edit"></i></a><a id="deleteLink_{{link.pk}}" (click)="deleteUserLink(link)"><i class="fas fa-trash-alt"></i></a>
+                                                                
+                                                                <a href="{{link.fields.link}}" style="display: block;font-size: 0.9rem;" target="_blank">{{link.fields.link}}</a>
+                                                              <hr>
+                                                              </li>
+                                                            </ol>
+                                                          </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row w-100">
+                                                          <div class="col-12">
+                                                            <form [formGroup]="userLinkForm" (ngSubmit)="createUserLink($event)" id="userLinkForm" enctype="multipart/form-data">
+                                                              <div class="form-row">
+                                                                <div class="form-group col-12 col-lg-6">
+                                                                  <mat-form-field appearance="fill" class="form-field-styling">
+                                                                    <mat-label class="color-white">Name:</mat-label>
+                                                                    <input matInput type="text" [(value)]="name" class="text-white" formControlName="name" class="color-white" required>
+                                                                  </mat-form-field>
+                                                                  <P id="errorMessagePhone" class="color-white"></P>
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-6">
+                                                                  <mat-form-field appearance="fill" class="form-field-styling">
+                                                                    <mat-label class="color-white">Link:</mat-label>
+                                                                    <input matInput type="text" id="link" [(value)]="link" formControlName="link" class="color-white" required>
+                                                                  </mat-form-field>
+                                                                  <P id="errorMessage" class="color-white"></P>
+                                                                </div>
+                                                                
+                                                              </div>
+                                                            </form>
+                                                          </div>
+                                                        </div>
+                                                       
+                                                        <div class="row w-100">
+                                                          <div class="col-12">
+                                                            <button id="addBtn" mat-raised-button type="submit" color="warn" (click)="createUserLink($event)">Add</button>
+                                                            <button id="saveBtn" mat-raised-button type="submit" color="warn" (click)="editUserLinkSubmit($event)" style="display: none;">Save</button>
+                                                            <app-loading-widget class="spinner" *ngIf="spinner" style="position: absolute;top: 0px;right: 20px;" [spinner]="spinner"></app-loading-widget>
+                                                          </div>
+                                                        </div>
+                                                        
+                                                        <br>
+                                                      </mat-tab>
+                                                    </mat-tab-group>
+                                                   
+                                </div>
+                            </div>
+
+                            <hr class="my-4"> 
+
+                        </div>
+                    </div>
+                    
+
+            </div>
+
+        </div>
+
+    </div>
+      
+</div>

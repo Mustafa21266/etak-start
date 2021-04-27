@@ -1,0 +1,340 @@
+<div class="row">
+    <div *ngIf="isMobileLayout" id="main">       
+        <span class="badge badge-primary mobile-navigator"><a class="openbtn" (click)="openNav()">
+            <i class="fas fa-filter"></i>
+        </a></span>
+        
+  </div>
+    <div class="col-12 col-lg-3 col-xl-2">
+
+        <div *ngIf="!isMobileLayout" style="padding: 0px 20px;">           
+            <br>
+            <h1 class="text-center header">Search</h1>
+            <hr class="my-4">
+            <p class="filter-by-text">Filter By :</p>
+            <input type="radio" (click)="filterByCheckBox($event)" id="all" name="events" value="all" checked>
+            <label for="all" class="mobile-nav-labels">All</label>
+            <br>
+            <input type="radio" (click)="filterByCheckBox($event)" id="cybersAndPSCafes" name="events" value="cybersAndPSCafes">
+            <label for="cybersAndPSCafes" class="mobile-nav-labels">Cybers & PS Cafe's</label>
+            <br>
+            <input type="radio" (click)="filterByCheckBox($event)" id="events" name="events" value="events">
+            <label for="events" class="mobile-nav-labels">Events</label>
+            <br>
+            <input type="radio" (click)="filterByCheckBox($event)" id="articles" name="events" value="articles">
+            <label for="articles"  class="mobile-nav-labels">Articles</label>
+            <br>
+            <input type="radio" (click)="filterByCheckBox($event)" id="kyccarticles" name="events" value="kyccarticles">
+            <label for="kyccarticles"  class="mobile-nav-labels">KYCC Articles</label>
+            <br>
+            <input type="radio" (click)="filterByCheckBox($event)" id="users" name="events" value="users">
+            <label for="users"  class="mobile-nav-labels">Users</label>
+            <br>
+        </div>
+
+
+        
+    </div> 
+    <div class="col-12 col-lg-6 col-xl-8" style="background-image: linear-gradient(200deg,rgb(31, 40, 51) ,rgb(11, 12, 16) );">
+        <div *ngIf="!searchResults[0]">
+            <br>
+            <br>
+            <h1 class="text-center header">Sorry, no results available.</h1>
+        </div>
+
+
+
+        <div *ngIf="searchResults[0]">
+            <br>
+            <br>
+            <p class="results-text">{{originalSearchResults.length}} Results For : <strong>{{searchTerm}}</strong></p>
+            <div *ngFor="let result of searchResults.slice(0,11)">
+                <div *ngIf="result.model === 'etak_start_app.cyberevent'">
+                    <div class="row">
+                <div class="col-12">
+                    <div >
+                        <div  class="section-styling">
+                            <hr>
+                            <div class="row row-style-2">
+                            <div class="col-12 col-lg-4">
+                                <a [routerLink]="['/event-details', result.pk]">
+                                    <img class="img-fluid d-block mx-auto w-100 col-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{result.fields.cover}}">
+                                    <h5 style="position: absolute;bottom: 20px;left: 5px;"><span class="badge badge-primary badge-style">Event</span></h5>
+                                    <br>
+                                </a>
+                    
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                <h2>{{result.fields.name}}</h2>
+                                <div>
+                                    <p class="author-mention"><span class="by-class">By <span class="by-class-2">.</span></span>
+                                        <span class="date-added-2">Date Added: {{result.fields.date_added }}</span>
+                                        <a [routerLink]="['/place-details', result.fields.cyber[0]]" class="cyber-anchor">
+                                        <p class="event-name"><strong>{{result.fields.cyber[1]}}
+                                        </strong>
+                                        </p>
+                                        </a>
+                                        <!-- <p class="date-added"></p> -->
+                                        
+                                    </p>
+                                </div>
+                               
+                                
+                                
+            
+                            </div>
+                            <div class="col-12">
+                                <mat-accordion>
+                                    <mat-expansion-panel hideToggle>
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                          Click to View Event Details
+                                        </mat-panel-title>
+                                        <!-- <mat-panel-description>
+                                          This is a summary of the content
+                                        </mat-panel-description> -->
+                                      </mat-expansion-panel-header>
+                                      <div class="text-left">
+                                    
+                                        <div class="d-inline-flex location">
+                                            
+                                            
+                                        </div>
+                                       
+                                        <!-- <p class="from-to text-right"></p> -->
+                                    </div>
+                                      <p class="text-left">{{result.fields.description|slice: 0:50}}....</p>
+                                      <br>
+                                      <div class="from-to d-flex justify-content-between"><span class="card-text text-left"><strong><i class="fas fa-gamepad"></i>{{result.fields.game}}</strong></span>  
+                                        <span class="text-center"><i class="fas fa-location"></i> {{result.fields.location}}</span>
+                                        <span class="text-right"><strong class="from-to-2 text-right">{{result.fields.from_date | date}} - {{result.fields.to_date | date}}</strong></span>
+                                        </div>
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
+                                
+                            </div>
+                            </div>
+                            <br>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+            <div *ngIf="result.model === 'etak_start_app.article'">
+                <div class="row">
+            <div class="col-12">
+                <div >
+                    <div  class="section-styling">
+                        <hr>
+                        <div class="row row-style-2">
+                        <div class="col-12 col-lg-4">
+                            <a [routerLink]="['/articles', result.pk]">
+                                <img class="img-fluid d-block mx-auto w-100 col-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{result.fields.article_cover}}">
+                                <h5 style="position: absolute;bottom: 20px;left: 5px;"><span class="badge badge-warning badge-style">Article</span></h5>
+                                <br>
+                            </a>
+                        
+                        </div>
+                        <div class="col-12 col-lg-8">
+                            <h2>{{result.fields.headline}}</h2>
+                            <p class="author-mention color-white"><span class="by">By <span class="dot-style">.</span></span> {{result.fields.user[1]}} {{result.fields.user[2]}}</p>
+                            
+                            <div class="date-added color-white">
+                                <p class="date-added-text color-white"><strong>{{result.fields.date_added}}</strong></p>
+                            </div>
+                            
+                            
+        
+                        </div>
+                        <div class="col-12">
+                            <mat-accordion>
+                                <mat-expansion-panel hideToggle>
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                      Click to View Article Intro
+                                    </mat-panel-title>
+                                    <!-- <mat-panel-description>
+                                      This is a summary of the content
+                                    </mat-panel-description> -->
+                                  </mat-expansion-panel-header>
+                                  <div class="text-left">
+                                    <!-- <p class="from-to text-right"></p> -->
+                                </div>
+                                <p class="text-left">{{result.fields.intro_text}}....</p>
+                                  <br>
+                                </mat-expansion-panel>
+                              </mat-accordion>
+                            
+                        </div>
+                        </div>
+                        <br>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+            <div *ngIf="result.model === 'etak_start_app.cyber'">
+                <div class="row">
+                    <div class="col-12">
+                            <div  class="section-styling">
+                                <hr>
+                                <div class="row row-style-1">
+                                <div class="col-12 col-lg-4">
+                                    <a [routerLink]="['/place-details', result.pk]">
+                                        <img class="img-fluid d-block mx-auto w-100 col-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{result.fields.logo}}">
+                                        <h5 style="position: absolute;bottom: 20px;left: 5px;"><span class="badge badge-info badge-style">Location</span></h5>
+                                        <br>
+                                    </a>
+                                </div>
+                                <div class="col-12 col-lg-8">
+                                    <h2><span class="text-left">{{result.fields.name}}</span>
+                                        <div class="float-right" *ngIf="result.fields.average_rating !== '0'">
+                                            <ngb-rating [(rate)]="result.fields.average_rating" [(readonly)]="readOnlyValue">
+                                              <ng-template let-fill="fill" let-index="index">
+                                                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                                              </ng-template>
+                                            </ngb-rating>
+                                          </div>
+                                          <div class="float-right" *ngIf="result.fields.average_rating === '0'">
+                                            <ngb-rating [(rate)]="allRates" [(readonly)]="readOnlyValue">
+                                              <ng-template let-fill="fill" let-index="index">
+                                                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                                              </ng-template>
+                                            </ngb-rating>
+                                          </div>
+                                    </h2>
+                                    
+                                    <div class="text-left">
+                                        <!-- <div class="d-inline-flex location-div-2"> -->
+                                            
+                                            <p class="card-text cyber-location-text text-left"><i class="fas fa-location"></i> {{result.fields.location}}</p>
+                                            
+                                            <!-- </div> -->
+                                        
+                                    </div>
+                                    
+                                    
+                                    
+                                </div>
+                                <!-- <div class="row w-75"> -->
+                                    <div class="col-12">
+                                        <mat-accordion>
+                                            <mat-expansion-panel hideToggle>
+                                              <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                  Click to View Availabe Platforms
+                                                </mat-panel-title>
+                                                <!-- <mat-panel-description>
+                                                  This is a summary of the content
+                                                </mat-panel-description> -->
+                                              </mat-expansion-panel-header>
+                                              <div class="d-flex justify-content-around w-100">
+                                                    <img *ngIf="result.fields.price_per_hour_ps3!=='0.0'"  class="img-fluid ps3" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps3_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_ps4!=='0.0'"  class="img-fluid ps4" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps4_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_ps5!=='0.0'"  class="img-fluid ps5"  src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ps5_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_xbox_360!=='0.0'"  class="img-fluid x360" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_360_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_xbox_one!=='0.0'" class="img-fluid xone" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_one_logo.png" alt="Card image cap">
+                                                    <img *ngIf="result.fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+                                                        
+                                                        
+                                                      
+                                                      
+
+                                                      <!-- <br> -->
+                                            </div>
+                                            </mat-expansion-panel>
+                                          </mat-accordion>
+                                        
+                                    </div>
+                                <!-- </div> -->
+                                </div>
+                                
+                        </div>
+                        <br>
+                </div>
+                    </div>
+            </div>
+            
+
+            <div *ngIf="result.model === 'etak_start_app.customuser'">
+                <div class="row">
+                    <div class="col-12">
+                            <div  class="section-styling">
+                                <hr>
+                                <div class="row row-style-1">
+                                <div class="col-12 col-lg-4">
+                                    <a [routerLink]="['/profiles', result.pk]">
+                                        <img *ngIf="result.fields.profile_picture" class="img-fluid d-block mx-auto w-100 col-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{result.fields.profile_picture}}">
+                                        <img *ngIf="!result.fields.profile_picture" class="img-fluid d-block mx-auto w-100 col-img" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/default_cover.png">
+                                        <h5 style="position: absolute;bottom: 20px;left: 5px;"><span class="badge badge-danger badge-style">Profile</span></h5>
+                                        <br>
+                                    </a>
+                                    
+        
+                                </div>
+                                <div class="col-12 col-lg-8">
+                                    <div class="text-left w-100">
+                                    <h2>{{result.fields.first_name}} {{result.fields.last_name}}</h2>
+                                        <span *ngIf="result.fields.is_admin === '1'" class="badge badge-warning badge-styling"><i class="fas fa-crown"></i> Admin</span>
+                                            <span *ngIf="result.fields.is_content_creator === '1'" class="badge badge-info badge-styling"><i class="fas fa-headset"></i> Streamer</span>
+                                            <span *ngIf="result.fields.is_cyber_owner === '1'" class="badge badge-secondary badge-styling"><i class="fas fa-user-cog"></i> Cyber Owner</span>
+                                            <span *ngIf="result.fields.is_cyber_owner === '0'" class="badge badge-light badge-styling"><i class="fas fa-user"></i> Player</span>
+                                        <!-- <div class="text-center w-100 badge-divs d-flex justify-content-center align-content-center flex-wrap">
+    
+                                            
+                                        </div> -->
+                                        <!-- <div class="d-inline-flex location-div-2"> -->
+
+                                            <!-- <p class="card-text cyber-location-text" style="float: left;">{{result.fields.location}}</p> -->
+                                        <!-- </div> -->
+                                        
+                                    </div>
+                                </div>
+        
+                                </div>
+                        </div>
+                        <br>
+                </div>
+                    </div>
+            </div>
+            
+            
+            
+        </div>
+        
+        
+        
+
+
+
+    </div> 
+    <br>
+    <app-pagination-component *ngIf="searchBar" [searchBar]="searchBar" [(searchResults)]="searchResults"></app-pagination-component>
+    <br>
+</div>
+<div class="col-12 col-lg-3 col-xl-2">
+
+</div>
+</div>
+<div id="searchSidebar" class="sidebar" (mousedown)="closeNav()">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <hr>
+    <a id="allSideBar" (click)="filterBySideBar($event)" value="all" class="selected"><strong>All</strong></a>
+    <hr>
+    <a id="cybersAndPSCafes" (click)="filterBySideBar($event)" value="cybersAndPSCafes">Cybers & PS Cafe's</a>
+    <hr>
+    <a id="eventsSideBar" (click)="filterBySideBar($event)" value="eventsSideBars">Events</a>
+    <hr>
+    <a id="articlesSideBar" (click)="filterBySideBar($event)" value="articlesSideBar">Articles</a>
+    <hr>
+    <a id="kyccarticlesSideBar" (click)="filterBySideBar($event)" value="kyccarticlesSideBar">KYCC Articles</a>
+    <hr>
+    <a id="usersSideBar" (click)="filterBySideBar($event)" value="usersSideBar" >Users</a>
+    <hr>
+   
+  </div>
+  <!-- (searchResultsChange)="searchResultsChange($event)" -->
+
+  

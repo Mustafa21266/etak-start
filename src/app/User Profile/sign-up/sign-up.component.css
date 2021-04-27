@@ -1,0 +1,66 @@
+.example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #fff;
+}
+.sign-up{
+  color : #ffffff;
+  /* position:relative;
+  top: 150px; */
+}
+.form {
+  /* position:relative;
+  top: 200px; */
+}
+.form-field-styles {
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+.text-white {
+  color: #ffffff;
+}
+#governateList {
+  border: 2px solid #536DFE;
+  color:white;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 10px;
+  padding-top: 5px;
+}
+.sign-up-btn {
+  font-size: 24px;
+  padding: 5px 20px;
+  float: right;
+}
+.login-anchor {
+  text-align: center;
+  margin: auto;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+a {
+  text-decoration: none;
+}
+.color-white {
+  color :white;
+}
+.order-by {
+  color: white;
+  font-size: 1.2rem;
+}
+.sort-by {
+  margin-left: 10px;
+  color: white;
+  font-size: 1.13rem;
+}
+.not-empty-select.mat-selected {
+  color: white !important;
+}
+
+:host /deep/ .mat-select-value-text {
+  color: white !important;
+}

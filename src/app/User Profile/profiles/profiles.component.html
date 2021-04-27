@@ -1,0 +1,216 @@
+<div class="row row-styling" style="margin: 0px;">
+<div class="col-12" style="padding: 0px;">
+    <div *ngIf="userProfile" class="w-100">
+        <img  *ngIf="userProfile.fields.cover" class="img-fluid cover w-100 d-block" src="{{profileCover}}" alt="Card image cap">
+        <img  *ngIf="!userProfile.fields.cover" class="img-fluid cover w-100 d-block" src="{{profileCover}}" alt="Card image cap">
+</div>
+<a id="addBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" class="btn btn-secondary change-cover-btn" (click)="openDialog()" type="button">Change Cover</a>
+</div>
+    
+</div>
+<div class="row row-styling"  style="margin: 0px;" *ngIf="userProfile">
+    <div class="col-12 col-lg-4 details-column-profile">
+        <img class="img-fluid user-logo" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" (click)="openDialogProfilePicture()" src="{{profilePicture}}" alt="Card image cap">
+
+        <img class="img-fluid user-logo" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk !== userProfile.pk"  style="cursor: default;" src="{{profilePicture}}" alt="Card image cap">
+
+        <br>
+<h1 id="cyberName" class="color-white" *ngIf="userProfile">{{userProfile.fields.first_name}} {{userProfile.fields.last_name}}</h1>
+<div class="text-center w-100 badge-divs d-flex justify-content-center align-content-center flex-wrap">
+    
+    <span *ngIf="userProfile.fields.is_admin === '1'" class="badge badge-warning badge-styling"><i class="fas fa-crown"></i> Admin</span>
+    <span *ngIf="userProfile.fields.is_content_creator === '1'" class="badge badge-info badge-styling"><i class="fas fa-headset"></i> Streamer</span>
+    <span *ngIf="userProfile.fields.is_cyber_owner === '1'" class="badge badge-secondary badge-styling"><i class="fas fa-user-cog"></i> Cyber Owner</span>
+    <span *ngIf="userProfile.fields.is_cyber_owner === '0'" class="badge badge-light badge-styling"><i class="fas fa-user"></i> Player</span>
+</div>
+<br>
+<div class="row" *ngIf="userLinks[0]">
+    <div class="col-12">
+            <p class="info-paragraph-2 text-center"  *ngFor="let link of userLinks"> 
+                <a href="{{link.fields.link}}" target="_blank">{{link.fields.name}}</a>
+                
+            </p>
+    </div>
+</div>
+<br>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button mat-raised-button color="accent" id="editProfileBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" routerLink="/edit-profile-info/{{userProfile.pk}}" type="button">Edit Profile</button>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <br>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h5 class="text-left" *ngIf="userProfile.fields.show_or_hide_email === '0' && userProfile.fields.show_or_hide_phone_number === '0' && userProfile.fields.show_or_hide_date_of_birth === '0'">No Information Available</h5>
+                                                            <p class="info-paragraph text-center"  *ngIf="userProfile.fields.show_or_hide_email === '1'" > 
+                                                                <i class="fas fa-envelope" style="margin-right: 7px;"></i> <span>{{userProfile.fields.email}}</span>
+                                                            </p>
+                                                            <p class="info-paragraph text-center"  *ngIf="userProfile.fields.show_or_hide_phone_number === '1'"><i class="fas fa-phone-square" style="margin-right: 7px;"></i> <span>{{userProfile.fields.phone_number}}</span>
+                                                            </p>
+                                                            <p class="info-paragraph text-center"  *ngIf="userProfile.fields.show_or_hide_date_of_birth === '1'"><i class="fas fa-birthday-cake" style="margin-right: 5px;"></i> <span>{{userProfile.fields.date_of_birth | date: 'dd/MM/yyyy'}}</span>
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                               
+
+<br>
+    </div>
+    <div class="col-12 col-lg-8 details-column">
+        
+        <div class="row">
+            <br>
+            <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" -->
+                                   
+                                            <hr class="my-4"> 
+                                    <mat-tab-group dynamicHeight  [backgroundColor]="'primary'" [color]="'warn'" class="margin-for-tab">
+                                        <mat-tab label="Details">
+                                            <br>
+ 
+                                                    <br>
+                                                <h1>Bio</h1>
+                                                <br>
+                                                <div id="detailsContainer" class="w-100">
+                                                    <p>{{userProfile.fields.bio}}</p>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <button mat-raised-button color="accent"  id="addBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk && !userProfile.fields.bio" (click)="addBio($event)" type="button">Add Bio</button>
+                                                <button mat-raised-button color="accent"  id="editBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk && userProfile.fields.bio" (click)="addBio($event)" type="button">Edit Bio</button>
+                                        
+                                        
+                                            </mat-tab>
+                                        <mat-tab *ngIf="userProfile.fields.is_cyber_owner === '1'" label="My Cybers">
+                                            <br>
+                                            <br>
+                                            <div class="my-cybers" *ngIf="Cybers[0]">
+                                                <div *ngFor="let cyber of Cybers">
+                                                    <div class="row row-styling-2">
+                                                        <div class="col-12 col-lg-4">
+                                                            <a [routerLink]="['/place-details', cyber.pk]">
+                                                                <img class="img-fluid d-block mx-auto rating-div" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{cyber.fields.logo}}">
+                                                                <br>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-12 col-lg-8">
+                                                            <h3 class="text-style">{{cyber.fields.name}}
+                                                            </h3>
+                                                            <div class="text-style">
+                                                                <div class="d-inline-flex location">
+                                                                    <p class="card-text"><i class="fas fa-location"></i> {{cyber.fields.location}}
+                                                                    </p> 
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <hr>
+                                                </div>
+                                            </div>
+                                        </mat-tab>
+                                        <mat-tab *ngIf="userProfile.fields.is_cyber_owner === '1'" label="My Events">
+                                            <br>
+                                            <br>
+                                            <div class="my-events" *ngIf="Events[0]">
+                                                <div  *ngFor="let event of Events">
+                                                    <div class="row row-styling-2">
+                                                        <div class="col-12 col-lg-4">
+                                                            <a [routerLink]="['/event-details', event.pk]">
+                                                                <img class="img-fluid d-block mx-auto rating-div" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{event.fields.cover}}">
+                                                                <br>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-12 col-lg-8">
+                                                            <h3 class="text-style">{{event.fields.name}}
+                                                            </h3>
+                                                            
+                                                            <div class="text-style">
+                                                                <div class="d-inline-flex location">
+                                                                    <p class="card-text"><i class="fas fa-location"></i> {{event.fields.location}}
+                                                                    </p> 
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div style="float: left;">
+                                                                <span class="by-class">By <span class="by-class-2">.</span></span>
+                                                                <a [routerLink]="['/place-details', event.fields.cyber[0]]" class="cyber-anchor">
+                                                                    <p class="cyber-name"><strong>{{event.fields.cyber[1]}}</strong></p>
+                                                                </a>
+                                                            </div>
+                                                                <h5 class="text-right" style="float: right;"><strong>{{event.fields.from_date | date }} - {{event.fields.to_date | date }}</strong></h5>
+                                                            
+                                                            
+
+                                                            
+                                                            
+                                                            
+                                        
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </mat-tab>
+                                        <mat-tab label="My Ratings">
+                                            <br>
+                                            <br>
+                                            <div class="my-ratings"  *ngIf="userRatings[0]">
+                                                <div *ngFor="let rating of userRatings">
+                                                    <div class="row row-styling-2">
+                                                        <div class="col-12 col-lg-4">
+                                                            <a [routerLink]="['/place-details', rating.fields.cyber[0]]">
+                                                                <img class="img-fluid d-block mx-auto rating-div" src="{{rating.fields.cyber[4]}}">
+                                                                <br>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-12 col-lg-8">
+                                                            <h3 class="text-style">{{rating.fields.cyber[1]}}
+                                                            </h3>
+                                                            
+                                                            <div class="text-style">
+                                                                <div class="d-inline-flex location">
+                                                                    <p class="card-text"><i class="fas fa-location"></i> {{rating.fields.cyber[2]}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div  class="rating-style">
+                                                                <ngb-rating [(rate)]="rating.fields.rating" [(readonly)]="readOnlyValue">
+                                                                    <ng-template let-fill="fill" let-index="index">
+                                                                      <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                                                                    </ng-template>
+                                                                  </ngb-rating>
+                                                            </div>
+                                                            
+                                                            <div>
+                                                                <!-- <span class="by">By: </span>
+                                                                <a [routerLink]="['/place-details', event.fields.cyber[0]]" class="cyber-anchor">
+                                                                    <p class="cyber-name"><strong>{{event.fields.cyber[1]}}</strong></p>
+                                                                </a> -->
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                        
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </mat-tab>
+                                      </mat-tab-group>   
+                                </div>
+                            </div>
+
+                            <hr class="my-4"> 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
