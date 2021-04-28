@@ -25,7 +25,7 @@ export class CompletePasswordResetComponent implements OnInit {
     password: new FormControl(''),
     confirm_password: new FormControl(''),
   }, [Validators.required]);
-  baseUrl = 'http://localhost:8000/reset-password';
+  baseUrl = 'https://etak-start-api.herokuapp.com/reset-password';
   userObj = [];
   id: number;
   constructor(private elRef:ElementRef,private communityService: CommunityService,private http: HttpClient,public router: Router,private cookieService: CookieService,private _snackBar: MatSnackBar) { }

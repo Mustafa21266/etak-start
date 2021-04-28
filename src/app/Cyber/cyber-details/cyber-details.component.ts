@@ -220,7 +220,7 @@ export class CyberDetailsComponent implements OnInit {
         const body=JSON.stringify({
           'user_rating': this.currentRate
         });
-          this.http.post('http://localhost:8000/add-cyber-rating/'+this.Cyber[0].pk+'/'+this.userObjCyberDetails.pk, body,{'headers':headers})
+          this.http.post('https://etak-start-api.herokuapp.com/add-cyber-rating/'+this.Cyber[0].pk+'/'+this.userObjCyberDetails.pk, body,{'headers':headers})
           .subscribe(res => {
             this.openSnackBar("Rating Added Successfully","Ok");
             this.readOnlyValue = true
@@ -257,7 +257,7 @@ export class CyberDetailsComponent implements OnInit {
       this.cyberForm.value['token']= this.userObjCyberDetails.fields.token;
       const headers = { 'content-type': 'application/json'}; 
     const body=JSON.stringify(this.cyberForm.value);
-      this.http.post('http://localhost:8000/add-description/'+this.Cyber[0].pk+'/'+this.userObjCyberDetails.pk, body,{'headers':headers})
+      this.http.post('https://etak-start-api.herokuapp.com/add-description/'+this.Cyber[0].pk+'/'+this.userObjCyberDetails.pk, body,{'headers':headers})
       .subscribe(res => {
         this.openSnackBar("Description Added Successfully","Ok");
         setTimeout(()=>{

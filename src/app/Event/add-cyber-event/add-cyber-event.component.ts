@@ -217,7 +217,7 @@ this.cyberEventForm.value.location = `${location.value},${this.governate}`
 await this.communityService.addCyberEvent(this.cyberEventForm.value,this.Cyber[0].pk,this.userObjAddEvent.pk).subscribe(event => {
   this.cyberEvent = event;
   this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-  this.http.post('http://localhost:8000/add-cyber-event-cover/'+this.Cyber[0].pk+'/'+this.cyberEvent[0].pk+'/'+this.userObjAddEvent.pk, this.formData)
+  this.http.post('https://etak-start-api.herokuapp.com/add-cyber-event-cover/'+this.Cyber[0].pk+'/'+this.cyberEvent[0].pk+'/'+this.userObjAddEvent.pk, this.formData)
         .subscribe(res => {
           this.openSnackBar("Event Created Successfully","Ok");
           setTimeout(()=>{

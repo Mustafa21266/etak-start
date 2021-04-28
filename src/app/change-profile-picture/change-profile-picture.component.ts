@@ -65,7 +65,7 @@ export class ChangeProfilePictureComponent implements OnInit {
           this.spinner = 1;
           this.formData.append('logo', this.selectedProfilePicture,this.selectedProfilePicture.name);
           this.formData.append('token', this.data[0].fields.token);
-          this.http.post('http://localhost:8000/change-cyber-profile-pic/'+this.data[1].pk+'/'+this.data[0].pk, this.formData)
+          this.http.post('https://etak-start-api.herokuapp.com/change-cyber-profile-pic/'+this.data[1].pk+'/'+this.data[0].pk, this.formData)
             .subscribe(res => {
               this.openSnackBar("Cyber Logo Changed Successfully","Ok");
               setTimeout(()=>{
@@ -80,7 +80,7 @@ export class ChangeProfilePictureComponent implements OnInit {
           this.spinner = 1;
           this.formData.append('profile_picture', this.selectedProfilePicture,this.selectedProfilePicture.name)
           this.formData.append('token', this.data.fields.token);
-          this.http.post('http://localhost:8000/change-profile-pic/'+this.data.pk, this.formData)
+          this.http.post('https://etak-start-api.herokuapp.com/change-profile-pic/'+this.data.pk, this.formData)
             .subscribe(res => {
               this.openSnackBar("Profile Picture Changed Successfully","Ok");
               setTimeout(()=>{
