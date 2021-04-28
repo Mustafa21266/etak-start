@@ -122,7 +122,7 @@ export class HomepageMainComponent implements OnInit {
     return array
 }
 openWhatIsEtakStart(event){
-  this.router.navigate(['articles','1'])
+  this.router.navigate(['articles','4'])
 }
 cardMouseEnter(event){
   event.target.style.filter = 'opacity(60%)';
