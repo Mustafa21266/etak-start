@@ -3,14 +3,11 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
           <div class="row">
-            <div class="col-7 mx-auto">
+            <div class="col-12 col-lg-8 mx-auto">
               <h1 class="login-header">Login</h1>
-              
+              <br>
+            <br>
               <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()" class="form">
                 <div class="form-row">
                   <div class="form-group col-12">
@@ -39,7 +36,7 @@
                         <app-loading-widget *ngIf="spinner" style="float: left;" [spinner]="spinner"></app-loading-widget>
                       </div>
                       <div class="col-2">
-                        <button mat-raised-button type="submit" [disabled]="enableLogin==false" class="login-btn"  color="accent">Login</button>
+                        <button mat-raised-button type="submit" [disabled]="enableLogin==false" class="login-btn" style="background-color: #fea82f;">Login</button>
                         
                       </div>
                       

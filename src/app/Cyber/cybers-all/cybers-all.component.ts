@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommunityService } from '../../etakstart.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { fadeInAnimation } from '../../app.component';
 @Component({
   selector: 'app-cybers-all',
   templateUrl: './cybers-all.component.html',
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' },
   styleUrls: ['./cybers-all.component.css']
 })
 export class CybersAllComponent implements OnInit {
@@ -15,6 +18,7 @@ export class CybersAllComponent implements OnInit {
   allRates = 0;
   averageRating = 0;
   total = 0;
+  spinner = 0;
   constructor(private communityService: CommunityService,config: NgbRatingConfig,private _snackBar: MatSnackBar) { 
     config.max = 5;
   }
@@ -39,10 +43,14 @@ export class CybersAllComponent implements OnInit {
     },1000)
   }
   async getAllCybers(){
+    this.spinner = 1;
     await this.communityService.getAllCybers().subscribe(data => {
       this.Cybers = this.shuffleArray(data)
       this.originalCybers = this.Cybers
       
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
     });
     
   }

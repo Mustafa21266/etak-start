@@ -1,5 +1,6 @@
 <div class="row row-styling">
     <div class="col-12 col-lg-2">
+       
         <div *ngIf="!isMobileLayout" style="padding: 0px 15px;">           
         <br>
         <br>
@@ -16,6 +17,7 @@
     </div>
     </div> 
     <div class="col-12 col-lg-8 background-class">
+        <app-loading-widget *ngIf="spinner" [spinner]="spinner" style="position: relative;top: 10px;z-index: 1;"></app-loading-widget> 
         <div *ngIf="!events[0]">
             <br>
             <br>

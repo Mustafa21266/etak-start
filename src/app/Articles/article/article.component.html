@@ -13,7 +13,7 @@
           <meta property="og:title" content="{{Article[0].fields.headline}}">
 <meta property="og:description" content="{{Article[0].fields.intro_text}}">
 <meta property="og:image" content="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}">
-<meta property="og:url" content="http://euro-travel-example.com/index.htm">
+<meta property="og:url" content="{{metaUrl}}">
 <meta name="twitter:title" content="{{Article[0].fields.headline}}">
 <meta name="twitter:description" content=" {{Article[0].fields.intro_text}}">
 <meta name="twitter:image" content=" https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}">
@@ -48,7 +48,7 @@
 <br>
                 
                 <hr> 
-                <button mat-raised-button color="accent" *ngIf="userObjArticle && userObjArticle.pk === Article[0].fields.user[0]" [routerLink]="['/edit-article', Article[0].pk]">Edit</button>      
+                <button mat-raised-button style="background-color: #fea82f;" *ngIf="userObjArticle && userObjArticle.pk === Article[0].fields.user[0]" [routerLink]="['/edit-article', Article[0].pk]">Edit</button>      
                 <br>
                 <br>  
                 

@@ -15,6 +15,7 @@ export class KnowYourContentCreatorArticlesComponent implements OnInit {
   Articles = [];
   originalArticles = [];
   date;
+  spinner = 0;
   constructor(private elRef:ElementRef,private communityService: CommunityService,private route: ActivatedRoute,private router: Router,private cookieService: CookieService) { }
   searchResultsChange(results){
     this.Articles = results
@@ -27,6 +28,7 @@ export class KnowYourContentCreatorArticlesComponent implements OnInit {
     return array
 }
   ngOnInit(): void {
+    this.spinner = 1;
     this.communityService.getKYCCArticles().subscribe(data =>{
       data.forEach(element => {
         let now = DateTime.now();
@@ -66,6 +68,9 @@ export class KnowYourContentCreatorArticlesComponent implements OnInit {
      
       this.Articles = this.shuffleArray(data);
       this.originalArticles = data;
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
     })
   }
   cardMouseEnter(event){

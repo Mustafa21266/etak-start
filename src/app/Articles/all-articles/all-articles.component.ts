@@ -15,12 +15,13 @@ export class AllArticlesComponent implements OnInit {
   Articles = [];
   originalArticles = [];
   date;
-
+  spinner = 0;
   constructor(private elRef:ElementRef,private communityService: CommunityService,private route: ActivatedRoute,private router: Router,private cookieService: CookieService) { }
  searchResultsChange(results){
     this.Articles = results
   }
   ngOnInit(): void {
+    this.spinner = 1;
     this.communityService.getAllArticles().subscribe(data =>{
       data.forEach(element => {
         let now = DateTime.now();
@@ -60,6 +61,9 @@ export class AllArticlesComponent implements OnInit {
      
       this.Articles = data;
       this.originalArticles = data;
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
     })
   }
   cardMouseEnter(event){

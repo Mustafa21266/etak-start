@@ -1,22 +1,23 @@
 <!-- <app-slideshow *ngIf="this.router.url === '/sign-up' || this.router.url === '/log-in'"></app-slideshow> -->
-    <br>
-    <br>
-    <br>
+<br>    
+<br>
     <br>
     <br>
 <div class="container mx-auto">
         <div class="row">
-          <div class="col-12">
-            <h1 class="text-center sign-up">Sign-Up</h1> 
+          <div class="col-12 col-lg-10 mx-auto">
+            <h1 class="text-center sign-up">Sign-Up</h1>
+            <br>
+            <br>
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form">
               <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                   <mat-form-field appearance="fill" class="form-field-styles">
                     <mat-label class="color-white">First Name:</mat-label>
                     <input matInput type="text" class="text-white" formControlName="first_name" required>
                   </mat-form-field>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                   <mat-form-field appearance="fill" class="form-field-styles">
                     <mat-label class="color-white">Last Name:</mat-label>
                     <input matInput type="text"  class="text-white" formControlName="last_name" required>
@@ -32,7 +33,7 @@
                   </mat-form-field>
 
                 </div> -->
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                   <mat-form-field appearance="fill" class="form-field-styles">
                     <mat-label class="color-white">Email:</mat-label>
             <input matInput required  class="text-white" formControlName="email" type="email" ngModel [email]="true" required>
@@ -41,7 +42,7 @@
                   
 
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                   <mat-form-field appearance="fill" class="form-field-styles">
                     <mat-label class="color-white">Password:</mat-label>
                     <input matInput  class="text-white" [type]="hide ? 'password' : 'text'" formControlName="password" (keyup)="checkRegister($event)" required>
@@ -54,14 +55,14 @@
               </div>
         
               <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                   <mat-form-field appearance="fill" class="form-field-styles">
                     <mat-label style="color : #ffffff">Phone Number:</mat-label>
                     <input matInput type="text"  class="text-white" formControlName="phone_number" class="color-white" (keyup)="checkPhoneNumber($event)" required>
                   </mat-form-field>
                   <P id="errorMessagePhone" class="color-white"></P>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                   <mat-form-field appearance="fill" class="form-field-styles" required>
                     <mat-label style="color : #ffffff">Account Type :</mat-label>
                       <mat-select [(value)]="userType" formControlName="is_cyber_owner" required>
@@ -91,7 +92,8 @@
 
                     </div>
                     <div class="col-2">
-                      <button mat-raised-button type="submit" [disabled]="!enableRegister" class="sign-up-btn" color="accent">Sign-Up</button>
+                      <br>
+                      <button mat-raised-button type="submit" [disabled]="!enableRegister" class="sign-up-btn" style="background-color: #fea82f;">Sign-Up</button>
                       
                     </div>
                   </div>
@@ -106,6 +108,7 @@
 
   <div class="row">
     <div class="col-12">
+      <br>
       <p class="login-anchor">Already Have an Account ? <span style="margin-left: 7px;"><a routerLink="/log-in">Log in
       </a></span></p>
     </div>

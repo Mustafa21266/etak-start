@@ -17,6 +17,7 @@ export class ArticleComponent implements OnInit {
   id: number;
   path: string;
   date;
+  metaUrl = window.location.href;
   constructor(private communityService: CommunityService,private route: ActivatedRoute,public router: Router,private cookieService: CookieService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {

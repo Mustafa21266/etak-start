@@ -9,11 +9,13 @@
         <br>
         <br>
         <h1 class="all-articles-header">All Articles</h1>
+        <app-loading-widget *ngIf="spinner" [spinner]="spinner" style="position: relative;top: 10px;z-index: 1;"></app-loading-widget> 
         <br>
         <br>
     </div>
 </div>
 <div class="row">
+ 
 <div class="col-12">
     <div *ngIf="!Articles[0]">
         <br>
@@ -23,6 +25,7 @@
     <div *ngIf="Articles[0]">
         <div class="row">
             <div class="col-12 col-lg-12 col-xl-12 mx-auto">
+             
                 <div class="w-100 d-block mx-auto">
                     <div class="card card-big" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
                         <a [routerLink]="['/articles', Articles[0].pk]">

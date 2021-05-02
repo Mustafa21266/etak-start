@@ -12,11 +12,13 @@ export class EventsAllComponent implements OnInit {
   originalEvents = [];
   isMobileLayout = false;
   date;
+  spinner = 0;
   constructor(private communityService: CommunityService) { }
   searchResultsChange(results){
     this.events = results
   }
   ngOnInit(): void {
+    this.spinner = 1;
     this.communityService.getAllEvents().subscribe(data => {
       data.forEach(element => {
         let now = DateTime.now();
@@ -57,6 +59,10 @@ export class EventsAllComponent implements OnInit {
 
       this.events = data;
       this.originalEvents = this.events
+      this.spinner = 0;
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
     })
     this.isMobileLayout = window.innerWidth <= 991
     window.onresize = () => {this.isMobileLayout = window.innerWidth <= 991};

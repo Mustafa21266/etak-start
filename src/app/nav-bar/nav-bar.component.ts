@@ -25,7 +25,7 @@ export class NavBarComponent implements OnInit {
   constructor(private cookieService: CookieService,private communityService: CommunityService,public router: Router) { }
 
   ngOnInit(): void {
-    document.getElementById("searchFieldForm").setAttribute("style","display: none;")
+    document.getElementById("searchFieldForm").setAttribute("style","display: inline-flex;align-items: center;")
     this.dataCount = 15;
     
     if(this.token !== ''){
@@ -167,6 +167,7 @@ markAsRead(event,notification_id){
     
   }
   showSearch(event){
+    document.getElementById("searchFieldForm").setAttribute("style","display: none;");
     if(document.getElementById("searchFieldForm").getAttribute("style") === 'display: none;'){
       document.getElementById("searchFieldForm").setAttribute("style","display: inline-flex;align-items: center;");
     }else {

@@ -1,6 +1,6 @@
 .row-background {
   padding: 25px;
-  background-color: #0F0C24;
+  background-color: #373833;
 }
 .row-style {
   position: relative;
@@ -130,7 +130,7 @@ pre {
   border-radius: 15px;
 }
 .event-div {
-  /* background-color: #0F0C24; */
+  /* background-color: #373833; */
   border-radius: 20px;
 }
 .event-cover {

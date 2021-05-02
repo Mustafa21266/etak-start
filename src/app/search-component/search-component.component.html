@@ -137,11 +137,11 @@
                         </div>
                         <div class="col-12 col-lg-8">
                             <h2>{{result.fields.headline}}</h2>
-                            <p class="author-mention color-white"><span class="by">By <span class="dot-style">.</span></span> {{result.fields.user[1]}} {{result.fields.user[2]}}</p>
+                            <p class="author-mention color-white"><span class="by">By <span class="dot-style">.</span></span> {{result.fields.user[1]}} {{result.fields.user[2]}}<span class="float-right"><strong>{{result.fields.date_added}}</strong></span></p>
                             
-                            <div class="date-added color-white">
-                                <p class="date-added-text color-white"><strong>{{result.fields.date_added}}</strong></p>
-                            </div>
+                            <!-- <div class="date-added color-white">
+                                <p class="date-added-text color-white"></p>
+                            </div> -->
                             
                             
         
@@ -160,7 +160,7 @@
                                   <div class="text-left">
                                     <!-- <p class="from-to text-right"></p> -->
                                 </div>
-                                <p class="text-left">{{result.fields.intro_text}}....</p>
+                                <p class="text-left color-black">{{result.fields.intro_text}}....</p>
                                   <br>
                                 </mat-expansion-panel>
                               </mat-accordion>

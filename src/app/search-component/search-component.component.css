@@ -34,7 +34,7 @@
   font-size: 1.8rem;
 }
 .section-styling {
-  /* background-color: #0F0C24; */
+  /* background-color: #373833; */
   border-radius: 20px;
 }
 .row-style-1 {
@@ -379,4 +379,7 @@ a {
 
 .color-white {
   color: white;
+}
+.color-black {
+  color: black;
 }

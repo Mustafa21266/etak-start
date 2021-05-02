@@ -1,7 +1,7 @@
 
   <!-- <app-slideshow *ngIf="this.router.url === '/sign-up' || this.router.url === '/log-in'"></app-slideshow>
   <app-app-slideshow></app-app-slideshow> -->
-  <div class="container-fluid">
+  <div class="container-fluid" *ngIf="this.router.url !== '/'">
     <div class="row">
       <div class="col-12" style="padding: 0px;">
   <router-outlet name="nav-bar"></router-outlet>

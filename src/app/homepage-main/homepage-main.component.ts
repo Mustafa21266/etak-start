@@ -4,9 +4,12 @@ import { DateTime } from 'luxon';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { fadeInAnimation } from '../app.component';
 @Component({
   selector: 'app-homepage-main',
   templateUrl: './homepage-main.component.html',
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' },
   styleUrls: ['./homepage-main.component.css']
 })
 export class HomepageMainComponent implements OnInit {
@@ -16,21 +19,26 @@ export class HomepageMainComponent implements OnInit {
   Articles = [];
   shuffledArticles = [];
   Events = [];
-  UserCount = [];
+  UserCount = 0;
   date;
   homepageUrl = 'https://etak-start.s3.eu-west-3.amazonaws.com/media/homepage-cover.png';
   readOnlyValue = true;
   config: NgbRatingConfig;
+  spinner = 0;
   constructor(private communityService: CommunityService,private cookieService: CookieService,config: NgbRatingConfig,public router: Router) { 
     config.max = 5;
   }
  
   ngOnInit(): void {
+    this.spinner = 1;
     this.communityService.getAllCybers().subscribe(data =>{
       this.Cybers = data;
       this.Cybers = this.shuffleArray(this.Cybers)
       this.communityService.getAllUserCount().subscribe(count =>{
             this.UserCount = count.user_count;
+          },error =>{
+            this.spinner = 0;
+            console.log(error)
           })
       this.communityService.getAllEvents().subscribe(data => {
         this.Events = data;
@@ -110,9 +118,20 @@ export class HomepageMainComponent implements OnInit {
               }
           });
           
+        },error =>{
+          this.spinner = 0;
+          console.log(error)
         })
+      },error =>{
+        this.spinner = 0;
+        console.log(error)
       })
+      
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
     })
+    
   }
   shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -122,7 +141,7 @@ export class HomepageMainComponent implements OnInit {
     return array
 }
 openWhatIsEtakStart(event){
-  this.router.navigate(['articles','4'])
+  this.router.navigate(['articles','1'])
 }
 cardMouseEnter(event){
   event.target.style.filter = 'opacity(60%)';

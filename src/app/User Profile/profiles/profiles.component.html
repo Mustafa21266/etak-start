@@ -35,7 +35,7 @@
 <br>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <button mat-raised-button color="accent" id="editProfileBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" routerLink="/edit-profile-info/{{userProfile.pk}}" type="button">Edit Profile</button>
+                                                    <button mat-raised-button style="background-color: #fea82f;" id="editProfileBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" routerLink="/edit-profile-info/{{userProfile.pk}}" type="button">Edit Profile</button>
                                                     <br>
                                                 </div>
                                             </div>
@@ -79,8 +79,8 @@
                                                 <br>
                                                 <br>
                                                 <br>
-                                                <button mat-raised-button color="accent"  id="addBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk && !userProfile.fields.bio" (click)="addBio($event)" type="button">Add Bio</button>
-                                                <button mat-raised-button color="accent"  id="editBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk && userProfile.fields.bio" (click)="addBio($event)" type="button">Edit Bio</button>
+                                                <button mat-raised-button style="background-color: #fea82f;" id="addBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk && !userProfile.fields.bio" (click)="addBio($event)" type="button">Add Bio</button>
+                                                <button mat-raised-button style="background-color: #fea82f;" id="editBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk && userProfile.fields.bio" (click)="addBio($event)" type="button">Edit Bio</button>
                                         
                                         
                                             </mat-tab>
