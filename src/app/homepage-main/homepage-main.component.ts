@@ -28,110 +28,107 @@ export class HomepageMainComponent implements OnInit {
   constructor(private communityService: CommunityService,private cookieService: CookieService,config: NgbRatingConfig,public router: Router) { 
     config.max = 5;
   }
- 
   ngOnInit(): void {
     this.spinner = 1;
-    this.communityService.getAllCybers().subscribe(data =>{
-      this.Cybers = data;
-      this.Cybers = this.shuffleArray(this.Cybers)
-      this.communityService.getAllUserCount().subscribe(count =>{
-            this.UserCount = count.user_count;
-          },error =>{
-            this.spinner = 0;
-            console.log(error)
-          })
-      this.communityService.getAllEvents().subscribe(data => {
-        this.Events = data;
-        this.Events = this.shuffleArray(this.Events)
-        data.forEach(element => {
-          let now = DateTime.now();
-        let newDate = DateTime.fromISO(element.fields.date_added);
-        this.date = now.toLocaleString()
-          var delta = Math.round((now- newDate) / 1000);
-          var minute = 60,
-                    hour = minute * 60,
-                      day = hour * 24,
-                  week = day * 7;
-          var fuzzy;
-          if (delta < 30) {
-              fuzzy = 'just now.';
-              element.fields.date_added = fuzzy;
-            } else if (delta < minute) {
-             fuzzy = delta + ' seconds ago.';
-             element.fields.date_added = fuzzy;
-            } else if (delta < 2 * minute) {
-                fuzzy = 'a minute ago.'
-                element.fields.date_added = fuzzy;
-             } else if (delta < hour) {
-                fuzzy = Math.floor(delta / minute) + ' minutes ago.';
-                element.fields.date_added = fuzzy;
-            } else if (Math.floor(delta / hour) == 1) {
-           fuzzy = '1 hour ago.'
-           element.fields.date_added = fuzzy;
-            } else if (delta < day) {
-             fuzzy = Math.floor(delta / hour) + ' hours ago.';
-             element.fields.date_added = fuzzy;
-            } else if (delta < day * 2) {
-             fuzzy = 'yesterday';
-             element.fields.date_added = fuzzy;
-            }else {
-              element.fields.date_added = element.fields.date_added.slice(0 ,10);
-            }
-        });
-        this.communityService.getAllArticles().subscribe(data => {
-          this.Articles = data;
-          this.shuffledArticles = this.shuffleArray(data)
-          data.forEach(element => {
-        
-          let now = DateTime.now();
-          let newDate = DateTime.fromISO(element.fields.date_added);
-          this.date = now.toLocaleString()
-            var delta = Math.round((now- newDate) / 1000);
-            var minute = 60,
-                      hour = minute * 60,
-                        day = hour * 24,
-                    week = day * 7;
-            var fuzzy;
-            if (delta < 30) {
-                fuzzy = 'just now.';
-                element.fields.date_added = fuzzy;
-              } else if (delta < minute) {
-               fuzzy = delta + ' seconds ago.';
-               element.fields.date_added = fuzzy;
-              } else if (delta < 2 * minute) {
-                  fuzzy = 'a minute ago.'
-                  element.fields.date_added = fuzzy;
-               } else if (delta < hour) {
-                  fuzzy = Math.floor(delta / minute) + ' minutes ago.';
-                  element.fields.date_added = fuzzy;
-              } else if (Math.floor(delta / hour) == 1) {
-             fuzzy = '1 hour ago.'
-             element.fields.date_added = fuzzy;
-              } else if (delta < day) {
-               fuzzy = Math.floor(delta / hour) + ' hours ago.';
-               element.fields.date_added = fuzzy;
-              } else if (delta < day * 2) {
-               fuzzy = 'yesterday';
-               element.fields.date_added = fuzzy;
-              }else {
-                element.fields.date_added = element.fields.date_added.slice(0 ,10);
-              }
-          });
-          
-        },error =>{
-          this.spinner = 0;
-          console.log(error)
-        })
-      },error =>{
-        this.spinner = 0;
-        console.log(error)
-      })
-      
+    this.communityService.getAllUserCount().subscribe(count =>{
+      this.UserCount = count.user_count;
     },error =>{
       this.spinner = 0;
       console.log(error)
     })
+    this.communityService.getAllCybers().subscribe(data =>{
+      this.Cybers = data;
+      this.Cybers = this.shuffleArray(this.Cybers)
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
+    })
+    this.communityService.getAllEvents().subscribe(data => {
+      this.Events = data;
+      this.Events = this.shuffleArray(this.Events)
+      data.forEach(element => {
+        let now = DateTime.now();
+      let newDate = DateTime.fromISO(element.fields.date_added);
+      this.date = now.toLocaleString()
+        var delta = Math.round((now- newDate) / 1000);
+        var minute = 60,
+                  hour = minute * 60,
+                    day = hour * 24,
+                week = day * 7;
+        var fuzzy;
+        if (delta < 30) {
+            fuzzy = 'just now.';
+            element.fields.date_added = fuzzy;
+          } else if (delta < minute) {
+           fuzzy = delta + ' seconds ago.';
+           element.fields.date_added = fuzzy;
+          } else if (delta < 2 * minute) {
+              fuzzy = 'a minute ago.'
+              element.fields.date_added = fuzzy;
+           } else if (delta < hour) {
+              fuzzy = Math.floor(delta / minute) + ' minutes ago.';
+              element.fields.date_added = fuzzy;
+          } else if (Math.floor(delta / hour) == 1) {
+         fuzzy = '1 hour ago.'
+         element.fields.date_added = fuzzy;
+          } else if (delta < day) {
+           fuzzy = Math.floor(delta / hour) + ' hours ago.';
+           element.fields.date_added = fuzzy;
+          } else if (delta < day * 2) {
+           fuzzy = 'yesterday';
+           element.fields.date_added = fuzzy;
+          }else {
+            element.fields.date_added = element.fields.date_added.slice(0 ,10);
+          }
+      });
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
+    })
+    this.communityService.getAllArticles().subscribe(data => {
+      this.Articles = data;
+      this.shuffledArticles = this.shuffleArray(data)
+      data.forEach(element => {
     
+      let now = DateTime.now();
+      let newDate = DateTime.fromISO(element.fields.date_added);
+      this.date = now.toLocaleString()
+        var delta = Math.round((now- newDate) / 1000);
+        var minute = 60,
+                  hour = minute * 60,
+                    day = hour * 24,
+                week = day * 7;
+        var fuzzy;
+        if (delta < 30) {
+            fuzzy = 'just now.';
+            element.fields.date_added = fuzzy;
+          } else if (delta < minute) {
+           fuzzy = delta + ' seconds ago.';
+           element.fields.date_added = fuzzy;
+          } else if (delta < 2 * minute) {
+              fuzzy = 'a minute ago.'
+              element.fields.date_added = fuzzy;
+           } else if (delta < hour) {
+              fuzzy = Math.floor(delta / minute) + ' minutes ago.';
+              element.fields.date_added = fuzzy;
+          } else if (Math.floor(delta / hour) == 1) {
+         fuzzy = '1 hour ago.'
+         element.fields.date_added = fuzzy;
+          } else if (delta < day) {
+           fuzzy = Math.floor(delta / hour) + ' hours ago.';
+           element.fields.date_added = fuzzy;
+          } else if (delta < day * 2) {
+           fuzzy = 'yesterday';
+           element.fields.date_added = fuzzy;
+          }else {
+            element.fields.date_added = element.fields.date_added.slice(0 ,10);
+          }
+      });
+      this.spinner = 0; 
+    },error =>{
+      this.spinner = 0;
+      console.log(error)
+    })
   }
   shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
