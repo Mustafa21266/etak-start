@@ -102,7 +102,7 @@ export class EditCyberInfoComponent implements OnInit {
             language:'ar'
             /* todo */
           };
-          const loader = new Loader('AIzaSyD--3IwVc2MTQWjd6i6tBC2RQrYeOBP8s0', options);
+          const loader = new Loader(process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'], options);
           loader.load().then(function (google) {
             const uluru = { lat: 31.205753, lng:  29.924526 };
               const map = new google.maps.Map(document.getElementById('map'), {
@@ -144,7 +144,7 @@ export class EditCyberInfoComponent implements OnInit {
           };
           let dataObj: data;
           dataObj = data
-          const loader = new Loader('AIzaSyD--3IwVc2MTQWjd6i6tBC2RQrYeOBP8s0', options);
+          const loader = new Loader(process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'], options);
           let lat = dataObj.candidates[0].geometry.location.lat
           let lng = dataObj.candidates[0].geometry.location.lng
           loader.load().then(function (google) {
