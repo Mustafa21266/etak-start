@@ -64,7 +64,7 @@ export class EditCyberInfoComponent implements OnInit {
   map;
   marker;
   apiLink = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=';
-  attrs = '&inputtype=textquery&fields=name,geometry&key='+process.env['GOOGLE_MAPS_API_KEY'];
+  attrs = '&inputtype=textquery&fields=name,geometry&key='+process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'];
   locationObj = {};
   governates = [{value:'Alexandria',},{value:'Aswan',},{value:'Asyut',},{value:'Beheira',},{value:'Beni Suef',},{value:'Cairo',},{value:'Dakahlia',},{value:'Damietta',},{value:"Faiyum",},{value:'Gharbia',},{value:"Giza",},{value:"Ismailia",},{value:"Kafr El Sheikh",},{value:'Luxor',},{value:"Matruh",},{value:'Minya',},{value:'Monufia',},{value:"New Valley",},{value:"North Sinai",},{value:"Port Said",},{value:"Qalyubia",},{value:"Qena",},{value:"Red Sea",},{value:"Sharqia",},{value:'Sohag',},{value:"South Sinai",},{value:"Suez",}]
   governate : string;
