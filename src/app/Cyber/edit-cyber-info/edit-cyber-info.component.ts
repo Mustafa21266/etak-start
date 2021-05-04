@@ -10,7 +10,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { DeleteCyberComponent } from '../delete-cyber/delete-cyber.component';
 import {ImageUploadComponent} from '../../image-upload/image-upload.component';
 import {Loader, LoaderOptions} from 'google-maps';
-
+import { environment } from '../../../environments/environment.prod'
 interface data {
   candidates: Array<any>,
   geometry: Object,
@@ -64,7 +64,7 @@ export class EditCyberInfoComponent implements OnInit {
   map;
   marker;
   apiLink = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=';
-  attrs = '&inputtype=textquery&fields=name,geometry&key='+process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'];
+  attrs = '&inputtype=textquery&fields=name,geometry&key='+environment.GOOGLE_MAPS_API_KEY;
   locationObj = {};
   governates = [{value:'Alexandria',},{value:'Aswan',},{value:'Asyut',},{value:'Beheira',},{value:'Beni Suef',},{value:'Cairo',},{value:'Dakahlia',},{value:'Damietta',},{value:"Faiyum",},{value:'Gharbia',},{value:"Giza",},{value:"Ismailia",},{value:"Kafr El Sheikh",},{value:'Luxor',},{value:"Matruh",},{value:'Minya',},{value:'Monufia',},{value:"New Valley",},{value:"North Sinai",},{value:"Port Said",},{value:"Qalyubia",},{value:"Qena",},{value:"Red Sea",},{value:"Sharqia",},{value:'Sohag',},{value:"South Sinai",},{value:"Suez",}]
   governate : string;
@@ -102,7 +102,7 @@ export class EditCyberInfoComponent implements OnInit {
             language:'ar'
             /* todo */
           };
-          const loader = new Loader(process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'], options);
+          const loader = new Loader(environment.GOOGLE_MAPS_API_KEY, options);
           loader.load().then(function (google) {
             const uluru = { lat: 31.205753, lng:  29.924526 };
               const map = new google.maps.Map(document.getElementById('map'), {
@@ -144,7 +144,7 @@ export class EditCyberInfoComponent implements OnInit {
           };
           let dataObj: data;
           dataObj = data
-          const loader = new Loader(process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'], options);
+          const loader = new Loader(environment.GOOGLE_MAPS_API_KEY, options);
           let lat = dataObj.candidates[0].geometry.location.lat
           let lng = dataObj.candidates[0].geometry.location.lng
           loader.load().then(function (google) {

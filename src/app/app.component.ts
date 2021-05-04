@@ -4,8 +4,8 @@ import { CommunityService } from './etakstart.service';
 import { User } from './models/users_model';
 import {Router, RouterOutlet} from "@angular/router";
 import {SwPush} from '@angular/service-worker';
-// import { slideInAnimation } from './animations';
 
+// import { slideInAnimation } from './animations';
 import {
   trigger,
     state,
@@ -18,6 +18,7 @@ import {
   // ...
 } from '@angular/animations';
 import { SimpleChange } from '@angular/core';
+import { from } from 'rxjs';
 export const fadeInAnimation =
     // trigger name for attaching this animation to an element using the [@triggerName] syntax
     trigger('fadeInAnimation', [
@@ -32,6 +33,7 @@ export const fadeInAnimation =
             animate('.3s', style({ opacity: 1 }))
         ]),
     ]);
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -40,6 +42,7 @@ export const fadeInAnimation =
     // animation triggers go here
   ]
 })
+
 export class AppComponent implements OnInit {
   readonly VAPID_PUBLIC_KEY = 'BKvPIvscs3NtBQfYY2Tx6zFlCvJ_rk0M4wHinlBzCqViCgSord5VGEEzY3y-54n8wfyb2bw8AOJsxl4g_nxQaqc';
   title = 'mis-community';

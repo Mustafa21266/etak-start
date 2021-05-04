@@ -11,7 +11,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {Loader, LoaderOptions} from 'google-maps';
-
+import { environment } from '../../../environments/environment.prod'
 
 interface data {
   candidates: Array<any>,
@@ -62,7 +62,7 @@ export class AddCyberEventComponent implements OnInit {
   map;
   marker;
   apiLink = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=';
-  attrs = '&inputtype=textquery&fields=name,geometry&key='+process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'];
+  attrs = '&inputtype=textquery&fields=name,geometry&key='+environment.GOOGLE_MAPS_API_KEY;
   locationObj = {};
   governates = [{value:'Alexandria',},{value:'Aswan',},{value:'Asyut',},{value:'Beheira',},{value:'Beni Suef',},{value:'Cairo',},{value:'Dakahlia',},{value:'Damietta',},{value:"Faiyum",},{value:'Gharbia',},{value:"Giza",},{value:"Ismailia",},{value:"Kafr El Sheikh",},{value:'Luxor',},{value:"Matruh",},{value:'Minya',},{value:'Monufia',},{value:"New Valley",},{value:"North Sinai",},{value:"Port Said",},{value:"Qalyubia",},{value:"Qena",},{value:"Red Sea",},{value:"Sharqia",},{value:'Sohag',},{value:"South Sinai",},{value:"Suez",}]
 days = [{value:'1',},{value:'2',},{value:'3',},{value:'4',},{value:'5',},{value:'6',},{value:'7',},{value:'8',},{value:"9",},{value:'10',},{value:"11",},{value:"12",},{value:"13",},{value:'14',},{value:"15'",},{value:'16',},{value:'17',},{value:"18",},{value:"19",},{value:"20",},{value:"21",},{value:"22",},{value:"23",},{value:"24",},{value:'25',},{value:"26",},{value:"27",},{value:"28",},{value:"29",},{value:"30",},{value:"31",},]
@@ -100,7 +100,7 @@ async googleMapsApi(data = {}){
       language:'ar'
       /* todo */
     };
-    const loader = new Loader(process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'], options);
+    const loader = new Loader(environment.GOOGLE_MAPS_API_KEY, options);
     loader.load().then(function (google) {
       const uluru = { lat: 31.205753, lng:  29.924526 };
         const map = new google.maps.Map(document.getElementById('map'), {
@@ -135,7 +135,7 @@ async onClickFind($event){
     };
     let dataObj: data;
     dataObj = data
-    const loader = new Loader(process.env.NODE_ENV['GOOGLE_MAPS_API_KEY'], options);
+    const loader = new Loader(environment.GOOGLE_MAPS_API_KEY, options);
     let lat = dataObj.candidates[0].geometry.location.lat
     let lng = dataObj.candidates[0].geometry.location.lng
     loader.load().then(function (google) {
