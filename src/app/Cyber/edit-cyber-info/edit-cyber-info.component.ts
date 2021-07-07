@@ -332,7 +332,7 @@ this.communityService.editCyberInfo(this.cyberForm.value,this.Cyber[0].pk,this.u
         'Authorization': this.userObjEditCyberInfo.fields.token,
       }; 
       const body=JSON.stringify(this.cyberPictureForm.value);
-      this.http.post('http://localhost:8000/delete-cyber-picture/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, body,{'headers':headers})
+      this.http.post('https://etak-start-api.herokuapp.com/delete-cyber-picture/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, body,{'headers':headers})
         .subscribe(res => {
           this.openSnackBar("Picture Removed Successfully","Ok");
           let cyberPicturesOrderedList = document.getElementById("cyberPicturesOrderedList");
@@ -393,7 +393,7 @@ this.communityService.editCyberInfo(this.cyberForm.value,this.Cyber[0].pk,this.u
       this.openSnackBar("Please select a valid extension!","Ok");
     }
   }
-  this.http.post('http://localhost:8000/add-cyber-pics/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, this.formData)
+  this.http.post('https://etak-start-api.herokuapp.com/add-cyber-pics/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, this.formData)
   .subscribe(res => {
     this.openSnackBar("Picture Added to Gallery Successfully","Ok");
     this.spinner = 0;

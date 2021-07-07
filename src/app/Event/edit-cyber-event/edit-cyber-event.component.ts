@@ -256,7 +256,7 @@ async onClickFind($event){
           const extensions = ['jpg','jpeg','png']
           if(extensions.includes(this.selectedCover.name.split(".")[this.selectedCover.name.split(".").length-1])){
             this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-        this.http.post('http://localhost:8000/add-cyber-event-cover/'+this.CyberEvent[0].fields.cyber[0]+'/'+this.CyberEvent[0].pk+'/'+this.userObjEditEvent.pk, this.formData)
+        this.http.post('https://etak-start-api.herokuapp.com/add-cyber-event-cover/'+this.CyberEvent[0].fields.cyber[0]+'/'+this.CyberEvent[0].pk+'/'+this.userObjEditEvent.pk, this.formData)
               .subscribe(res => {
                 this.openSnackBar("Event Editied Successfully","Ok");
                 setTimeout(()=>{

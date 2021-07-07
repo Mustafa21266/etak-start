@@ -356,7 +356,7 @@ this.elRef.nativeElement.querySelector('#'+"rmBTN_"+platformList.options[platfor
         let uploadImg = () => {
           this.formData.append('logo', this.selectedLogo,this.selectedLogo.name);
           this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-          this.http.post('http://localhost:8000/add-cyber-pics/'+this.createdCyber[0].pk+'/'+this.userObjAddCyber.pk, this.formData)
+          this.http.post('https://etak-start-api.herokuapp.com/add-cyber-pics/'+this.createdCyber[0].pk+'/'+this.userObjAddCyber.pk, this.formData)
             .subscribe(res => {
               this.openSnackBar("Cyber Created Successfully","Ok");
               this.router.navigate(['/place-details',res[0].pk])
