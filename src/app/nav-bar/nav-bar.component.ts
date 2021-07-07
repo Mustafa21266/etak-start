@@ -27,23 +27,35 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     document.getElementById("searchFieldForm").setAttribute("style","display: inline-flex;align-items: center;")
     this.dataCount = 15;
+    let refreshIntervalId = setInterval(()=>{
+      if(this.userObjNav){
+        clearInterval(refreshIntervalId);
+      }else{
+        this.checkUser();
+      }
+      
+    }, 500);
     
-    if(this.token !== ''){
-      setTimeout(()=>{
-        this.userObjNav = this.communityService.getUserObj();
-        this.openNotification()
-        if(this.userObjNav.fields.is_cyber_owner === "1"){
-          this.communityService.GetCyberOwnerCybers(this.userObjNav.pk).subscribe(cybers =>{
-            this.Cybers = cybers;
-          },error => {
-          })
-        }
-      },500)
-      // this.communityService.getUserDetail(this.token).subscribe(data  => {
-      //   this.userObjNav = data[0]
-      // },error => {
-      // })
-    }
+  }
+  checkUser(){
+    let tempToken = this.cookieService.get('etak-start-token');
+      if(tempToken !== ''){
+        setTimeout(()=>{
+          this.userObjNav = this.communityService.getUserObj();
+          this.openNotification()
+          if(this.userObjNav.fields.is_cyber_owner === "1"){
+            this.communityService.GetCyberOwnerCybers(this.userObjNav.pk).subscribe(cybers =>{
+              this.Cybers = cybers;
+            },error => {
+            })
+          }
+        },500)
+        
+        // this.communityService.getUserDetail(this.token).subscribe(data  => {
+        //   this.userObjNav = data[0]
+        // },error => {
+        // })
+      }
   }
   openNotification(){
     if(this.userObjNav){

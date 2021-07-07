@@ -124,7 +124,7 @@ export class HomepageMainComponent implements OnInit {
             element.fields.date_added = element.fields.date_added.slice(0 ,10);
           }
       });
-      this.spinner = 0; 
+      // this.spinner = 0; 
     },error =>{
       this.spinner = 0;
       console.log(error)

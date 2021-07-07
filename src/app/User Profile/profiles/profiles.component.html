@@ -1,15 +1,17 @@
-<div class="row row-styling" style="margin: 0px;">
-<div class="col-12" style="padding: 0px;">
+<div *ngIf="!userProfile" style="height: 120vh;">
+
+</div>
+<div class="row row-styling">
+<div class="col-12 animate__animated animate__fadeIn  animate__delay-2s" style="padding: 0px;">
     <div *ngIf="userProfile" class="w-100">
         <img  *ngIf="userProfile.fields.cover" class="img-fluid cover w-100 d-block" src="{{profileCover}}" alt="Card image cap">
-        <img  *ngIf="!userProfile.fields.cover" class="img-fluid cover w-100 d-block" src="{{profileCover}}" alt="Card image cap">
 </div>
 <a id="addBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" class="btn btn-secondary change-cover-btn" (click)="openDialog()" type="button">Change Cover</a>
 </div>
     
 </div>
-<div class="row row-styling"  style="margin: 0px;" *ngIf="userProfile">
-    <div class="col-12 col-lg-4 details-column-profile">
+<div class="row row-styling">
+    <div class="col-12 col-lg-4 details-column-profile  animate__animated animate__fadeIn  animate__delay-2s">
         <img class="img-fluid user-logo" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" (click)="openDialogProfilePicture()" src="{{profilePicture}}" alt="Card image cap">
 
         <img class="img-fluid user-logo" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk !== userProfile.pk"  style="cursor: default;" src="{{profilePicture}}" alt="Card image cap">
@@ -56,7 +58,7 @@
 
 <br>
     </div>
-    <div class="col-12 col-lg-8 details-column">
+    <div class="col-12 col-lg-8 details-column  animate__animated animate__fadeIn  animate__delay-3s">
         
         <div class="row">
             <br>

@@ -96,7 +96,6 @@ import { ShareModule } from 'ngx-sharebuttons';
 import { KnowYourContentCreatorArticlesComponent } from './Articles/know-your-content-creator-articles/know-your-content-creator-articles.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
     if(this.token !== ''){
       this.communityService.getUserDetail(this.token).subscribe(userobj => {
         this.userObj = userobj[0]
+        this.communityService.setUserObj(userobj[0])
       });
     }
   }

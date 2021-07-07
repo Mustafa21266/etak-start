@@ -7,4 +7,9 @@ background-color: #373833;
 .app-root {
     /* background-color: #373833; */
     /* height: 100%; */
+    background-color: #F0A202;
+    /* background-color: #000;
+opacity: 0.8;
+
+background: linear-gradient(135deg, #444cf755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #444cf7 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #444cf755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #444cf7 25%, #000 25%) 0px 0/ 20px 20px; */
 }

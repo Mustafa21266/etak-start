@@ -28,7 +28,7 @@ a {
   z-index: 1; */
   width: 100%;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-  background-color: #cf0000;
+  background-color: #F18805;
   z-index: 10;
 }
 .homepage-btn {
@@ -121,7 +121,7 @@ a {
 
 
 .nav-gradient-background {
-  background-color: #373833;
+  background-color: #F0A202;
   
 }
 .navbar.transparent.navbar-inverse .navbar-inner {

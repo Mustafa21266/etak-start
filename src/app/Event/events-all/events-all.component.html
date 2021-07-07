@@ -1,32 +1,32 @@
 <div class="row row-styling">
-    <div class="col-12 col-lg-2">
+    <div class="col-12 col-lg-2 border-right">
        
         <div *ngIf="!isMobileLayout" style="padding: 0px 15px;">           
         <br>
         <br>
-        <h1 class="all-events-header">All Events</h1>
+        <h1 class="all-events-header color-black">All Events</h1>
         <hr class="line-thick-2">
 
-        <p class="order-by">Sort By :</p>
+        <p class="order-by color-black">Sort By :</p>
         <input type="radio" (click)="filterByCheckBox($event)" id="descending" name="order" value="descending" checked>
-        <label for="descending" class="sort-by">Descending</label>
+        <label for="descending" class="sort-by color-black">Descending</label>
         <hr class="line-thick">
         <input type="radio" (click)="filterByCheckBox($event)" id="ascending" name="order" value="ascending">
-        <label for="ascending" class="sort-by">Ascending</label>
+        <label for="ascending" class="sort-by color-black">Ascending</label>
         <hr class="line-thick">
     </div>
     </div> 
-    <div class="col-12 col-lg-8 background-class">
+    <div class="col-12 col-lg-10 background-class">
         <app-loading-widget *ngIf="spinner" [spinner]="spinner" style="position: relative;top: 10px;z-index: 1;"></app-loading-widget> 
         <div *ngIf="!events[0]">
             <br>
             <br>
-                <h1 class="no-events-header">Sorry, no events available.</h1>
+                <h1 class="no-events-header color-black">Sorry, no events available.</h1>
         </div>
         <br>
         <br>
-        <div *ngIf="events[0]">
-            <div *ngFor="let event of events.slice(0,10)">
+        <div class="animate__animated animate__fadeIn  animate__delay-3s" *ngIf="events[0]">
+            <div *ngFor="let event of events.slice(0,10)" style="background-color: #581F18;border-radius: 10px;">
                 <div class="row row-styling-2">
                 <div class="col-12 col-lg-4">
                     <a [routerLink]="['/event-details', event.pk]">
@@ -77,8 +77,7 @@
   </div>
 </div>
 </div>
-<br>
-<br>
+
 
 
 

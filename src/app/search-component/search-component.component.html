@@ -9,37 +9,37 @@
 
         <div *ngIf="!isMobileLayout" style="padding: 0px 20px;">           
             <br>
-            <h1 class="text-center header">Search</h1>
+            <h1 class="text-center header color-black">Search</h1>
             <hr class="my-4">
-            <p class="filter-by-text">Filter By :</p>
+            <p class="filter-by-text color-black">Filter By :</p>
             <input type="radio" (click)="filterByCheckBox($event)" id="all" name="events" value="all" checked>
-            <label for="all" class="mobile-nav-labels">All</label>
+            <label for="all" class="mobile-nav-labels color-black">All</label>
             <br>
             <input type="radio" (click)="filterByCheckBox($event)" id="cybersAndPSCafes" name="events" value="cybersAndPSCafes">
-            <label for="cybersAndPSCafes" class="mobile-nav-labels">Cybers & PS Cafe's</label>
+            <label for="cybersAndPSCafes" class="mobile-nav-labels color-black">Cybers & PS Cafe's</label>
             <br>
             <input type="radio" (click)="filterByCheckBox($event)" id="events" name="events" value="events">
-            <label for="events" class="mobile-nav-labels">Events</label>
+            <label for="events" class="mobile-nav-labels color-black">Events</label>
             <br>
             <input type="radio" (click)="filterByCheckBox($event)" id="articles" name="events" value="articles">
-            <label for="articles"  class="mobile-nav-labels">Articles</label>
+            <label for="articles"  class="mobile-nav-labels color-black">Articles</label>
             <br>
             <input type="radio" (click)="filterByCheckBox($event)" id="kyccarticles" name="events" value="kyccarticles">
-            <label for="kyccarticles"  class="mobile-nav-labels">KYCC Articles</label>
+            <label for="kyccarticles"  class="mobile-nav-labels color-black">KYCC Articles</label>
             <br>
             <input type="radio" (click)="filterByCheckBox($event)" id="users" name="events" value="users">
-            <label for="users"  class="mobile-nav-labels">Users</label>
+            <label for="users"  class="mobile-nav-labels color-black">Users</label>
             <br>
         </div>
 
 
         
     </div> 
-    <div class="col-12 col-lg-6 col-xl-8" style="background-image: linear-gradient(200deg,rgb(31, 40, 51) ,rgb(11, 12, 16) );">
+    <div class="col-12 col-lg-9 col-xl-10 animate__animated animate__fadeIn  animate__delay-3s">
         <div *ngIf="!searchResults[0]">
             <br>
             <br>
-            <h1 class="text-center header">Sorry, no results available.</h1>
+            <h1 class="text-center header color-black">Sorry, no results available.</h1>
         </div>
 
 
@@ -47,14 +47,13 @@
         <div *ngIf="searchResults[0]">
             <br>
             <br>
-            <p class="results-text">{{originalSearchResults.length}} Results For : <strong>{{searchTerm}}</strong></p>
-            <div *ngFor="let result of searchResults.slice(0,11)">
+            <p class="results-text color-black">{{originalSearchResults.length}} Results For : <strong>{{searchTerm}}</strong></p>
+            <div *ngFor="let result of searchResults.slice(0,11)" style="background-color: #581F18;border-radius: 10px;margin: 10px 0px;">
                 <div *ngIf="result.model === 'etak_start_app.cyberevent'">
                     <div class="row">
                 <div class="col-12">
-                    <div >
+                    <div>
                         <div  class="section-styling">
-                            <hr>
                             <div class="row row-style-2">
                             <div class="col-12 col-lg-4">
                                 <a [routerLink]="['/event-details', result.pk]">
@@ -123,9 +122,8 @@
             <div *ngIf="result.model === 'etak_start_app.article'">
                 <div class="row">
             <div class="col-12">
-                <div >
+                <div>
                     <div  class="section-styling">
-                        <hr>
                         <div class="row row-style-2">
                         <div class="col-12 col-lg-4">
                             <a [routerLink]="['/articles', result.pk]">
@@ -177,7 +175,6 @@
                 <div class="row">
                     <div class="col-12">
                             <div  class="section-styling">
-                                <hr>
                                 <div class="row row-style-1">
                                 <div class="col-12 col-lg-4">
                                     <a [routerLink]="['/place-details', result.pk]">
@@ -237,7 +234,8 @@
                                                     <img *ngIf="result.fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
                                                     <img  *ngIf="result.fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
                                                     <img  *ngIf="result.fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
-                                                        
+                                                    <img  *ngIf="result.fields.price_per_hour_billards !=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/billards_logo.png" alt="Card image cap">
+                                                    <img  *ngIf="result.fields.price_per_hour_ping_pong!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ping_pong_logo.png" alt="Card image cap">
                                                         
                                                       
                                                       
@@ -262,7 +260,6 @@
                 <div class="row">
                     <div class="col-12">
                             <div  class="section-styling">
-                                <hr>
                                 <div class="row row-style-1">
                                 <div class="col-12 col-lg-4">
                                     <a [routerLink]="['/profiles', result.pk]">

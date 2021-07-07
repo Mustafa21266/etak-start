@@ -53,6 +53,8 @@ export class EditCyberInfoComponent implements OnInit {
     price_per_hour_xbox_series_x: new FormControl('0.0'),
     price_per_hour_pc: new FormControl('0.0'),
     price_per_hour_vr: new FormControl('0.0'),
+    price_per_hour_billards: new FormControl('0.0'),
+    price_per_hour_ping_pong: new FormControl('0.0'),
   }, [Validators.required]);
 
   cyberPictureForm = new FormGroup({
@@ -231,6 +233,8 @@ export class EditCyberInfoComponent implements OnInit {
         price_per_hour_xbox_series_x: this.Cyber[0].fields.price_per_hour_xbox_series_x,
         price_per_hour_pc: this.Cyber[0].fields.price_per_hour_pc,
         price_per_hour_vr: this.Cyber[0].fields.price_per_hour_vr,
+        price_per_hour_billards: this.Cyber[0].fields.price_per_hour_billards,
+        price_per_hour_ping_pong: this.Cyber[0].fields.price_per_hour_ping_pong,
       })
     this.preparePlatform()
     }
@@ -328,7 +332,7 @@ this.communityService.editCyberInfo(this.cyberForm.value,this.Cyber[0].pk,this.u
         'Authorization': this.userObjEditCyberInfo.fields.token,
       }; 
       const body=JSON.stringify(this.cyberPictureForm.value);
-      this.http.post('https://etak-start-api.herokuapp.com/delete-cyber-picture/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, body,{'headers':headers})
+      this.http.post('http://localhost:8000/delete-cyber-picture/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, body,{'headers':headers})
         .subscribe(res => {
           this.openSnackBar("Picture Removed Successfully","Ok");
           let cyberPicturesOrderedList = document.getElementById("cyberPicturesOrderedList");
@@ -389,7 +393,7 @@ this.communityService.editCyberInfo(this.cyberForm.value,this.Cyber[0].pk,this.u
       this.openSnackBar("Please select a valid extension!","Ok");
     }
   }
-  this.http.post('https://etak-start-api.herokuapp.com/add-cyber-pics/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, this.formData)
+  this.http.post('http://localhost:8000/add-cyber-pics/'+this.Cyber[0].pk+'/'+this.userObjEditCyberInfo.pk, this.formData)
   .subscribe(res => {
     this.openSnackBar("Picture Added to Gallery Successfully","Ok");
     this.spinner = 0;

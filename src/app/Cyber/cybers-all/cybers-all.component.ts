@@ -47,7 +47,6 @@ export class CybersAllComponent implements OnInit {
     await this.communityService.getAllCybers().subscribe(data => {
       this.Cybers = this.shuffleArray(data)
       this.originalCybers = this.Cybers
-      
     },error =>{
       this.spinner = 0;
       console.log(error)

@@ -87,7 +87,7 @@ export class EditArticleComponent implements OnInit {
     imageUploadParam: 'image_param',
 
     // Set the image upload URL.
-    imageUploadURL: 'https://etak-start-api.herokuapp.com/upload-article-picture',
+    imageUploadURL: 'http://localhost:8000/upload-article-picture',
     imageRemoveURL: 'https://googleasd.com',
 
     // Additional upload params.
@@ -121,7 +121,7 @@ export class EditArticleComponent implements OnInit {
           if (this.readyState == 4 && this.status == 200) {
           }
         };
-        xhttp.open("POST", "https://etak-start-api.herokuapp.com/delete-article-picture", true);
+        xhttp.open("POST", "http://localhost:8000/delete-article-picture", true);
         xhttp.send(JSON.stringify({
           src: $img.attr('src')
         }));

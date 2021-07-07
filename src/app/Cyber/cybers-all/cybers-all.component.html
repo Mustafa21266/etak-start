@@ -1,21 +1,21 @@
 
 <div class="row">
-  <div class="col-12 col-lg-2">
+  <div class="col-12 col-lg-2 border-right">
       <div class="w-100" style="padding: 0px 15px;">           
       <br>
       <br>
-      <h1 class="all-cybers-header">All Places</h1>
+      <h1 class="all-cybers-header color-black">All Places</h1>
       <hr class="line-thick-2">
 
-      <p class="order-by">Sort By :</p>
+      <p class="order-by color-black">Sort By :</p>
       <input type="radio" (click)="filterByCheckBox($event)" id="originalSort" name="order" value="originalSort" checked>
-      <label for="originalSort" class="sort-by">Original Sort</label>
+      <label for="originalSort" class="sort-by color-black">Original Sort</label>
       <hr class="line-thick">
       <input type="radio" (click)="filterByCheckBox($event)" id="highestRating" name="order" value="highestRating">
-      <label for="highestRating" class="sort-by">Highest Rating</label>
+      <label for="highestRating" class="sort-by color-black">Highest Rating</label>
       <hr class="line-thick">
       <input type="radio" (click)="filterByCheckBox($event)" id="newlyCreated" name="order" value="newlyCreated">
-      <label for="newlyCreated" class="sort-by">Newly Created</label>
+      <label for="newlyCreated" class="sort-by color-black">Newly Created</label>
       <hr class="line-thick">
   </div>
 </div>
@@ -24,7 +24,7 @@
     <br>
 <br>
 <hr class="hr-style">
-    <div class="d-block mx-auto card-div-main">
+    <div class="d-block mx-auto card-div-main animate__animated animate__fadeIn  animate__delay-3s">
       <div  class="card-div d-flex flex-wrap justify-content-center">
         <div *ngFor="let cyber of Cybers.slice(0,10)" class="card" (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)" [routerLink]="['/place-details',cyber.pk]" style="width: 18rem;display: inline-block;margin: 20px;">
         <img class="img-fluid" style="width: 286px;height: 180px;" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{cyber.fields.logo}}" alt="Card image cap">
@@ -34,14 +34,14 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <div *ngIf="cyber.fields.average_rating !== '0'" class="d-flex justify-content-center">
-            <ngb-rating [(rate)]="cyber.fields.average_rating" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+            <ngb-rating [(rate)]="cyber.fields.average_rating" [(readonly)]="readOnlyValue">
               <ng-template let-fill="fill" let-index="index">
                 <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
               </ng-template>
             </ngb-rating>
           </div>
           <div *ngIf="cyber.fields.average_rating === '0'" class="d-flex justify-content-center">
-            <ngb-rating [(rate)]="allRates" [(readonly)]="readOnlyValue" (click)="submitRate($event)">
+            <ngb-rating [(rate)]="allRates" [(readonly)]="readOnlyValue">
               <ng-template let-fill="fill" let-index="index">
                 <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
               </ng-template>
@@ -63,6 +63,10 @@
           <img *ngIf="cyber.fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
           <img  *ngIf="cyber.fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
           <img  *ngIf="cyber.fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+          <img  *ngIf="cyber.fields.price_per_hour_billards !=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/billards_logo.png" alt="Card image cap">
+          <img  *ngIf="cyber.fields.price_per_hour_ping_pong!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ping_pong_logo.png" alt="Card image cap">
+        
+        
         </div>
       </div>
       

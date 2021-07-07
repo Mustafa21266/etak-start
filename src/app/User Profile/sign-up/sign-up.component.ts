@@ -80,9 +80,10 @@ export class SignUp implements OnInit {
             }else {
               this.communityService.loginUser(this.userForm.value).subscribe((data) =>{
                 this.cookieService.set('etak-start-token', data[0].fields.token, 5 )
+                this.communityService.setUserObj(data[0])
                 this.openSnackBar("User Created Successfully","Ok");
                 this.router.navigate(['homepage']).then(()=>{
-                  window.location.reload()
+                  // window.location.reload()
                 })
                 // this.router.navigate(['/']) 
               })

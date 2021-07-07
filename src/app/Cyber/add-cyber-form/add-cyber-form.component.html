@@ -1,6 +1,6 @@
 
 <div class="row row-background">
-  <div class="col-12" style="padding: 0px;">
+  <div class="col-12 animate__animated animate__fadeIn  animate__delay-1s" style="padding: 0px;">
       <input id="changeCoverId" type="file" (change)="onCoverSelected($event)" required>
   
         <img id="coverForCyber" class="img-fluid cover" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/default_cover.png" alt="Card image cap">
@@ -8,7 +8,7 @@
   </div>
 </div>
   <div class="row row-background">
-    <div class="col-12">
+    <div class="col-12  animate__animated animate__fadeIn  animate__delay-1s">
       <input id="changeLogoId" type="file" (change)="onLogoSelected($event)">
       <img id="logoForCyber"class="img-fluid cyber-logo" (click)="onClickChangeCyberLogo()" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/default_cover.png" alt="Card image cap">
       <div class="add-cyber-div">
@@ -158,6 +158,8 @@
                 <option value="xbox_series_x">Xbox Series X</option>
                 <option value="pc">PC</option>
                 <option value="vr">VR</option>
+                <option value="billards">Billards</option>
+                <option value="ping_pong">Ping Pong</option>
               </select>
               
             </div>

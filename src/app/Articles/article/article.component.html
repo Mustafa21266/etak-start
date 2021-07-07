@@ -1,5 +1,7 @@
+<div *ngIf="!Article[0]" style="height: 120vh;">
 
-<div class="row">
+</div>
+<div class="row" *ngIf="Article[0]">
     <div class="col-12 col-lg-10 d-block mx-auto  background-class">
       <br>
       <nav aria-label="breadcrumb">
@@ -16,7 +18,7 @@
 <meta property="og:url" content="{{metaUrl}}">
 <meta name="twitter:title" content="{{Article[0].fields.headline}}">
 <meta name="twitter:description" content=" {{Article[0].fields.intro_text}}">
-<meta name="twitter:image" content=" https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}">
+<meta name="twitter:image" content=" http://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}">
 <meta name="twitter:card" content="summary_large_image">
           <div class="col-12" style="padding: 0px;">
             <img id="coverForArticle" class="img-fluid cover" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}" alt="Card image cap">

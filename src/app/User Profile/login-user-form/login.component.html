@@ -4,66 +4,66 @@
 <br>
 <br>
           <div class="row">
-            <div class="col-12 col-lg-8 mx-auto">
-              <h1 class="login-header">Login</h1>
+            <div class="col-12 col-lg-8 mx-auto animate__animated animate__fadeIn  animate__delay-1s">
+              <div style="background-color: #581F18;border-radius: 10px;padding: 30px;">
+                <h1 class="login-header">Login</h1>
+                <br>
               <br>
-            <br>
-              <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()" class="form">
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <mat-form-field appearance="fill" class="form-field-styles">
-                      <mat-label class="color-white">Email:</mat-label>
-                      <input matInput type="email"  class="text-white" formControlName="email" email="true" required>
-                    </mat-form-field>
+                <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()" class="form">
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <mat-form-field appearance="fill" class="form-field-styles">
+                        <mat-label class="color-white">Email:</mat-label>
+                        <input matInput type="email"  class="text-white" formControlName="email" email="true" required>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <mat-form-field appearance="fill" class="form-field-styles">
-                      <mat-label class="color-white">Password:</mat-label>
-                      <input id="passwordField" matInput class="text-white" [type]="hide ? 'password' : 'text'" formControlName="password" (keyup)="checkLogin($event)" required>
-                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="btn-hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <P id="errorMessage" class="color-white"></P>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <mat-form-field appearance="fill" class="form-field-styles">
+                        <mat-label class="color-white">Password:</mat-label>
+                        <input id="passwordField" matInput class="text-white" [type]="hide ? 'password' : 'text'" formControlName="password" (keyup)="checkLogin($event)" required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="btn-hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                      <P id="errorMessage" class="color-white"></P>
+                    </div>
                   </div>
-                </div>
-                <div class="form-row mr-auto">
-                  <div class="form-group col-12 bottom-div">
-                    <div class="row">
-                      <div class="col-10">
-                        <app-loading-widget *ngIf="spinner" style="float: left;" [spinner]="spinner"></app-loading-widget>
-                      </div>
-                      <div class="col-2">
-                        <button mat-raised-button type="submit" [disabled]="enableLogin==false" class="login-btn" style="background-color: #fea82f;">Login</button>
+                  <div class="form-row mr-auto">
+                    <div class="form-group col-12 bottom-div">
+                      <div class="row">
+                        <div class="col-10">
+                          <app-loading-widget *ngIf="spinner" style="float: left;" [spinner]="spinner"></app-loading-widget>
+                        </div>
+                        <div class="col-2">
+                          <button mat-raised-button type="submit" [disabled]="enableLogin==false" class="login-btn" style="background-color: #fea82f;">Login</button>
+                          
+                        </div>
                         
                       </div>
+                      <br>
+                     
                       
                     </div>
-                    <br>
-                   
                     
-                  </div>
+                  </div>  
                   
-                </div>  
-                
-              </form>
+                </form>
+                <br>
+                <p class="anchor-style">Don't Have an Account ?  <span style="margin-left: 7px;"><a routerLink="/sign-up">
+                  Create One
+                </a></span></p>
+                <p class="anchor-style">Forgot your password? ?  <span style="margin-left: 7px;"><a routerLink="/reset-password">
+                  Reset Password
+                </a></span></p>
+              </div>
+              
               
             </div>
         
           </div>
-
-          <div class="row">
-            <div class="col-12">
-              <br>
-              <p class="anchor-style">Don't Have an Account ?  <span style="margin-left: 7px;"><a routerLink="/sign-up">
-                Create One
-              </a></span></p>
-              <p class="anchor-style">Forgot your password? ?  <span style="margin-left: 7px;"><a routerLink="/reset-password">
-                Reset Password
-              </a></span></p>
-            </div>
-          </div>
+          <br>
+          <br>
           <br>
           <br>

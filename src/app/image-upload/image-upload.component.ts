@@ -49,7 +49,7 @@ export class ImageUploadComponent implements OnInit {
           if(this.router.url.startsWith('/edit-cyber-info')){
             this.spinner = 1;
             this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-            this.http.post('https://etak-start-api.herokuapp.com/change-cyber-cover/'+this.data[1].pk+'/'+this.data[0].pk, this.formData)
+            this.http.post('http://localhost:8000/change-cyber-cover/'+this.data[1].pk+'/'+this.data[0].pk, this.formData)
               .subscribe(res => {
                 this.openSnackBar("Cover Changed Successfully","Ok");
                 setTimeout(()=>{
@@ -62,7 +62,7 @@ export class ImageUploadComponent implements OnInit {
           }else if (this.router.url.startsWith('/profiles')){
             this.spinner = 1;
             this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-            this.http.post('https://etak-start-api.herokuapp.com/change-cover/'+this.data.pk, this.formData)
+            this.http.post('http://localhost:8000/change-cover/'+this.data.pk, this.formData)
               .subscribe(res => {
                 this.openSnackBar("Cover Changed Successfully","Ok");
                 setTimeout(()=>{
@@ -76,7 +76,7 @@ export class ImageUploadComponent implements OnInit {
       
             this.spinner = 1;
             this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-            this.http.post('https://etak-start-api.herokuapp.com/change-cyber-cover/'+this.data[1].pk+'/'+this.data[0].pk, this.formData)
+            this.http.post('http://localhost:8000/change-cyber-cover/'+this.data[1].pk+'/'+this.data[0].pk, this.formData)
               .subscribe(res => {
                 this.openSnackBar("Cover Changed Successfully","Ok");
                 setTimeout(()=>{

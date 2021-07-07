@@ -25,7 +25,7 @@ export class ResetPasswordRequestComponent implements OnInit {
   resetPasswordForm = new FormGroup({
     email: new FormControl(''),
   }, [Validators.required]);
-  baseUrl = 'https://etak-start-api.herokuapp.com/reset-password';
+  baseUrl = 'http://localhost:8000/reset-password';
   constructor(private elRef:ElementRef,private route: ActivatedRoute,private communityService: CommunityService,private http: HttpClient,public router: Router,private cookieService: CookieService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {

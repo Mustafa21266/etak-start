@@ -173,7 +173,7 @@ changeProfilePicture(event){
         'Authorization': this.userObjMyProfile.fields.token,
       };
     const body=JSON.stringify(this.userForm.value);
-      this.http.post('https://etak-start-api.herokuapp.com/add-bio/'+this.userObjMyProfile.pk, body,{'headers':headers})
+      this.http.post('http://localhost:8000/add-bio/'+this.userObjMyProfile.pk, body,{'headers':headers})
       .subscribe(res => {
         this.openSnackBar("Bio Added Successfully","Ok");
         setTimeout(()=>{

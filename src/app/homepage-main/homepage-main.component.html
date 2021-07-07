@@ -1,14 +1,13 @@
 <div class="row">
-<div class="col-12 col-lg-10 mx-auto background-class">
+<div class="col-12 col-lg-12 mx-auto background-class">
   <div class="row row-styling">
     <div class="col-12">
         <div class="row">
 
             <div class="col-12 col-lg-12">
               <div style="max-height: 100%;">
-                <img src="https://etak-start.s3.eu-west-3.amazonaws.com/media/homepage-cover.jpg" class="img-fluid w-100" style="max-height: 500px;">
-                <button type="button" class="btn btn-lg" style="position: relative;top: -70px;left: 20px;background-color: #fea82f;color: black;" (click)="openWhatIsEtakStart($event)">What is Etak Start?</button>
-                
+                <img src="https://etak-start.s3.eu-west-3.amazonaws.com/media/homepage-cover.jpg" class="img-fluid w-100 animate__animated animate__backInDown" style="max-height: 500px;">
+                <button type="button" class="btn btn-lg animate__animated animate__backInLeft" style="position: relative;top: -70px;left: 20px;background-color: #202C59;color: white;" (click)="openWhatIsEtakStart($event)">What is Etak Start?</button>
               </div>
              
             </div>
@@ -18,24 +17,24 @@
         <br>
         
         <div class="row">
-            <div class="col-6 col-lg-3 text-center">
-              <h3>{{Cybers.length}}</h3>
-              <h3>Cybers</h3>
+            <div class="col-6 col-lg-3 text-center border-right">
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">{{Cybers.length}}</h3>
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">Cybers</h3>
+              <br>
+            </div>
+            <div class="col-6 col-lg-3 text-center border-right">
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">{{Events.length}}</h3>
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">Events</h3>
+              <br>
+            </div>
+            <div class="col-6 col-lg-3 text-center border-right">
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">{{Articles.length}}</h3>
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">Articles</h3>
               <br>
             </div>
             <div class="col-6 col-lg-3 text-center">
-              <h3>{{Events.length}}</h3>
-              <h3>Events</h3>
-              <br>
-            </div>
-            <div class="col-6 col-lg-3 text-center">
-              <h3>{{Articles.length}}</h3>
-              <h3>Articles</h3>
-              <br>
-            </div>
-            <div class="col-6 col-lg-3 text-center">
-              <h3>{{UserCount}}</h3>
-              <h3>Users</h3>
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">{{UserCount}}</h3>
+              <h3 class="color-black animate__animated animate__flipInX  animate__delay-2s">Users</h3>
               <br>
             </div>
            
@@ -48,9 +47,9 @@
               <div *ngIf="!Articles[0]">
                 <br>
                 <br>
-                <h1 class="no-articles">Sorry, no articles available.</h1>
+                <h1 class="no-articles color-black" >Sorry, no articles available.</h1>
             </div>
-        <div *ngIf="Articles[0]">
+        <div *ngIf="Articles[0]" class="animate__animated animate__backInUp  animate__delay-2s">
             <br>
             
             <div class="row row-styling">
@@ -69,7 +68,7 @@
                                       <br>
                                       <br>
                                       <br>
-                                      <h1 class="no-articles">Sorry, no articles available.</h1>
+                                      <h1 class="no-articles color-black">Sorry, no articles available.</h1>
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev" style="background-color: rgba(0, 0, 0, 0.3);">
@@ -87,7 +86,7 @@
                             <div class="col-12 col-lg-8 col-xl-8">
                                 <div *ngIf="Articles[0]">
 
-                                <h1 class="text-center cp" routerLink="/all-articles">Latest Articles</h1>
+                                <h1 class="text-center cp color-black" routerLink="/all-articles">Latest Articles</h1>
             <hr>
                                 <div class="w-100 d-block mx-auto">
                                     <div class="card card-big"  (mouseenter)="cardMouseEnter($event)" (mouseleave) ="cardMouseLeave($event)">
@@ -140,7 +139,8 @@
                            </div>
                 </div> 
                 <div class="col-12 col-lg-4 col-xl-4">
-                    <h1 class="text-center">Random Articles</h1>
+                    <h1 class="text-center color-black">Random Articles</h1>
+                    
             <hr>
                     <div class="w-100 d-block mx-auto">
                         <div class="w-100 card-border" *ngFor="let article of shuffledArticles.slice(0,4)">                      
@@ -173,11 +173,12 @@
     </div>
   
     <div class="row row-styling">
-        <div class="col-12 col-lg-12">
+        <div class="col-12 col-lg-12 animate__animated animate__zoomInUp  animate__delay-3s">
           <br>
           <hr>
           <br>
-          <h1 class="text-center cp" routerLink="/places-all">Places</h1>
+          <h1 class="text-center cp color-black" routerLink="/places-all">Places</h1>
+          <br>
           <hr>
           <div *ngIf="!Cybers[0]">
             <div class="top-content">
@@ -261,6 +262,8 @@
                           <img *ngIf="Cybers[0].fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
                           <img  *ngIf="Cybers[0].fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
                           <img  *ngIf="Cybers[0].fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+                          <img  *ngIf="Cybers[0].fields.price_per_hour_billards !=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/billards_logo.png" alt="Card image cap">
+                          <img  *ngIf="Cybers[0].fields.price_per_hour_ping_pong!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ping_pong_logo.png" alt="Card image cap">
                         </div>
                       </div>
                           </div>
@@ -302,6 +305,8 @@
                             <img *ngIf="cyber.fields.price_per_hour_xbox_series_x!=='0.0'" class="img-fluid x-series" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/xbox_series_logo.png" alt="Card image cap">
                             <img  *ngIf="cyber.fields.price_per_hour_vr!=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/vr_logo.png" alt="Card image cap">
                             <img  *ngIf="cyber.fields.price_per_hour_pc!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/pc_logo.png" alt="Card image cap">
+                            <img  *ngIf="cyber.fields.price_per_hour_billards !=='0.0'" class="img-fluid vr" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/billards_logo.png" alt="Card image cap">
+                            <img  *ngIf="cyber.fields.price_per_hour_ping_pong!=='0.0'" class="img-fluid pc" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/ping_pong_logo.png" alt="Card image cap">
                           </div>
                         </div>
                        </div> 
@@ -327,11 +332,12 @@
 <br>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-12">
+        <div class="col-12 col-lg-12 animate__animated animate__zoomInUp  animate__delay-4s">
                   
         <hr>
         <br>
-        <h1 class="text-center cp" routerLink="/events-all">Events</h1>
+        <h1 class="text-center cp color-black" routerLink="/events-all">Events</h1>
+        <br>
 <hr>
           <div *ngIf="!Events[0]">
             <div class="top-content">
@@ -455,13 +461,7 @@
             <br>
              <br>
              <br>
-             <br>
-              <br>
-              <br>
-            <br>
-             <br>
-             <br>
-             
+
 
 
 

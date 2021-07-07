@@ -67,7 +67,7 @@ export class AddCyberEventComponent implements OnInit {
   governates = [{value:'Alexandria',},{value:'Aswan',},{value:'Asyut',},{value:'Beheira',},{value:'Beni Suef',},{value:'Cairo',},{value:'Dakahlia',},{value:'Damietta',},{value:"Faiyum",},{value:'Gharbia',},{value:"Giza",},{value:"Ismailia",},{value:"Kafr El Sheikh",},{value:'Luxor',},{value:"Matruh",},{value:'Minya',},{value:'Monufia',},{value:"New Valley",},{value:"North Sinai",},{value:"Port Said",},{value:"Qalyubia",},{value:"Qena",},{value:"Red Sea",},{value:"Sharqia",},{value:'Sohag',},{value:"South Sinai",},{value:"Suez",}]
 days = [{value:'1',},{value:'2',},{value:'3',},{value:'4',},{value:'5',},{value:'6',},{value:'7',},{value:'8',},{value:"9",},{value:'10',},{value:"11",},{value:"12",},{value:"13",},{value:'14',},{value:"15'",},{value:'16',},{value:'17',},{value:"18",},{value:"19",},{value:"20",},{value:"21",},{value:"22",},{value:"23",},{value:"24",},{value:'25',},{value:"26",},{value:"27",},{value:"28",},{value:"29",},{value:"30",},{value:"31",},]
 months = [{value:'January',},{value:'February',},{value:'March',},{value:'April',},{value:'May',},{value:'June',},{value:'July',},{value:'August',},{value:'September',},{value:'October',},{value:'November',},{value:'December',}]
-platforms = [{value:'ps3',viewValue:'Playstation 3'},{value:'ps4',viewValue:'Playstation 4'},{value:'ps5',viewValue:'Playstation 5'},{value:'xbox_360',viewValue:'Xbox 360'},{value:'xbox_one',viewValue:'Xbox One'},{value:'xbox_series_x',viewValue:'Xbox Series X'},{value:'pc',viewValue:'PC'},{value:'vr',viewValue:'VR'}]
+platforms = [{value:'ps3',viewValue:'Playstation 3'},{value:'ps4',viewValue:'Playstation 4'},{value:'ps5',viewValue:'Playstation 5'},{value:'xbox_360',viewValue:'Xbox 360'},{value:'xbox_one',viewValue:'Xbox One'},{value:'xbox_series_x',viewValue:'Xbox Series X'},{value:'pc',viewValue:'PC'},{value:'vr',viewValue:'VR'},{value:'billards',viewValue:'Billards'},{value:'ping_pong',viewValue:'Ping Pong'}]
 startDay :number;
 startMonth :number;
 endMonth :number;
@@ -217,7 +217,7 @@ this.cyberEventForm.value.location = `${location.value},${this.governate}`
 await this.communityService.addCyberEvent(this.cyberEventForm.value,this.Cyber[0].pk,this.userObjAddEvent.pk).subscribe(event => {
   this.cyberEvent = event;
   this.formData.append('cover', this.selectedCover,this.selectedCover.name);
-  this.http.post('https://etak-start-api.herokuapp.com/add-cyber-event-cover/'+this.Cyber[0].pk+'/'+this.cyberEvent[0].pk+'/'+this.userObjAddEvent.pk, this.formData)
+  this.http.post('http://localhost:8000/add-cyber-event-cover/'+this.Cyber[0].pk+'/'+this.cyberEvent[0].pk+'/'+this.userObjAddEvent.pk, this.formData)
         .subscribe(res => {
           this.openSnackBar("Event Created Successfully","Ok");
           setTimeout(()=>{

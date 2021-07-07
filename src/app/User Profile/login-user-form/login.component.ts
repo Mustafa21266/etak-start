@@ -69,7 +69,7 @@ export class Login implements OnInit {
             let x = this.communityService.setUserObj(data[0])
               this.openSnackBar("Logged-in Successfully","Ok");
               this.router.navigate(['homepage']).then(()=>{
-                window.location.reload()
+                // window.location.reload()
               })
               // this.refreshPage();
              

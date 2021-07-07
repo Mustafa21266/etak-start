@@ -1,15 +1,15 @@
 .row-background{
-    background-color: #373833;
+    background-color: #F0A202;
   }
   .background-class {
     /* background-color: #373833; */
-    background-color: #373833;
+    background-color: #F0A202;
   }
   
   .row-styling{
     padding: 0px 25px;
     padding-top: 20px;
-    background-color: #373833;
+    background-color: #F0A202;
   }
   .no-articles-header {
     text-align: center;
@@ -95,6 +95,9 @@
       transition: all .5s;
     }
     .top-text{
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
       z-index: 0;
       text-align: left;
       width: 100%;

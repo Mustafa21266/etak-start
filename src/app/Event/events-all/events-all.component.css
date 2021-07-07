@@ -24,7 +24,7 @@ p, h1, h2 , h3 ,h4 ,h5, h6{
 }
 .events-div {
   padding: 0;
-  background-color: #373833;
+  background-color: #F0A202;
   border-radius: 10px;
   margin-top: 50px;
 }
@@ -252,7 +252,7 @@ p, h1, h2 , h3 ,h4 ,h5, h6{
   }
   .background-class {
     /* background-color: #373833; */
-    background-color: #373833;
+    background-color: #F0A202;
   }
   .line-thick {
     border-top: 5px solid rgba(255, 255, 255, 0.6);
@@ -264,4 +264,6 @@ p, h1, h2 , h3 ,h4 ,h5, h6{
     border-radius: 50%;
     width: 100%;
   }
-  
+  .color-black {
+    color: black;
+  }

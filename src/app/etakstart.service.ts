@@ -10,7 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class CommunityService {
-  private APIUrl = 'https://etak-start-api.herokuapp.com/';
+  // private APIUrl = 'https://etak-start-api.herokuapp.com/';
+  private APIUrl = 'http://localhost:8000/';
   userObj: any;
   token = this.cookieService.get('etak-start-token') || '';
   httpOptions;
