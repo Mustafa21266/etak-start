@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {Loader, LoaderOptions} from 'google-maps';
 import { environment } from '../../../environments/environment.prod'
-
+import {state} from '../../etakstart.service';
 interface data {
   candidates: Array<any>,
   geometry: Object,
@@ -211,6 +211,10 @@ async onClickFind($event){
     this.spinner = 1;
     this.communityService.deleteCyberEvent(this.Cyber[0].pk,this.CyberEvent[0].pk,this.userObjEditEvent.pk).subscribe(event => {
       this.cyberEvent = event;
+      let newState = Object.assign({},state,{
+        Events: state.Events.filter(event => event.pk !== this.cyberEvent[0].pk)
+        })
+      this.communityService.changeState(newState);
       this.openSnackBar("Event Deleted Successfully","Ok");
       setTimeout(()=>{
         this.router.navigate(['/events-all'])
@@ -252,6 +256,16 @@ async onClickFind($event){
           this.cyberEventForm.value.location = location.value+','+this.governate
       await this.communityService.editCyberEvent(this.cyberEventForm.value,this.Cyber[0].pk,this.CyberEvent[0].pk,this.userObjEditEvent.pk).subscribe(event => {
         this.cyberEvent = event;
+        let newState = Object.assign({},state,{
+          Events: state.Events.map(event => {
+            if(event.pk === this.cyberEvent[0].pk){
+              event = this.cyberEvent[0]
+              return event
+            }
+            return event
+          })
+          })
+        this.communityService.changeState(newState);
         if(this.changed == true){
           const extensions = ['jpg','jpeg','png']
           if(extensions.includes(this.selectedCover.name.split(".")[this.selectedCover.name.split(".").length-1])){

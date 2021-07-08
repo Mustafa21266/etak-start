@@ -31,6 +31,7 @@ import "froala-editor/js/plugins/table.min.js";
 import "froala-editor/js/plugins/url.min.js";
 import "froala-editor/js/plugins/video.min.js";
 import "froala-editor/js/plugins/word_paste.min.js";
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-edit-article',
   templateUrl: './edit-article.component.html',
@@ -39,7 +40,16 @@ import "froala-editor/js/plugins/word_paste.min.js";
 export class EditArticleComponent implements OnInit {
   token = this.cookieService.get('etak-start-token') || '';
   userObjEditArticle: any;
-  Article = [];
+  Article = {
+    pk: "",
+    fields: {
+      inner_content: "",
+      user: [],
+      headline:"",
+      intro_text: "",
+      article_cover: ""
+    }
+  };
   formData = new FormData();
   public options: Object;
   newImgLink: string;
@@ -171,15 +181,14 @@ export class EditArticleComponent implements OnInit {
       }
       setTimeout(()=>{
         this.id = parseInt(this.router.url.replace("/edit-article/",""));
-        this.communityService.getArticle(this.id).subscribe(data => {
-        this.Article = data
+        let ArticleObj = state.Articles.filter(article=> article.pk === this.id)
+        this.Article = ArticleObj[0]
+        console.log(this.Article)
         let input = (document.getElementById("articleHeadline")) as HTMLInputElement;
-        input.value =  data[0].fields.headline;
-        document.getElementById("articleIntro").textContent =  data[0].fields.intro_text;
-        document.getElementById("coverForArticle").setAttribute("src","https://etak-start.s3.eu-west-3.amazonaws.com/media/"+data[0].fields.article_cover);
-        document.getElementsByClassName("fr-element fr-view")[0].innerHTML = data[0].fields.inner_content;
-  
-      })
+        input.value =  this.Article.fields.headline;
+        document.getElementById("articleIntro").textContent =  this.Article.fields.intro_text;
+        document.getElementById("coverForArticle").setAttribute("src","https://etak-start.s3.eu-west-3.amazonaws.com/media/"+this.Article.fields.article_cover);
+        document.getElementsByClassName("fr-element fr-view")[0].innerHTML = this.Article.fields.inner_content;
       },1000)
     }
     
@@ -215,6 +224,29 @@ export class EditArticleComponent implements OnInit {
       this.formData.append('token', this.userObjEditArticle.fields.token);
       this.communityService.editArticle(this.formData,this.Article[0].pk,this.userObjEditArticle.pk).subscribe(data => {
         this.Article = data
+        if(articleCategory.value === "General"){
+          let newState = Object.assign({},state,{
+            Articles: state.Articles.map(article=>{
+              if(article.pk === data[0].pk){
+                article = data[0]
+                return article
+              }
+              return article
+            })
+            })
+          this.communityService.changeState(newState);
+        }else {
+          let newState = Object.assign({},state,{
+            KYCCArticles: state.KYCCArticles.map(article=>{
+              if(article.pk === data[0].pk){
+                article = data[0]
+                return article
+              }
+              return article
+            })
+            })
+          this.communityService.changeState(newState);
+        }
         this.openSnackBar("Article Edited Successully","Ok");
         this.router.navigate(['/articles',data[0].pk])
       },error =>{
@@ -230,6 +262,18 @@ export class EditArticleComponent implements OnInit {
     this.spinner = 1;
     this.communityService.deleteArticle(this.Article[0].pk,this.userObjEditArticle.pk).subscribe(data => {
       this.openSnackBar("Article Deleted Successully","Ok");
+      let articleCategory = (document.getElementById("articleCategory")) as HTMLSelectElement;
+      if(articleCategory.value === "General"){
+        let newState = Object.assign({},state,{
+          Articles: state.Articles.filter(article=> article.pk !== this.Article.pk)
+          })
+        this.communityService.changeState(newState);
+      }else {
+        let newState = Object.assign({},state,{
+          KYCCArticles: state.KYCCArticles.concat(data)
+          })
+        this.communityService.changeState(newState);
+      }
       this.router.navigate(['/all-articles'])
     },error =>{
       this.spinner = 0;

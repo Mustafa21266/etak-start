@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SimpleChanges } from '@angular/core';
 import { User } from './models/users_model';
 import { UserLogin } from './models/users_login_model';
 import { Observable, of } from 'rxjs';
@@ -6,19 +6,38 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {FormControl, Validators} from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+class State {
+  Users: any
+  userObj: any
+  Cybers: any
+  Events: any
+  Articles: any
+  KYCCArticles: any
+  }
+export let state: State = {
+  Users: [],
+  userObj: {},
+  Cybers: [],
+  Events: [],
+  Articles: [],
+  KYCCArticles: []
+}
 @Injectable({
   providedIn: 'root'
 })
+
 export class CommunityService {
   private APIUrl = 'https://etak-start-api.herokuapp.com/';
   // private APIUrl = 'http://localhost:8000/';
   userObj: any;
   token = this.cookieService.get('etak-start-token') || '';
+
   httpOptions;
   constructor(private http: HttpClient,private cookieService: CookieService) { 
     if(this.token){
       this.getUserDetail(this.token).subscribe(data =>{
         this.userObj = data[0]
+        state.userObj = data[0]
       })
     }
     let csrf = this.cookieService.get("csrftoken");
@@ -249,6 +268,7 @@ export class CommunityService {
 }
 setUserObj(userObj: any): Observable<any>{
   this.userObj = userObj
+  state.userObj = userObj
   return this.userObj
 }
 fetchUserObj(): Observable<any>{
@@ -302,6 +322,8 @@ changeCreatorMode(setting,user_id: number): Observable<any>{
 async deleteToken(){
   this.token = "";
   await this.cookieService.delete("etak-start-token", '/');
+  this.userObj = {}
+  state.userObj = {}
   return this.token;
 }
 
@@ -332,5 +354,11 @@ deleteUserLink(id,user_id): Observable<any>{
   const body=JSON.stringify({});
   return this.http.post(this.APIUrl+'delete-content-creator-link/'+id+'/'+user_id,body,{'headers':headers})
 }
-
+changeState(newState){
+  state = newState;
+  console.log(state);
+}
+ngOnChanges(changes: SimpleChanges) {
+  // changes.prop contains the old and the new value...
+}
 }

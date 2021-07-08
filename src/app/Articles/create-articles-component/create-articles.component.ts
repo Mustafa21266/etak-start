@@ -31,6 +31,7 @@ import "froala-editor/js/plugins/table.min.js";
 import "froala-editor/js/plugins/url.min.js";
 import "froala-editor/js/plugins/video.min.js";
 import "froala-editor/js/plugins/word_paste.min.js";
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-create-articles',
   templateUrl: './create-articles.component.html',
@@ -199,11 +200,23 @@ openSnackBar(message: string, action: string) {
       this.communityService.createArticle(this.formData,this.userObjCreateArticle.pk).subscribe(data => {
         this.Article = data
         this.openSnackBar("Article Created Successully","Ok");
+        if(articleCategory.value === "General"){
+          let newState = Object.assign({},state,{
+            Articles: state.Articles.concat(data)
+            })
+          this.communityService.changeState(newState);
+        }else {
+          let newState = Object.assign({},state,{
+            KYCCArticles: state.KYCCArticles.concat(data)
+            })
+          this.communityService.changeState(newState);
+        }
         this.router.navigate(['/articles',data[0].pk])
       },error =>{
         this.spinner = 0;
         this.openSnackBar("An error has occurred","Ok");
       })
+      
     }else {
       this.spinner = 0;
         this.openSnackBar("Please fill all required fields","Ok");

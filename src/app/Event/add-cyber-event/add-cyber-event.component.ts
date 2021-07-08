@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {Loader, LoaderOptions} from 'google-maps';
 import { environment } from '../../../environments/environment.prod'
-
+import {state} from '../../etakstart.service';
 interface data {
   candidates: Array<any>,
   geometry: Object,
@@ -216,6 +216,10 @@ let location = (document.getElementById("location")) as HTMLInputElement
 this.cyberEventForm.value.location = `${location.value},${this.governate}`
 await this.communityService.addCyberEvent(this.cyberEventForm.value,this.Cyber[0].pk,this.userObjAddEvent.pk).subscribe(event => {
   this.cyberEvent = event;
+  let newState = Object.assign({},state,{
+    Events: state.Events.concat(this.cyberEvent)
+    })
+  this.communityService.changeState(newState);
   this.formData.append('cover', this.selectedCover,this.selectedCover.name);
   this.http.post('https://etak-start-api.herokuapp.com/add-cyber-event-cover/'+this.Cyber[0].pk+'/'+this.cyberEvent[0].pk+'/'+this.userObjAddEvent.pk, this.formData)
         .subscribe(res => {

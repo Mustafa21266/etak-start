@@ -1,43 +1,43 @@
-<div *ngIf="!Article[0]" style="height: 120vh;">
+<div *ngIf="!Article" style="height: 120vh;">
 
 </div>
-<div class="row" *ngIf="Article[0]">
+<div class="row" *ngIf="Article">
     <div class="col-12 col-lg-10 d-block mx-auto  background-class">
       <br>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-end bg-transparent">
-          <li *ngIf="Article[0]" class="breadcrumb-item active" aria-current="page">{{Article[0].fields.headline}}</li>
+          <li *ngIf="Article" class="breadcrumb-item active" aria-current="page">{{Article.fields.headline}}</li>
           <li class="breadcrumb-item"><a [routerLink]="['/all-articles']">All Articles</a></li>
         </ol>
       </nav>
         <hr>
-        <div *ngIf="Article[0]" class="row">
-          <meta property="og:title" content="{{Article[0].fields.headline}}">
-<meta property="og:description" content="{{Article[0].fields.intro_text}}">
-<meta property="og:image" content="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}">
+        <div *ngIf="Article" class="row">
+          <meta property="og:title" content="{{Article.fields.headline}}">
+<meta property="og:description" content="{{Article.fields.intro_text}}">
+<meta property="og:image" content="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article.fields.article_cover}}">
 <meta property="og:url" content="{{metaUrl}}">
-<meta name="twitter:title" content="{{Article[0].fields.headline}}">
-<meta name="twitter:description" content=" {{Article[0].fields.intro_text}}">
-<meta name="twitter:image" content=" http://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}">
+<meta name="twitter:title" content="{{Article.fields.headline}}">
+<meta name="twitter:description" content=" {{Article.fields.intro_text}}">
+<meta name="twitter:image" content=" http://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article.fields.article_cover}}">
 <meta name="twitter:card" content="summary_large_image">
           <div class="col-12" style="padding: 0px;">
-            <img id="coverForArticle" class="img-fluid cover" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article[0].fields.article_cover}}" alt="Card image cap">
+            <img id="coverForArticle" class="img-fluid cover" src="https://etak-start.s3.eu-west-3.amazonaws.com/media/{{Article.fields.article_cover}}" alt="Card image cap">
           </div>
         </div>
-          <div *ngIf="Article[0]" class="row">
+          <div *ngIf="Article" class="row">
             <div class="col-10 mx-auto"> 
               <br>
               <br>
-                <h1>{{Article[0].fields.headline}}</h1>
+                <h1>{{Article.fields.headline}}</h1>
                 <br>
-                <p style="font-size: 1.2rem;">{{Article[0].fields.intro_text}}</p>
+                <p style="font-size: 1.2rem;">{{Article.fields.intro_text}}</p>
                 <div class="d-block">
                   <a (click)="openAuthorProfile($event)" style="cursor: pointer;">
-                    <p class="author-mention text-left"><img id="coverForArticle" class="img-fluid" src="{{Article[0].fields.user[6]}}" style="width: 40px;height: 40px;border-radius: 50%;display: inline-block;margin-right: 10px;position: relative;top: -2px;" alt="Card image cap"><span class="by-class">By <span class="by-class-2">.</span></span><span> {{Article[0].fields.user[1]}} {{Article[0].fields.user[2]}}</span><span class="text-right float-right">Category : {{Article[0].fields.category }}</span></p>
+                    <p class="author-mention text-left"><img id="coverForArticle" class="img-fluid" src="{{Article.fields.user[6]}}" style="width: 40px;height: 40px;border-radius: 50%;display: inline-block;margin-right: 10px;position: relative;top: -2px;" alt="Card image cap"><span class="by-class">By <span class="by-class-2">.</span></span><span> {{Article.fields.user[1]}} {{Article.fields.user[2]}}</span><span class="text-right float-right">Category : {{Article.fields.category }}</span></p>
                   </a>
                   
                 </div>
-                <p class="date-added-style">{{Article[0].fields.date_added }}</p>
+                <p class="date-added-style">{{Article.fields.date_added }}</p>
                 <br>
                 <div class="share-div">
                   <button mat-fab shareButton="facebook" #fbBtn="shareButton" class="facebook-share-btn">
@@ -50,7 +50,7 @@
 <br>
                 
                 <hr> 
-                <button mat-raised-button style="background-color: #fea82f;" *ngIf="userObjArticle && userObjArticle.pk === Article[0].fields.user[0]" [routerLink]="['/edit-article', Article[0].pk]">Edit</button>      
+                <button mat-raised-button style="background-color: #fea82f;" *ngIf="userObjArticle && userObjArticle.pk === Article.fields.user[0]" [routerLink]="['/edit-article', Article.pk]">Edit</button>      
                 <br>
                 <br>  
                 

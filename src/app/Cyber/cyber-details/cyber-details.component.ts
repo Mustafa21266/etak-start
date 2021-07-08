@@ -16,7 +16,7 @@ import { EditCyberInfoComponent } from '../edit-cyber-info/edit-cyber-info.compo
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
 import { SignUpOrLoginToRateComponent } from '../../sign-up-or-login-to-rate/sign-up-or-login-to-rate.component';
-
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-cyber-details',
   templateUrl: './cyber-details.component.html',
@@ -95,12 +95,7 @@ export class CyberDetailsComponent implements OnInit {
     })
   }
   async getCyberDetails(){
-    
-    
-    const myFirstPromise = new Promise((resolve, reject) => {  
-    resolve(this.communityService.getCyberDetails(this.id).subscribe(data => {
-        this.Cyber = data
-        
+    this.Cyber = state.Cybers.filter(cyber => cyber.pk === this.id)
         let workingDays = this.days.slice(this.days.indexOf(this.Cyber[0].fields.starting_working_day),this.days.indexOf(this.Cyber[0].fields.ending_working_day)+1)
         let restDays = this.days.filter(day => !workingDays.includes(day))
         let today = DateTime.now().toLocaleString({ weekday: 'long' })
@@ -110,7 +105,7 @@ export class CyberDetailsComponent implements OnInit {
           this.isOpen = false;
         }
         
-        this.communityService.getCyberEvents(data[0].pk).subscribe(data => {
+        this.communityService.getCyberEvents(this.Cyber[0].pk).subscribe(data => {
           this.CyberEvents = data
           
         })
@@ -187,18 +182,13 @@ export class CyberDetailsComponent implements OnInit {
         
     }
     )
-      }))
-      }
-  );
-  myFirstPromise.then(() => {
     this.communityService.getCyberPictures(this.id).subscribe(data => {
       this.CyberPictures = data
       
 
 
     });
-    
-})
+
   }
   
   

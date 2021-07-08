@@ -1,6 +1,12 @@
 
   <!-- <app-slideshow *ngIf="this.router.url === '/sign-up' || this.router.url === '/log-in'"></app-slideshow>
   <app-app-slideshow></app-app-slideshow> -->
+  <div *ngIf="spinnerMain" style="height: 250vh;background-color: rgba(240, 162, 2, 0.8);">
+    <div class="uploader-status">
+      <mat-spinner *ngIf="spinnerMain"  class="spinner-main" [diameter]="200">
+      </mat-spinner>
+    </div> 
+  </div>
   <div class="container-fluid" *ngIf="this.router.url !== '/'">
     <div class="row">
       <div class="col-12" style="padding: 0px;">
@@ -9,9 +15,10 @@
 </div>
 </div>
   <div class="container-fluid app-root">
-   
+    
     <div class="row w-100 d-block mx-auto" style="height: 100%;">
       <div class="col-12" style="padding: 0px;height: 100%;">
+
         
         <router-outlet (activate)='onActivate($event)' style="height: 100%;"></router-outlet>
        

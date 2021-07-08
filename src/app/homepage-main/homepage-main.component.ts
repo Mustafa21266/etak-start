@@ -4,11 +4,12 @@ import { DateTime } from 'luxon';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { fadeInAnimation } from '../app.component';
+// import { fadeInAnimation } from '../app.component';
+import {state} from '../etakstart.service';
 @Component({
   selector: 'app-homepage-main',
   templateUrl: './homepage-main.component.html',
-  animations: [fadeInAnimation],
+  // animations: [fadeInAnimation],
   host: { '[@fadeInAnimation]': '' },
   styleUrls: ['./homepage-main.component.css']
 })
@@ -17,6 +18,7 @@ export class HomepageMainComponent implements OnInit {
   token = this.cookieService.get('etak-start-token') || '';
   Cybers = [];
   Articles = [];
+  KYCCArticles = [];
   shuffledArticles = [];
   Events = [];
   UserCount = 0;
@@ -36,99 +38,17 @@ export class HomepageMainComponent implements OnInit {
       this.spinner = 0;
       console.log(error)
     })
-    this.communityService.getAllCybers().subscribe(data =>{
-      this.Cybers = data;
-      this.Cybers = this.shuffleArray(this.Cybers)
-    },error =>{
+
+    setTimeout(()=>{
+      this.Cybers = state.Cybers
+      console.log(this.Cybers)
+      this.Events = state.Events
+      this.Articles = state.Articles
+      this.KYCCArticles = state.KYCCArticles
       this.spinner = 0;
-      console.log(error)
-    })
-    this.communityService.getAllEvents().subscribe(data => {
-      this.Events = data;
-      this.Events = this.shuffleArray(this.Events)
-      data.forEach(element => {
-        let now = DateTime.now();
-      let newDate = DateTime.fromISO(element.fields.date_added);
-      this.date = now.toLocaleString()
-        var delta = Math.round((now- newDate) / 1000);
-        var minute = 60,
-                  hour = minute * 60,
-                    day = hour * 24,
-                week = day * 7;
-        var fuzzy;
-        if (delta < 30) {
-            fuzzy = 'just now.';
-            element.fields.date_added = fuzzy;
-          } else if (delta < minute) {
-           fuzzy = delta + ' seconds ago.';
-           element.fields.date_added = fuzzy;
-          } else if (delta < 2 * minute) {
-              fuzzy = 'a minute ago.'
-              element.fields.date_added = fuzzy;
-           } else if (delta < hour) {
-              fuzzy = Math.floor(delta / minute) + ' minutes ago.';
-              element.fields.date_added = fuzzy;
-          } else if (Math.floor(delta / hour) == 1) {
-         fuzzy = '1 hour ago.'
-         element.fields.date_added = fuzzy;
-          } else if (delta < day) {
-           fuzzy = Math.floor(delta / hour) + ' hours ago.';
-           element.fields.date_added = fuzzy;
-          } else if (delta < day * 2) {
-           fuzzy = 'yesterday';
-           element.fields.date_added = fuzzy;
-          }else {
-            element.fields.date_added = element.fields.date_added.slice(0 ,10);
-          }
-      });
-    },error =>{
-      this.spinner = 0;
-      console.log(error)
-    })
-    this.communityService.getAllArticles().subscribe(data => {
-      this.Articles = data;
-      this.shuffledArticles = this.shuffleArray(data)
-      data.forEach(element => {
-    
-      let now = DateTime.now();
-      let newDate = DateTime.fromISO(element.fields.date_added);
-      this.date = now.toLocaleString()
-        var delta = Math.round((now- newDate) / 1000);
-        var minute = 60,
-                  hour = minute * 60,
-                    day = hour * 24,
-                week = day * 7;
-        var fuzzy;
-        if (delta < 30) {
-            fuzzy = 'just now.';
-            element.fields.date_added = fuzzy;
-          } else if (delta < minute) {
-           fuzzy = delta + ' seconds ago.';
-           element.fields.date_added = fuzzy;
-          } else if (delta < 2 * minute) {
-              fuzzy = 'a minute ago.'
-              element.fields.date_added = fuzzy;
-           } else if (delta < hour) {
-              fuzzy = Math.floor(delta / minute) + ' minutes ago.';
-              element.fields.date_added = fuzzy;
-          } else if (Math.floor(delta / hour) == 1) {
-         fuzzy = '1 hour ago.'
-         element.fields.date_added = fuzzy;
-          } else if (delta < day) {
-           fuzzy = Math.floor(delta / hour) + ' hours ago.';
-           element.fields.date_added = fuzzy;
-          } else if (delta < day * 2) {
-           fuzzy = 'yesterday';
-           element.fields.date_added = fuzzy;
-          }else {
-            element.fields.date_added = element.fields.date_added.slice(0 ,10);
-          }
-      });
-      // this.spinner = 0; 
-    },error =>{
-      this.spinner = 0;
-      console.log(error)
-    })
+      this.shuffledArticles = this.shuffleArray(this.Articles).concat(this.shuffleArray(this.KYCCArticles))
+    },1000)
+ 
   }
   shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {

@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CommunityService } from '../etakstart.service';
 import { User } from '../models/users_model';
 import { DateTime } from 'luxon';
+import {state} from '../etakstart.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -28,13 +29,13 @@ export class NavBarComponent implements OnInit {
     document.getElementById("searchFieldForm").setAttribute("style","display: inline-flex;align-items: center;")
     this.dataCount = 15;
     let refreshIntervalId = setInterval(()=>{
-      if(this.userObjNav){
-        clearInterval(refreshIntervalId);
-      }else{
-        this.checkUser();
-      }
-      
-    }, 500);
+      // if(this.userObjNav){
+      //   // clearInterval(refreshIntervalId);
+      // }else{
+        
+      // }
+      this.checkUser();
+    }, 1000);
     
   }
   checkUser(){
@@ -125,14 +126,14 @@ export class NavBarComponent implements OnInit {
   openMyProfile(event){
 
     this.router.navigate(['profiles',this.userObjNav.pk]).then(()=>{
-      window.location.reload();
+      // window.location.reload();
     })
 
   }
   openSettings(event){
 
     this.router.navigate(['edit-profile-info',this.userObjNav.pk]).then(()=>{
-      window.location.reload();
+      // window.location.reload();
     })
 
   }

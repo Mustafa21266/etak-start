@@ -44,12 +44,15 @@
 
 
   video {
-    object-fit: cover;
+
     width: 100vw;
     height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    min-width:100%; 
+    z-index: 0; 
+    object-fit: fill;
   }
   
   .hompage-text {
@@ -104,3 +107,7 @@ text-align: center;
     position: relative;
     padding: 1rem;
   }
+
+
+
+  

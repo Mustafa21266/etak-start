@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -66,7 +66,7 @@ export class Login implements OnInit {
             this.spinner = 0;
           }else {
             this.cookieService.set('etak-start-token', data[0].fields.token, 5);
-            let x = this.communityService.setUserObj(data[0])
+            this.communityService.setUserObj(data[0])
               this.openSnackBar("Logged-in Successfully","Ok");
               this.router.navigate(['homepage']).then(()=>{
                 // window.location.reload()

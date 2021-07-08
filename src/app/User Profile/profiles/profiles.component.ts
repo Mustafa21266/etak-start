@@ -12,6 +12,8 @@ import {ImageUploadComponent} from '../../image-upload/image-upload.component';
 import {ChangeProfilePictureComponent} from '../../change-profile-picture/change-profile-picture.component';
 import { User }from '../../models/users_model'
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import {state} from '../../etakstart.service';
+
 
 @Component({
   selector: 'app-profiles',
@@ -150,23 +152,8 @@ changeProfilePicture(event){
     if(textArea === null){
       let detailsTab = document.querySelector("#detailsContainer");
       let txt = '<textarea type="text" id="textArea" rows="12"  style="color:black;width: 100%;"></textarea>';
-      detailsTab.innerHTML = txt;
-      try{
-        addBioBtn.textContent = 'Confirm';
-        editBioBtn.textContent = 'Confirm';
-      }catch(error){
-        console.log(error)
-      }
-    
-      
+      detailsTab.innerHTML = txt;    
     }else {
-      
-      try{
-        addBioBtn.textContent = 'Confirm';
-        editBioBtn.textContent = 'Confirm';
-      }catch(error){
-        console.log(error)
-      }
       this.userForm.value['bio'] = textArea.value;
       const headers = { 
         'content-type': 'application/json',
@@ -176,9 +163,20 @@ changeProfilePicture(event){
       this.http.post('https://etak-start-api.herokuapp.com/add-bio/'+this.userObjMyProfile.pk, body,{'headers':headers})
       .subscribe(res => {
         this.openSnackBar("Bio Added Successfully","Ok");
-        setTimeout(()=>{
-          window.location.reload();
-        },1000)
+        let newState = Object.assign({},state,{
+          userObj: Object.assign({},state.userObj,{
+            fields: Object.assign({},state.userObj.fields,{
+              bio: textArea.value
+            })
+          })
+        })
+        let detailsTab = document.querySelector("#detailsContainer");
+        let txt = `<p>${textArea.value}</p>`
+        detailsTab.innerHTML = txt;
+        this.communityService.changeState(newState);
+        // setTimeout(()=>{
+        //   window.location.reload();
+        // },1000)
       },error  => {
         this.openSnackBar("Something went wrong.. Sorry","Ok");
       })

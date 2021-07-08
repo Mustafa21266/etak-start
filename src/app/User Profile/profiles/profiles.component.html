@@ -5,20 +5,21 @@
 <div class="col-12 animate__animated animate__fadeIn  animate__delay-2s" style="padding: 0px;">
     <div *ngIf="userProfile" class="w-100">
         <img  *ngIf="userProfile.fields.cover" class="img-fluid cover w-100 d-block" src="{{profileCover}}" alt="Card image cap">
+        <img  *ngIf="!userProfile.fields.cover" class="img-fluid cover w-100 d-block" src="{{profileCover}}" alt="Card image cap">
 </div>
 <a id="addBioBtn" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" class="btn btn-secondary change-cover-btn" (click)="openDialog()" type="button">Change Cover</a>
 </div>
     
 </div>
 <div class="row row-styling">
-    <div class="col-12 col-lg-4 details-column-profile  animate__animated animate__fadeIn  animate__delay-2s">
+    <div class="col-12 col-lg-12 details-column-profile  animate__animated animate__fadeIn  animate__delay-2s">
         <img class="img-fluid user-logo" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk === userProfile.pk" (click)="openDialogProfilePicture()" src="{{profilePicture}}" alt="Card image cap">
 
         <img class="img-fluid user-logo" *ngIf="userProfile && userObjMyProfile && userObjMyProfile.pk !== userProfile.pk"  style="cursor: default;" src="{{profilePicture}}" alt="Card image cap">
 
         <br>
 <h1 id="cyberName" class="color-white" *ngIf="userProfile">{{userProfile.fields.first_name}} {{userProfile.fields.last_name}}</h1>
-<div class="text-center w-100 badge-divs d-flex justify-content-center align-content-center flex-wrap">
+<div *ngIf="userProfile" class="text-center w-100 badge-divs d-flex justify-content-center align-content-center flex-wrap">
     
     <span *ngIf="userProfile.fields.is_admin === '1'" class="badge badge-warning badge-styling"><i class="fas fa-crown"></i> Admin</span>
     <span *ngIf="userProfile.fields.is_content_creator === '1'" class="badge badge-info badge-styling"><i class="fas fa-headset"></i> Streamer</span>
@@ -44,13 +45,13 @@
                                             <br>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <h5 class="text-left" *ngIf="userProfile.fields.show_or_hide_email === '0' && userProfile.fields.show_or_hide_phone_number === '0' && userProfile.fields.show_or_hide_date_of_birth === '0'">No Information Available</h5>
-                                                            <p class="info-paragraph text-center"  *ngIf="userProfile.fields.show_or_hide_email === '1'" > 
+                                                        <h5 class="text-left" *ngIf="userProfile && userProfile.fields.show_or_hide_email === '0' && userProfile.fields.show_or_hide_phone_number === '0' && userProfile.fields.show_or_hide_date_of_birth === '0'">No Information Available</h5>
+                                                            <p class="info-paragraph text-center"  *ngIf="userProfile && userProfile.fields.show_or_hide_email === '1'" > 
                                                                 <i class="fas fa-envelope" style="margin-right: 7px;"></i> <span>{{userProfile.fields.email}}</span>
                                                             </p>
-                                                            <p class="info-paragraph text-center"  *ngIf="userProfile.fields.show_or_hide_phone_number === '1'"><i class="fas fa-phone-square" style="margin-right: 7px;"></i> <span>{{userProfile.fields.phone_number}}</span>
+                                                            <p class="info-paragraph text-center"  *ngIf="userProfile && userProfile.fields.show_or_hide_phone_number === '1'"><i class="fas fa-phone-square" style="margin-right: 7px;"></i> <span>{{userProfile.fields.phone_number}}</span>
                                                             </p>
-                                                            <p class="info-paragraph text-center"  *ngIf="userProfile.fields.show_or_hide_date_of_birth === '1'"><i class="fas fa-birthday-cake" style="margin-right: 5px;"></i> <span>{{userProfile.fields.date_of_birth | date: 'dd/MM/yyyy'}}</span>
+                                                            <p class="info-paragraph text-center"  *ngIf="userProfile && userProfile.fields.show_or_hide_date_of_birth === '1'"><i class="fas fa-birthday-cake" style="margin-right: 5px;"></i> <span>{{userProfile.fields.date_of_birth | date: 'dd/MM/yyyy'}}</span>
                                                             </p>
                                                     </div>
                                                 </div>
@@ -58,7 +59,11 @@
 
 <br>
     </div>
-    <div class="col-12 col-lg-8 details-column  animate__animated animate__fadeIn  animate__delay-3s">
+   
+</div>
+
+<div class="row row-styling">
+    <div class="col-12 col-lg-12 details-column  animate__animated animate__fadeIn  animate__delay-3s">
         
         <div class="row">
             <br>
@@ -75,7 +80,7 @@
                                                     <br>
                                                 <h1>Bio</h1>
                                                 <br>
-                                                <div id="detailsContainer" class="w-100">
+                                                <div *ngIf="userProfile"  id="detailsContainer" class="w-100">
                                                     <p>{{userProfile.fields.bio}}</p>
                                                 </div>
                                                 <br>
@@ -86,7 +91,7 @@
                                         
                                         
                                             </mat-tab>
-                                        <mat-tab *ngIf="userProfile.fields.is_cyber_owner === '1'" label="My Cybers">
+                                        <mat-tab *ngIf="userProfile && userProfile.fields.is_cyber_owner === '1'" label="My Cybers">
                                             <br>
                                             <br>
                                             <div class="my-cybers" *ngIf="Cybers[0]">
@@ -115,7 +120,7 @@
                                                 </div>
                                             </div>
                                         </mat-tab>
-                                        <mat-tab *ngIf="userProfile.fields.is_cyber_owner === '1'" label="My Events">
+                                        <mat-tab *ngIf="userProfile && userProfile.fields.is_cyber_owner === '1'" label="My Events">
                                             <br>
                                             <br>
                                             <div class="my-events" *ngIf="Events[0]">
@@ -213,6 +218,5 @@
             </div>
         </div>
     </div>
+
 </div>
-
-

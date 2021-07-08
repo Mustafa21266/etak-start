@@ -4,7 +4,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import {state} from '../../etakstart.service';
+import { CyberDetailsComponent } from '../cyber-details/cyber-details.component';
 
 
 @Component({
@@ -35,6 +36,10 @@ export class DeleteCyberComponent implements OnInit {
     this.spinner = 1;
     this.communityService.deleteCyber(this.data[0].pk,this.data[1].pk).subscribe(data => {
       this.Cyber = data
+      let newState = Object.assign({},state,{
+        Cybers: state.Cybers.filter(cyber => cyber.pk !== this.data[0].pk)
+        })
+      this.communityService.changeState(newState);
       this.openSnackBar("Cyber Deleted Successully","Ok");
       this.dialogRef.close();
       this.router.navigate(['/places-all'])

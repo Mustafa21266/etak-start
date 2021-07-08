@@ -11,6 +11,7 @@ import { DeleteCyberComponent } from '../delete-cyber/delete-cyber.component';
 import {ImageUploadComponent} from '../../image-upload/image-upload.component';
 import {Loader, LoaderOptions} from 'google-maps';
 import { environment } from '../../../environments/environment.prod'
+import {state} from '../../etakstart.service';
 interface data {
   candidates: Array<any>,
   geometry: Object,
@@ -211,8 +212,7 @@ export class EditCyberInfoComponent implements OnInit {
     });
   }
   getCyberDetails(): void {
-    this.communityService.getCyberDetails(this.cyberId).subscribe(data => {
-      this.Cyber = data
+      this.Cyber = state.Cybers.filter(cyber => cyber.pk === this.cyberId)
       this.governate = this.Cyber[0].fields.governate
       this.cyberForm.setValue({
         name: this.Cyber[0].fields.name,
@@ -237,8 +237,6 @@ export class EditCyberInfoComponent implements OnInit {
         price_per_hour_ping_pong: this.Cyber[0].fields.price_per_hour_ping_pong,
       })
     this.preparePlatform()
-    }
-    );
    
    
   }
@@ -316,6 +314,16 @@ let location = (document.getElementById("location")) as HTMLInputElement
 this.cyberForm.value.location = location.value+','+this.governate
 this.communityService.editCyberInfo(this.cyberForm.value,this.Cyber[0].pk,this.userObjEditCyberInfo.pk).subscribe(cyberObj => {
   this.Cyber[0] = cyberObj[0]
+  let newState = Object.assign({},state,{
+    Cybers: state.Cybers.map(cyber => {
+      if(cyber.pk === this.Cyber[0].pk){
+        cyber = cyberObj[0]
+        return cyber
+      }
+      return cyber
+      })
+    })
+  this.communityService.changeState(newState);
   this.openSnackBar("Cyber Updated Successfully","Ok");
   this.router.navigate(['/place-details/'+this.Cyber[0].pk])
 },error => {
@@ -403,7 +411,7 @@ this.communityService.editCyberInfo(this.cyberForm.value,this.Cyber[0].pk,this.u
   })
 }
   ngOnDestroy(){
-    window.location.reload();
+    // window.location.reload();
   }
 }
 

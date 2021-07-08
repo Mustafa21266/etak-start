@@ -13,6 +13,7 @@ import { ImageUploadComponent } from '../../image-upload/image-upload.component'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Loader, LoaderOptions} from 'google-maps';
 import { environment } from '../../../environments/environment.prod'
+import {state} from '../../etakstart.service';
 interface Platform {
   value: string;
   viewValue: string;
@@ -84,6 +85,8 @@ export class AddCyberFormComponent implements OnInit {
     price_per_hour_xbox_series_x: new FormControl('0.0'),
     price_per_hour_pc: new FormControl('0.0'),
     price_per_hour_vr: new FormControl('0.0'),
+    price_per_hour_billards: new FormControl('0.0'),
+    price_per_hour_ping_pong: new FormControl('0.0'),
   }, [Validators.required]);
   selectedPlatforms = [];
   formData = new FormData();
@@ -358,6 +361,10 @@ this.elRef.nativeElement.querySelector('#'+"rmBTN_"+platformList.options[platfor
           this.formData.append('cover', this.selectedCover,this.selectedCover.name);
           this.http.post('https://etak-start-api.herokuapp.com/add-cyber-pics/'+this.createdCyber[0].pk+'/'+this.userObjAddCyber.pk, this.formData)
             .subscribe(res => {
+              let newState = Object.assign({},state,{
+                Cybers: state.Cybers.concat(this.createdCyber)
+                })
+              this.communityService.changeState(newState);
               this.openSnackBar("Cyber Created Successfully","Ok");
               this.router.navigate(['/place-details',res[0].pk])
             },error  => {

@@ -7,6 +7,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { SimpleChange } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-reset-password-request',
   templateUrl: './reset-password-request.component.html',
@@ -44,6 +45,7 @@ export class ResetPasswordRequestComponent implements OnInit {
       this.communityService.getUserDetailResetPassword(this.resetPasswordForm.value).subscribe(data => {
         this.spinner = 1;
         this.openSnackBar(data.message,"Ok");
+        this.spinner = 0;
       })
     }
     

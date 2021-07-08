@@ -9,7 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-edit-profile-info',
   templateUrl: './edit-profile-info.component.html',
@@ -68,47 +68,52 @@ export class EditProfileInfoComponent implements OnInit {
   checkUser(){
     setTimeout(()=>{
       this.userObjEditProfileInfo = this.communityService.getUserObj()
-      if(this.userObjEditProfileInfo){
-        if(this.userObjEditProfileInfo.fields.show_or_hide_email === "1"){
-          this.isCheckedEmail = true;
+      if(this.userObjEditProfileInfo.pk === parseInt(this.router.url.replace("/edit-profile-info/",""))){
+        if(this.userObjEditProfileInfo){
+          if(this.userObjEditProfileInfo.fields.show_or_hide_email === "1"){
+            this.isCheckedEmail = true;
+          }else {
+            this.isCheckedEmail = false;
+          }
+          if(this.userObjEditProfileInfo.fields.show_or_hide_phone_number === "1"){
+            this.isCheckedPhone = true;
+          }else {
+            this.isCheckedPhone = false;
+          }
+          if(this.userObjEditProfileInfo.fields.show_or_hide_date_of_birth === "1"){
+            this.isCheckedDateOfBirth = true;
+          }else {
+            this.isCheckedDateOfBirth = false;
+          }
+          if(this.userObjEditProfileInfo.fields.is_content_creator === "1"){
+            this.isCheckedCreatorMode = true;
+          }else {
+            this.isCheckedCreatorMode = false;
+          }
+          this.userForm.setValue({
+            first_name: this.userObjEditProfileInfo.fields.first_name,
+            last_name: this.userObjEditProfileInfo.fields.last_name,
+            // username: this.userObjEditProfileInfo.fields.username,
+            email: this.userObjEditProfileInfo.fields.email,
+            phone_number: this.userObjEditProfileInfo.fields.phone_number,
+            password: '',
+            date_of_birth: this.userObjEditProfileInfo.fields.date_of_birth,
+            // show_or_hide_email: this.userObjEditProfileInfo.fields.show_or_hide_email,
+            // show_or_hide_phone_number: this.userObjEditProfileInfo.fields.show_or_hide_phone_number,
+          })
+          this.communityService.getAllUserLinks(this.userObjEditProfileInfo.pk).subscribe(data =>{
+            this.userLinks = data
+          },error =>{
+            this.openSnackBar(error.message,"Ok");
+          })
+          return 0;
         }else {
-          this.isCheckedEmail = false;
+          return this.checkUser()
         }
-        if(this.userObjEditProfileInfo.fields.show_or_hide_phone_number === "1"){
-          this.isCheckedPhone = true;
-        }else {
-          this.isCheckedPhone = false;
-        }
-        if(this.userObjEditProfileInfo.fields.show_or_hide_date_of_birth === "1"){
-          this.isCheckedDateOfBirth = true;
-        }else {
-          this.isCheckedDateOfBirth = false;
-        }
-        if(this.userObjEditProfileInfo.fields.is_content_creator === "1"){
-          this.isCheckedCreatorMode = true;
-        }else {
-          this.isCheckedCreatorMode = false;
-        }
-        this.userForm.setValue({
-          first_name: this.userObjEditProfileInfo.fields.first_name,
-          last_name: this.userObjEditProfileInfo.fields.last_name,
-          // username: this.userObjEditProfileInfo.fields.username,
-          email: this.userObjEditProfileInfo.fields.email,
-          phone_number: this.userObjEditProfileInfo.fields.phone_number,
-          password: '',
-          date_of_birth: this.userObjEditProfileInfo.fields.date_of_birth,
-          // show_or_hide_email: this.userObjEditProfileInfo.fields.show_or_hide_email,
-          // show_or_hide_phone_number: this.userObjEditProfileInfo.fields.show_or_hide_phone_number,
-        })
-        this.communityService.getAllUserLinks(this.userObjEditProfileInfo.pk).subscribe(data =>{
-          this.userLinks = data
-        },error =>{
-          this.openSnackBar(error.message,"Ok");
-        })
-        return 0;
       }else {
-        return this.checkUser()
+        this.router.navigate(['homepage']);
       }
+      
     },500)
   }
   ngAfterViewInit() {
@@ -125,9 +130,18 @@ export class EditProfileInfoComponent implements OnInit {
    let setting = "";
    if(this.isCheckedEmail === true){
     setting = "1"
+    
   }else {
     setting = "0"
   }
+  let newState = Object.assign({},state,{
+    userObj: Object.assign({},state.userObj,{
+      fields: Object.assign({},state.userObj.fields,{
+        show_or_hide_email: setting
+      })
+    })
+  })
+  this.communityService.changeState(newState);
    this.communityService.changeShowHideEmailSetting(setting,this.userObjEditProfileInfo.pk).subscribe(data =>{
     this.openSnackBar(data.message,"Ok");
    })
@@ -139,6 +153,14 @@ export class EditProfileInfoComponent implements OnInit {
  }else {
    setting = "0"
  }
+ let newState = Object.assign({},state,{
+  userObj: Object.assign({},state.userObj,{
+    fields: Object.assign({},state.userObj.fields,{
+      show_or_hide_phone_number: setting
+    })
+  })
+})
+this.communityService.changeState(newState);
   this.communityService.changeShowHidePhoneNumberSetting(setting,this.userObjEditProfileInfo.pk).subscribe(data =>{
    this.openSnackBar(data.message,"Ok");
   })
@@ -150,6 +172,14 @@ onChangeShowDateOfBirthSlide(event){
  }else {
    setting = "0"
  }
+ let newState = Object.assign({},state,{
+  userObj: Object.assign({},state.userObj,{
+    fields: Object.assign({},state.userObj.fields,{
+      show_or_hide_date_of_birth: setting
+    })
+  })
+})
+this.communityService.changeState(newState);
   this.communityService.changeShowHideDateOfBirthSetting(setting,this.userObjEditProfileInfo.pk).subscribe(data =>{
    this.openSnackBar(data.message,"Ok");
   })
@@ -161,6 +191,14 @@ onChangeContentCreatorMode(event){
  }else {
    setting = "0"
  }
+ let newState = Object.assign({},state,{
+  userObj: Object.assign({},state.userObj,{
+    fields: Object.assign({},state.userObj.fields,{
+      is_content_creator: setting
+    })
+  })
+})
+this.communityService.changeState(newState);
   this.communityService.changeCreatorMode(setting,this.userObjEditProfileInfo.pk).subscribe(data =>{
    this.openSnackBar(data.message,"Ok");
   })
@@ -235,6 +273,10 @@ onChangeContentCreatorMode(event){
   // this.userForm.value['governate'] = governateSelect.options[governateSelect.selectedIndex].text;
   this.communityService.editProfileInfo(this.userForm.value,this.userObjEditProfileInfo.pk).subscribe(userobj => {
     this.openSnackBar("Profile Updated Successfully","Ok");
+    let newState = Object.assign({},state,{
+      userObj: userobj
+    })
+    this.communityService.changeState(newState);
     this.router.navigate(['/profiles/'+this.userObjEditProfileInfo.pk])
   },error => {
     this.spinner = 0;
@@ -263,7 +305,7 @@ onChangeContentCreatorMode(event){
     }
   }
   ngOnDestroy(){
-    window.location.reload();
+    // window.location.reload();
   }
   createUserLink(event){
     if(this.userLinkForm.invalid){

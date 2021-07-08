@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommunityService } from '../../etakstart.service';
 import { DateTime } from 'luxon';
 import { CookieService } from 'ngx-cookie-service';
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.component.html',
@@ -22,52 +23,54 @@ export class EventDetailsComponent implements OnInit {
     this.getCyberEventDetails();
   }
   getCyberEventDetails(){
-    this.communityService.getCyberEventDetails(this.eventId).subscribe(data => {
-      data.forEach(element => {
-        let now = DateTime.now();
-      let newDate = DateTime.fromISO(element.fields.date_added);
-      this.date = now.toLocaleString()
-        var delta = Math.round((now- newDate) / 1000);
-        var minute = 60,
-                  hour = minute * 60,
-                    day = hour * 24,
-                week = day * 7;
-        var fuzzy;
-        if (delta < 30) {
-            fuzzy = 'just now.';
-            element.fields.date_added = fuzzy;
-          } else if (delta < minute) {
-           fuzzy = delta + ' seconds ago.';
-           element.fields.date_added = fuzzy;
-          } else if (delta < 2 * minute) {
-              fuzzy = 'a minute ago.'
-              element.fields.date_added = fuzzy;
-           } else if (delta < hour) {
-              fuzzy = Math.floor(delta / minute) + ' minutes ago.';
-              element.fields.date_added = fuzzy;
-          } else if (Math.floor(delta / hour) == 1) {
-         fuzzy = '1 hour ago.'
-         element.fields.date_added = fuzzy;
-          } else if (delta < day) {
-           fuzzy = Math.floor(delta / hour) + ' hours ago.';
-           element.fields.date_added = fuzzy;
-          } else if (delta < day * 2) {
-           fuzzy = 'yesterday';
-           element.fields.date_added = fuzzy;
-          }else {
-            element.fields.date_added = element.fields.date_added.slice(0 ,10);
-          }
-      });
-      this.eventObj = data;
-      this.communityService.getCyberDetails(this.eventObj[0].fields.cyber[0]).subscribe(data => {
-        this.cyber = data
+    // this.communityService.getCyberEventDetails(this.eventId).subscribe(data => {
+    //   data.forEach(element => {
+    //     let now = DateTime.now();
+    //   let newDate = DateTime.fromISO(element.fields.date_added);
+    //   this.date = now.toLocaleString()
+    //     var delta = Math.round((now- newDate) / 1000);
+    //     var minute = 60,
+    //               hour = minute * 60,
+    //                 day = hour * 24,
+    //             week = day * 7;
+    //     var fuzzy;
+    //     if (delta < 30) {
+    //         fuzzy = 'just now.';
+    //         element.fields.date_added = fuzzy;
+    //       } else if (delta < minute) {
+    //        fuzzy = delta + ' seconds ago.';
+    //        element.fields.date_added = fuzzy;
+    //       } else if (delta < 2 * minute) {
+    //           fuzzy = 'a minute ago.'
+    //           element.fields.date_added = fuzzy;
+    //        } else if (delta < hour) {
+    //           fuzzy = Math.floor(delta / minute) + ' minutes ago.';
+    //           element.fields.date_added = fuzzy;
+    //       } else if (Math.floor(delta / hour) == 1) {
+    //      fuzzy = '1 hour ago.'
+    //      element.fields.date_added = fuzzy;
+    //       } else if (delta < day) {
+    //        fuzzy = Math.floor(delta / hour) + ' hours ago.';
+    //        element.fields.date_added = fuzzy;
+    //       } else if (delta < day * 2) {
+    //        fuzzy = 'yesterday';
+    //        element.fields.date_added = fuzzy;
+    //       }else {
+    //         element.fields.date_added = element.fields.date_added.slice(0 ,10);
+    //       }
+    //   });
+      
+    //   // this.communityService.getCyberDetails(this.eventObj[0].fields.cyber[0]).subscribe(data => {
+        
+    //   // })
+    // })
+    this.eventObj = state.Events.filter(event => event.pk === this.eventId);
+      this.cyber = state.Cybers.filter(cyber => cyber.pk === this.eventObj[0].fields.cyber[0]);
         if(this.token !== ''){
           setTimeout(()=>{
             this.userObjEventDetails = this.communityService.getUserObj()
           },500)
         }
-      })
-    })
   }
 
   showFullDiscription(event){

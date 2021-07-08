@@ -20,7 +20,12 @@
   </div>
 </div>
   <div class="col-12 col-lg-10 background-class mx-auto">
-    <app-loading-widget *ngIf="spinner" [spinner]="spinner" style="position: relative;top: 10px;z-index: 1;"></app-loading-widget> 
+    <!-- <app-loading-widget *ngIf="spinner" [spinner]="spinner" style="position: relative;top: 10px;z-index: 1;"></app-loading-widget>  -->
+    <div *ngIf="spinnerMain" style="position: fixed;right: 0px;top:0px;z-index: 100000000;height: 200vh;background-color: rgba(255, 255, 255, 1);"></div>
+      <div class="uploader-status">
+        <mat-spinner *ngIf="spinnerMain"  class="spinner-main" [diameter]="200">
+        </mat-spinner>
+      </div> 
     <br>
 <br>
 <hr class="hr-style">

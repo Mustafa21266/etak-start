@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommunityService } from '../../etakstart.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { fadeInAnimation } from '../../app.component';
+// import { fadeInAnimation } from '../../app.component';
+import {state} from '../../etakstart.service';
 @Component({
   selector: 'app-cybers-all',
   templateUrl: './cybers-all.component.html',
-  animations: [fadeInAnimation],
+  // animations: [fadeInAnimation],
   host: { '[@fadeInAnimation]': '' },
   styleUrls: ['./cybers-all.component.css']
 })
@@ -19,8 +20,10 @@ export class CybersAllComponent implements OnInit {
   averageRating = 0;
   total = 0;
   spinner = 0;
+  spinnerMain = 0;
   constructor(private communityService: CommunityService,config: NgbRatingConfig,private _snackBar: MatSnackBar) { 
     config.max = 5;
+    
   }
   searchResultsChange(results){
     this.Cybers = results
@@ -44,14 +47,15 @@ export class CybersAllComponent implements OnInit {
   }
   async getAllCybers(){
     this.spinner = 1;
-    await this.communityService.getAllCybers().subscribe(data => {
-      this.Cybers = this.shuffleArray(data)
-      this.originalCybers = this.Cybers
-    },error =>{
-      this.spinner = 0;
-      console.log(error)
-    });
-    
+    // await this.communityService.getAllCybers().subscribe(data => {
+    //   this.Cybers = this.shuffleArray(data)
+    //   this.originalCybers = this.Cybers
+    // },error =>{
+    //   this.spinner = 0;
+    //   console.log(error)
+    // });
+    this.Cybers = state.Cybers
+    this.spinner = 0;
   }
   filterByCheckBox(event){
     if(event.target.value === 'highestRating'){
