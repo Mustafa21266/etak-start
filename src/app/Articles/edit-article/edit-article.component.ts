@@ -222,7 +222,7 @@ export class EditArticleComponent implements OnInit {
       this.formData.append('inner_content', document.getElementsByClassName("fr-element fr-view")[0].innerHTML);
       this.formData.append('category', articleCategory.value);
       this.formData.append('token', this.userObjEditArticle.fields.token);
-      this.communityService.editArticle(this.formData,this.Article[0].pk,this.userObjEditArticle.pk).subscribe(data => {
+      this.communityService.editArticle(this.formData,this.Article.pk,this.userObjEditArticle.pk).subscribe(data => {
         this.Article = data
         if(articleCategory.value === "General"){
           let newState = Object.assign({},state,{
@@ -260,7 +260,7 @@ export class EditArticleComponent implements OnInit {
   }
   onClickDeleteArticleBtn(event){
     this.spinner = 1;
-    this.communityService.deleteArticle(this.Article[0].pk,this.userObjEditArticle.pk).subscribe(data => {
+    this.communityService.deleteArticle(this.Article.pk,this.userObjEditArticle.pk).subscribe(data => {
       this.openSnackBar("Article Deleted Successully","Ok");
       let articleCategory = (document.getElementById("articleCategory")) as HTMLSelectElement;
       if(articleCategory.value === "General"){
